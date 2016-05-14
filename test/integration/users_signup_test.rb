@@ -35,10 +35,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	
 	test "valid signup information" do
 		get signup_path
-		assert_difference 'User.count' do
+		assert_difference 'User.count', 1 do
 			post users_path, user: { name: "Dima", email: "user@invalid.com", password: "foobar", password_confirmation: "foobar" }
 		end
     assert_select flash[:success], "Welcome to the Sample App!"
 		assert_template @user
+		assert_template 'users/show'		
 	end	
 end
