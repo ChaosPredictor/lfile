@@ -40,6 +40,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		end
     assert_select flash[:success], "Welcome to the Sample App!"
 		assert_template @user
-		assert_template 'users/show'		
+		#assert_template 'users/show'		
 	end	
 end
