@@ -70,6 +70,21 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation ul li', "Password confirmation doesn't match Password"				
 	end
 	
+	test "invalid signup email already been taken" do
+		get signup_path
+		assert_difference 'User.count' do
+			post users_path, user: { name: "Dima1", email: "user@invalid.com", password: "foobar1", password_confirmation: "foobar1" }
+		end
+		assert_no_difference 'User.count' do
+			post users_path, user: { name: "Dima2", email: "user@invalid.com", password: "foobar2", password_confirmation: "foobar2" }
+		end
+		assert_template 'users/new'
+		assert_select 'div#error_explanation'
+		assert_select 'div.alert-danger', "The form contains 1 error."
+		assert_select 'div.alert'	
+		assert_select 'div#error_explanation ul li', "Email has already been taken"				
+	end
+	
 	test "valid signup information" do
 		get signup_path
 		assert_difference 'User.count', 1 do
