@@ -106,21 +106,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "ul.navbar-right"
 	end
 	
-	test "page" do
-
-		#assert_select "title", full_title("Sign up")
-		#assert_select "a[href=?]", root_path, count: 2
-		#assert_select "a[href=?]", help_path
-		#assert_select "a[href=?]", about_path
-		#assert_select "a[href=?]", contact_path
-		#assert_select "a[href=?]", login_path	
-		#assert_select "title", ""
-		#get login_path
-		#post login_path, session: {email: "user@invalid.com", password: "foobar1" }
-		#assert_select "title"
-		#assert_select "ul.nav"
-		#assert_select "ul.navbar-nav"
-		#assert_select "ul.navbar-right"
-	end
-	
 end
