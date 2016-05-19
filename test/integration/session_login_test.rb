@@ -36,6 +36,16 @@ class SessionLoginTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", login_path, count: 0
 		assert_select "a[href=?]", logout_path, count: 1
 		assert_select "a[href=?]", user_path(session[:user_id]), count: 1
+		assert is_logged_in?
+		
+		delete logout_path
+		assert_not is_logged_in?
+		assert_redirected_to root_url
+		follow_redirect!
+		assert_select "a[href=?]", login_path
+		assert_select "a[href=?]", logout_path, count: 0
+		assert_select "a[href=?]", user_path(1), count: 0
+		#TODO check that there is not link to any user
 	end
 	
 end
