@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
 	#def setup
 	#	@user = users(:michael)
+		#@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
 	#end
 	
 	test "invalid signup information" do
@@ -114,5 +115,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", user_path(session[:user_id]), count: 1
 		assert is_logged_in?
 	end
+	
 		
 end
