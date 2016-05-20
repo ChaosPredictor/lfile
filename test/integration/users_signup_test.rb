@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
-	#def setup
-	#	@user = users(:michael)
-		#@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
-	#end
 	
 	test "invalid signup information" do
 		get signup_path
@@ -12,12 +8,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 			post users_path, user: { name: "", email: "user@invalid", password: "foo", password_confirmation: "bar" }
 		end
 		assert_template 'users/new'
-		#assert_select 'div#<CSS id for error explanation>'
-		#assert_select 'div.<CSS class for field with error>'
-		#assert_select 'div#error_explanation', "The form contains 4 errors.
-		#
-		#
-		#		Name can't be blank\n				Email is invalid\n				Password confirmation doesn't match Password\n				Password is too short (minimum is 6 characters)"
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 4 errors."
 		assert_select 'div.alert'	
