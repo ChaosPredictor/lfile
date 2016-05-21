@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   end
 	
 	def create
-		user = User.find_by(email: params[:session][:email].downcase)
-		if user && user.authenticate(params[:session][:password])
+		@user = User.find_by(email: params[:session][:email].downcase)
+		if @user && @user.authenticate(params[:session][:password])
 			flash[:success] = "Welcome Home!"
-			log_in user
-			params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+			log_in @user
+			params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
 			#same as
 			#if params[:session][:remember_me] == '1'
 			#	remember(user)
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 			#	forget(user)
 				#flash[:success] = "forget run!!!"
 			#end
-			redirect_to user
+			redirect_to @user
 		else
 			flash[:danger] = 'Invalid email/password combination' # Not quite right!			
 			render 'new'
