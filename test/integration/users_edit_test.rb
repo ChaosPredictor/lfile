@@ -8,6 +8,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit all 4 reason" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		patch user_path(@user), user: {name: "", email: "foo@invalid", password: "foo", password_confirmation: "bar"}
@@ -22,6 +23,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit black name" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		patch user_path(@user), user: {name: "", email: "foo@invalid.com", password: "foobar", password_confirmation: "foobar"}
@@ -33,6 +35,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit invalid email" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		patch user_path(@user), user: {name: "dima", email: "foo@invalid", password: "foobar", password_confirmation: "foobar"}
@@ -44,6 +47,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit short password" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		patch user_path(@user), user: {name: "dima", email: "foo@invalid.com", password: "foo", password_confirmation: "foo"}
@@ -55,6 +59,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit password confirmation wrong" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		patch user_path(@user), user: {name: "dima", email: "foo@invalid.com", password: "foobar1", password_confirmation: "foobar2"}
@@ -66,6 +71,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "unsuccessful edit email already been taken" do
+		log_in_as(@user)
 		get signup_path
 		assert_difference 'User.count' do
 			post users_path, user: { name: "Dima1", email: "user@invalid.com", password: "foobar1", password_confirmation: "foobar1" }
@@ -80,22 +86,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation ul li', "Email has already been taken"
 	end
 	
-	#test "successful edit" do
-	#	get edit_user_path(@user)
-	#	assert_template 'users/edit'
-	#	patch user_path(@user), user: {name: "Dima", email: "foo@invalid.com", password: "foobar", password_confirmation: "foobar"}
-	#	assert_equal flash[:success], 'Nice Chose, Welcome back!' 
-	#	#assert_redirected_to user_path(@user)
-	#	follow_redirect!
-	#	assert_template 'users/show'
-	#	assert_not flash[:error]
-	#	assert_select "a[href=?]", login_path, count: 0
-	#	assert_select "a[href=?]", logout_path, count: 1
-	#	assert_select "a[href=?]", user_path(session[:user_id]), count: 1
-	#	assert is_logged_in?
-	#end
-	
-	test "successful edit2" do
+	test "successful edit" do
+		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
 		name = "Foo Bar"
