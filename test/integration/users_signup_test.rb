@@ -88,7 +88,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation ul li', "Email has already been taken"
 	end
 	
-	test "valid signup information followed by logout" do
+	test "valid signup information" do
 		@user = {user:{name: "Dima1", email: "user1@invalid.com", password: "foobar1", password_confirmation: "foobar1"}}
 		get signup_path
 		assert_difference 'User.count' do
