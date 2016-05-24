@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 			flash[:success] = "Welcome Home!"
 			log_in @user
 			params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+			redirect_back_or @user
 			#same as
 			#if params[:session][:remember_me] == '1'
 			#	remember(user)
@@ -16,7 +17,6 @@ class SessionsController < ApplicationController
 			#	forget(user)
 				#flash[:success] = "forget run!!!"
 			#end
-			redirect_to @user
 		else
 			flash[:danger] = 'Invalid email/password combination' # Not quite right!			
 			render 'new'
