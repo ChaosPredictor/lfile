@@ -5,6 +5,9 @@
 		<a href="http://www.chaospredictor.com/">Chaos Predictor</a>
 		samplbe application.
 	</h2>
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<% if logged_in? %>
+	<% else %>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<% end %>
 </div>
 <%= link_to image_tag("Linux.png", alt: "Rails logo"), 'http://www.chaospredictor.com/' %>
