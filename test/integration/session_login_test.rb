@@ -10,6 +10,7 @@ class SessionLoginTest < ActionDispatch::IntegrationTest
 		get login_path
 		post login_path, session: { email: @user.email, password: 'password' }
 		assert is_logged_in?
+		assert_equal flash[:success], "Welcome Home!"
 		assert_redirected_to @user
 		follow_redirect!
 		assert_template 'users/show'

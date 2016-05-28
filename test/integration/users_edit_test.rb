@@ -117,4 +117,17 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		assert_equal name, @user.name
 		assert_equal email, @user.email
 	end
+	
+	test "friendly forwarding forwards second time" do
+		get edit_user_path(@user)
+		log_in_as(@user)
+		logout_path
+		log_in_as(@user)
+		assert_not flash.empty?
+		assert_equal flash[:success], "Welcome Home!"
+		assert_redirected_to @user		
+		@user.reload
+		follow_redirect!
+		assert_template 'users/show'
+	end
 end
