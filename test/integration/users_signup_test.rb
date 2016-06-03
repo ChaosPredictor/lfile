@@ -2,6 +2,10 @@ require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
 	
+	def setup
+		ActionMailer::Base.deliveries.clear
+	end
+	
 	test "invalid signup information" do
 		get signup_path
 		assert_no_difference 'User.count' do
@@ -88,22 +92,29 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation ul li', "Email has already been taken"
 	end
 	
-	test "valid signup information" do
-		@user = {user:{name: "Dima1", email: "user1@invalid.com", password: "foobar1", password_confirmation: "foobar1"}}
+	test "valid signup informationwith account activation" do
 		get signup_path
-		assert_difference 'User.count' do
-			post users_path, @user
+		assert_difference 'User.count', 1 do
+			post users_path, user: { name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password" }
 		end
-		
-		assert_equal flash[:success], "Please check your email to activate your account." 
-		#assert_redirected_to user_path(session[:user_id])
+		assert_equal 1, ActionMailer::Base.deliveries.size
+		user = assigns(:user)
+		assert_not user.activated?
+		# Try to log in before activation.
+		log_in_as(user)
+		assert_not is_logged_in?
+		# Invalid activation token
+		get edit_account_activation_path("invalid token")
+		assert_not is_logged_in?
+		# Valid token, wrong email
+		get edit_account_activation_path(user.activation_token, email: 'wrong')
+		assert_not is_logged_in?
+		# Valid activation token
+		get edit_account_activation_path(user.activation_token, email: user.email)
+		assert user.reload.activated?
 		follow_redirect!
-		#assert_template 'users/show'
-		assert_not flash[:error]
-		#assert_select "a[href=?]", login_path, count: 0
-		#assert_select "a[href=?]", logout_path, count: 1
-		#assert_select "a[href=?]", user_path(session[:user_id]), count: 1
-		#assert is_logged_in?
+		assert_template 'users/show'
+		assert is_logged_in?
 	end
 	
 		
