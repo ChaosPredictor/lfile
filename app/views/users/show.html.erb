@@ -5,6 +5,15 @@
 			<h1>
 				<%= gravatar_for @user, size:50%>
 				<%= @user.name %>
+				<% if @user.activated? %>
+				  <div id="user_active" >
+						<%= "Activated" %>
+					</div>
+				<% else %>
+	  			<div id="user_inactive" >
+						<%= "Inactivated" %>
+					</div>	
+				<% end %>	
 			</h1>
 		</section>
 	</aside>
