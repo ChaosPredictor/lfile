@@ -8,7 +8,8 @@
 	<% else %>
 	  <div id="user_inactive" >
 			<%= "Inactivated" %>
-		</div>	<% end %>	
+		</div>	
+	<% end %>	
 	<% if current_user.admin? && !current_user?(user) %>
 		<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
 	<% end %>
