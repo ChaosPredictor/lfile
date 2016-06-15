@@ -126,7 +126,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_template 'users/show'
 		assert is_logged_in?
 		assert_equal flash[:success], "Account activated!"
-		get root_path
+		#get root_path
 		assert_select "a[href=?]", root_path, count: 2
 		assert_select "a[href=?]", help_path
 		assert_select "a[href=?]", about_path
