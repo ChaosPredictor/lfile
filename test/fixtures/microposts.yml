@@ -20,12 +20,161 @@ most_recent:
   created_at: <%= Time.zone.now %>
   user: michael
 
-<% 30.times do |n| %>
-micropost_<%= n %>:
-  content: <%= Faker::Lorem.sentence(5) %>
-  created_at: <%= 42.days.ago %>
+micropost_01:
+  content: "Writing a short test 01"
+  created_at: <%= 1.days.ago %>
   user: michael
-<% end %>
+
+micropost_02:
+  content: "Writing a short test 02"
+  created_at: <%= 2.days.ago %>
+  user: michael
+
+micropost_03:
+  content: "Writing a short test 03"
+  created_at: <%= 3.days.ago %>
+  user: michael
+
+micropost_04:
+  content: "Writing a short test 04"
+  created_at: <%= 4.days.ago %>
+  user: michael
+
+micropost_05:
+  content: "Writing a short test 05"
+  created_at: <%= 5.days.ago %>
+  user: michael
+
+micropost_06:
+  content: "Writing a short test 06"
+  created_at: <%= 6.days.ago %>
+  user: michael
+
+micropost_07:
+  content: "Writing a short test 07"
+  created_at: <%= 7.days.ago %>
+  user: michael
+
+micropost_08:
+  content: "Writing a short test 08"
+  created_at: <%= 8.days.ago %>
+  user: michael
+
+micropost_09:
+  content: "Writing a short test 09"
+  created_at: <%= 9.days.ago %>
+  user: michael
+
+micropost_10:
+  content: "Writing a short test 10"
+  created_at: <%= 10.days.ago %>
+  user: michael
+
+micropost_11:
+  content: "Writing a short test 11"
+  created_at: <%= 11.days.ago %>
+  user: michael
+
+micropost_12:
+  content: "Writing a short test 12"
+  created_at: <%= 12.days.ago %>
+  user: michael
+
+micropost_13:
+  content: "Writing a short test 13"
+  created_at: <%= 13.days.ago %>
+  user: michael
+
+micropost_14:
+  content: "Writing a short test 14"
+  created_at: <%= 14.days.ago %>
+  user: michael
+
+micropost_15:
+  content: "Writing a short test 15"
+  created_at: <%= 15.days.ago %>
+  user: michael
+
+micropost_16:
+  content: "Writing a short test 16"
+  created_at: <%= 16.days.ago %>
+  user: michael
+
+micropost_17:
+  content: "Writing a short test 17"
+  created_at: <%= 17.days.ago %>
+  user: michael
+
+micropost_18:
+  content: "Writing a short test 18"
+  created_at: <%= 18.days.ago %>
+  user: michael
+
+micropost_19:
+  content: "Writing a short test 19"
+  created_at: <%= 19.days.ago %>
+  user: michael
+
+micropost_20:
+  content: "Writing a short test 20"
+  created_at: <%= 20.days.ago %>
+  user: michael
+
+micropost_21:
+  content: "Writing a short test 21"
+  created_at: <%= 21.days.ago %>
+  user: michael
+
+micropost_22:
+  content: "Writing a short test 22"
+  created_at: <%= 22.days.ago %>
+  user: michael
+
+micropost_23:
+  content: "Writing a short test 23"
+  created_at: <%= 23.days.ago %>
+  user: michael
+
+micropost_24:
+  content: "Writing a short test 24"
+  created_at: <%= 24.days.ago %>
+  user: michael
+
+micropost_25:
+  content: "Writing a short test 25"
+  created_at: <%= 25.days.ago %>
+  user: michael
+
+micropost_26:
+  content: "Writing a short test 26"
+  created_at: <%= 26.days.ago %>
+  user: michael
+
+micropost_27:
+  content: "Writing a short test 27"
+  created_at: <%= 27.days.ago %>
+  user: michael
+
+micropost_28:
+  content: "Writing a short test 28"
+  created_at: <%= 28.days.ago %>
+  user: michael
+
+micropost_29:
+  content: "Writing a short test 29"
+  created_at: <%= 29.days.ago %>
+  user: michael
+
+micropost_30:
+  content: "Writing a short test 30"
+  created_at: <%= 30.days.ago %>
+  user: michael
+#<% 30.times do |n| %>
+#micropost_<%= n %>:
+#  content: <%= Faker::Lorem.sentence(5) %>
+#  created_at: <%= 42.days.ago %>
+#  user: michael
+#<% end %>
 
 ants:
   content: "Oh, is that what you want? Because that's how you get ants!"
@@ -38,11 +187,11 @@ zone:
   user: archer
 
 tone:
-  content: "I'm sorry. Your words made sense, but your sarcastic tone did not."
+  content: "Im sorry. Your words made sense, but your sarcastic tone did not."
   created_at: <%= 10.minutes.ago %>
   user: lana
 
 van:
-  content: "Dude, this van's, like, rolling probable cause."
+  content: "Dude, this vans, like, rolling probable cause."
   created_at: <%= 4.hours.ago %>
   user: lana
