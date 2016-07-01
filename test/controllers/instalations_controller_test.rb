@@ -8,12 +8,20 @@ class InstalationsControllerTest < ActionController::TestCase
 	end
 	
   test "should get new only if login" do
-		get :new
+		#get :new
+		assert_no_difference 'Instalation.count' do
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new" }
+		end
 		assert_response :redirect
 		assert_redirected_to login_url
 		log_in_as(@user_admin)
-		get :new
-    assert_response :success
+		#get :new
+		assert_difference 'Instalation.count' do
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new" }
+		end
+		assert_equal flash[:success], "New Instalation Saved!!!"
+		assert_response :redirect
+		assert_redirected_to instalations_path
   end
 	
 	test "should redirect create when not logged in" do

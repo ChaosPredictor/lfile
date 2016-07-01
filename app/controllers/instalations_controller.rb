@@ -1,6 +1,6 @@
 class InstalationsController < ApplicationController
-	before_action :logged_in_user,   only: [:index, :create, :new, :destroy, :edit, :update]
-  before_action :admin_user,       only: [:destroy, :edit, :update]	
+	before_action :logged_in_user,   only: [:edit, :update, :destroy, :index, :create, :new,  ]
+  before_action :admin_user,       only: [:edit, :update, :destroy]	
 
 	
 	
@@ -15,10 +15,11 @@ class InstalationsController < ApplicationController
 	def create
 		@instalation = Instalation.new(instalation_params)
 		if @instalation.save
+			redirect_to instalations_path
 			flash[:success] = "New Instalation Saved!!!"
-			redirect_to root_url
 		else
 			render 'new'
+			flash[:error] = "There is a problem"
 		end
 	end
 	
@@ -34,17 +35,22 @@ class InstalationsController < ApplicationController
 	def update
 		@instalation = Instalation.find(params[:id])
 		if @instalation.update_attributes(instalation_params)
+			flash[:success] = "You know what you're doing!"
 			redirect_to instalations_path
-			flash[:success] = "Nice Chose, Welcome back!"
+			#flash[:error] = "You know what you're doing!"			
 		else
+			flash[:error] = "There is a problem"
 			render 'edit'
 		end
 	end
 	
 	def destroy
-		Instalation.find(params[:id]).destroy
-		flash[:success] = "Instalation deleted"
-		redirect_to instalations_url
+		if Instalation.find(params[:id]).destroy
+			flash[:success] = "Instalation deleted"
+			redirect_to instalations_path
+		else
+			redirect_to root_path
+		end
 	end
 	
 	
