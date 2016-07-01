@@ -6,16 +6,18 @@
 				<%= @instalation.name %>
 			</h1>			
 			<h2>
-				<div>
-					Vession:
-					<%= @instalation.version %>
+				<div id="version">
+					Vession: <%= @instalation.version %>
+				</div>
+				<div id="os">
+					Operation System: <%= @instalation.os %>
 				</div>
 				<div>
-					Operation System: 
-					<%= @instalation.os %>
+					<% if current_user.admin? %>
+						<%= link_to "edit", edit_instalation_path(@instalation)%>
+						<%= link_to "delete", @instalation, method: :delete, data: { confirm: "You sure?" } %>
+					<% end %>
 				</div>
-					<%= link_to "edit", edit_instalation_path(@instalation) %>
-					<%= link_to "delete", @instalation, method: :delete, data: { confirm: "You sure?" } %>
 			</h2>
 			<!--section class="stats">
 				<!--%= render 'shared/stats' %-->

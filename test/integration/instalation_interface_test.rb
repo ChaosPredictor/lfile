@@ -67,7 +67,6 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: 0
 	end
 	
-	
 	test "instalation sidebar count" do
 		log_in_as(@user)
 		get instalations_path
@@ -76,9 +75,6 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		delete instalation_path(first_instalation)
 		first_instalation = Instalation.paginate(page: 1).first
 		delete instalation_path(first_instalation)
-		# User with zero microposts
-		#other_user = users(:malory)
-		#log_in_as(other_user)
 		get instalations_path
 		assert_match "0 instalations", response.body
 		Instalation.create!(name: "gimp1", version: "1.1", os: "ubuntu")
