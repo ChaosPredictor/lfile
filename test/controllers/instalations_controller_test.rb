@@ -56,6 +56,45 @@ class InstalationsControllerTest < ActionController::TestCase
 		assert_redirected_to instalations_path
 	end
 	
+	test "should edit for admin user" do		
+		log_in_as(users(:michael))
+		@instalation = Instalation.first
+		assert_no_difference 'Instalation.count' do
+			patch :update, id: @instalation, instalation: {name: "PIMG", 
+																											version: @instalation.version, 
+																											os: @instalation.os}
+		end
+		assert_redirected_to instalations_path
+		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "PIMG"
+	end
+	
+	test "should edit for not admin user" do		
+		log_in_as(users(:archer))
+		@instalation = Instalation.first
+		assert_no_difference 'Instalation.count' do
+			patch :update, id: @instalation, instalation: {name: "PIMG", 
+																											version: @instalation.version, 
+																											os: @instalation.os}
+		end
+		assert_redirected_to root_path
+		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "GIMP"
+	end
+	
+		test "should edit for not logedin" do		
+		@instalation = Instalation.first
+		assert_no_difference 'Instalation.count' do
+			patch :update, id: @instalation, instalation: {name: "PIMG", 
+																											version: @instalation.version, 
+																											os: @instalation.os}
+		end
+		assert_redirected_to login_path
+		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "GIMP"
+	end
+	
+	
 	test "open instalation link as admin user" do		
 		log_in_as(users(:michael))
 		@instalation = instalations(:gimp)
