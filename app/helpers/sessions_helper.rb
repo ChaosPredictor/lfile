@@ -60,4 +60,10 @@ module SessionsHelper
 	def store_location
 		session[:forwarding_url] = request.url if request.get?
 	end
+	
+	# Returns true if the user is admin, false otherwise.
+	def admin?
+		!current_user.admin?
+	end
+	
 end

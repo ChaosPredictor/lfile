@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'instalations/new'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -18,14 +20,17 @@ Rails.application.routes.draw do
   #root 'static_pages#home'
 
 
-	root                'static_pages#home'
-	get    'help'    => 'static_pages#help'
-	get    'about'   => 'static_pages#about'
-	get    'contact' => 'static_pages#contact'
-	get    'signup'  => 'users#new'
-	get    'login'   => 'sessions#new'
-	post   'login'   => 'sessions#create'
-	delete 'logout' => 'sessions#destroy'
+	root                     'static_pages#home'
+	get    'help'         => 'static_pages#help'
+	get    'about'        => 'static_pages#about'
+	get    'contact'      => 'static_pages#contact'
+	get    'signup'       => 'users#new'
+	get    'login'        => 'sessions#new'
+	post   'login'        => 'sessions#create'
+	delete 'logout'       => 'sessions#destroy'
+	get    'instalations' => 'instalations#index'
+	get    'instanew'     => 'instalations#new'
+	get    'instaedit'    => 'instalations#edit'	
 	resources :users do
 		member do
 			get :following, :followers
@@ -34,7 +39,8 @@ Rails.application.routes.draw do
 	resources :account_activations,   only: [:edit]
 	resources :password_resets,       only: [:new, :create, :edit, :update]
 	resources :microposts,            only: [:create, :destroy]
-	resources :relationships, only: [:create, :destroy]
+	resources :relationships,         only: [:create, :destroy]
+	resources :instalations,          only: [:new, :index, :edit, :update, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

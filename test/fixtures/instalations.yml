@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gimp:
+  name: GIMP
+  version: 1.1
+  os: linux
+
+firefox:
+  name: Firefox
+  version: 40.1
+  os: linux	

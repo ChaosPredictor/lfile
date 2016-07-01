@@ -1,0 +1,7 @@
+<li>
+	<%= link_to instalation.name, instalation %>
+	<% if current_user.admin? %>
+		<%= link_to "edit", edit_instalation_path(instalation)%>
+		<%= link_to "delete", instalation, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
+</li>

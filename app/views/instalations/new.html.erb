@@ -1,0 +1,20 @@
+<% provide(:title, 'Instalations') %>
+<h1>Instalations</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@instalation) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :name %>
+			<%= f.text_field :name, class: 'form-control' %>
+
+			<%= f.label :version %>
+			<%= f.text_field :version, class: 'form-control' %>
+
+			<%= f.label :os %>
+			<%= f.text_field :os, class: 'form-control' %>
+
+			<%= f.submit "Create my new Instalation", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

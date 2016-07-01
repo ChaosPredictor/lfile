@@ -1,0 +1,12 @@
+<% provide(:title, 'All instalation') %>
+<h1>All instalations</h1>
+
+<%= will_paginate %>
+
+<ul class="instalations">
+	<%= render @instalations %>
+</ul>
+
+<%= will_paginate %>
+
+<li><%= link_to "Create New Instalation", instanew_path %></li>	
