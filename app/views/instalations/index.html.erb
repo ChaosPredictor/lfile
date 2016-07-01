@@ -1,6 +1,6 @@
 <% provide(:title, 'All instalation') %>
 <h1>All instalations</h1>
-
+<span><%= pluralize(@instalations.count, "instalation") %></span>
 <%= will_paginate %>
 
 <ul class="instalations">
