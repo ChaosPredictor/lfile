@@ -85,7 +85,7 @@ class InstalationsControllerTest < ActionController::TestCase
 		assert_match @instalation2.name, "PIMG"
 	end
 	
-	test "should edit for not admin user" do		
+	test "should not edit for not admin user" do		
 		log_in_as(users(:archer))
 		@instalation = Instalation.first
 		assert_no_difference 'Instalation.count' do
@@ -98,7 +98,7 @@ class InstalationsControllerTest < ActionController::TestCase
 		assert_match @instalation2.name, "GIMP"
 	end
 	
-		test "should edit for not logedin" do		
+	test "should not edit for not logedin" do		
 		@instalation = Instalation.first
 		assert_no_difference 'Instalation.count' do
 			patch :update, id: @instalation, instalation: {name: "PIMG", 

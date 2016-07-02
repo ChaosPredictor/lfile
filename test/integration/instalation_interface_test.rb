@@ -12,7 +12,8 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'div.pagination'
 		assert_select 'input[type=submit]'
 		get instalations_path
-		assert_select 'a', text: 'delete', count: 2
+		@amount = Instalation.count
+		assert_select 'a', text: 'delete', count: @amount
 		# Invalid submission
 		assert_no_difference 'Instalation.count' do
 			post instalations_path, instalation: { name: "", version: "1.1", os: "ubuntu" }
@@ -25,7 +26,7 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		#Assert_redirected_to instalation_path
 		follow_redirect!
 		assert_match "gimpp", response.body
-		assert_select 'a', text: 'delete', count: 3
+		assert_select 'a', text: 'delete', count: @amount + 1
 		#Delete a post.
 		assert_select 'a', text: 'delete'
 		first_instalation = Instalation.paginate(page: 1).first
@@ -34,7 +35,7 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		end
 		# Visit a different user.
 		get instalations_path
-		assert_select 'a', text: 'delete', count: 2
+		assert_select 'a', text: 'delete', count: @amount
 	end
 	
 	test "instalation interface for not admin user" do
@@ -72,9 +73,10 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		get instalations_path
 		assert_match "#{Instalation.count} instalations", response.body
 		first_instalation = Instalation.paginate(page: 1).first
-		delete instalation_path(first_instalation)
-		first_instalation = Instalation.paginate(page: 1).first
-		delete instalation_path(first_instalation)
+		while first_instalation
+			delete instalation_path(first_instalation)
+			first_instalation = Instalation.paginate(page: 1).first
+		end
 		get instalations_path
 		assert_match "0 instalations", response.body
 		Instalation.create!(name: "gimp1", version: "1.1", os: "ubuntu")

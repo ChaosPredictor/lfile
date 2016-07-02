@@ -8,4 +8,9 @@ gimp:
 firefox:
   name: Firefox
   version: 40.1
+  os: linux
+
+vlc:
+  name: VLC
+  version: 4.1
   os: linux	
