@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'lines/new'
+
   get 'instalations/new'
 
   get 'password_resets/new'
