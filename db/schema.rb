@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702101635) do
+ActiveRecord::Schema.define(version: 20160702173716) do
 
   create_table "instalations", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20160702101635) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "steps", force: :cascade do |t|
+    t.integer  "instalation_id"
+    t.integer  "line_id"
+    t.integer  "order"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "steps", ["instalation_id", "line_id", "order"], name: "index_steps_on_instalation_id_and_line_id_and_order", unique: true
+  add_index "steps", ["instalation_id"], name: "index_steps_on_instalation_id"
+  add_index "steps", ["line_id"], name: "index_steps_on_line_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

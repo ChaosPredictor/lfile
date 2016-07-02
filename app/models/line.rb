@@ -8,4 +8,5 @@ class Line < ActiveRecord::Base
 														greater_than_or_equal_to: -4096							
 													},
 						presence: true
+		has_many :instalations, through: :steps
 end

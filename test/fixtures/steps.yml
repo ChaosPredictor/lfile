@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 first:
-  content: "sudo apt-get update"
-  index: 0
+  instalation_id: 1
+  line_id: 1
+  order: 1
