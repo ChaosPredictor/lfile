@@ -3,3 +3,7 @@
 first:
   content: "sudo apt-get update"
   index: 0
+
+second:
+  content: "sudo apt-get update2"
+  index: 1

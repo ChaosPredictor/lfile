@@ -1,0 +1,14 @@
+<div class="row">
+	<aside class="col-md-4">
+		<li>
+			<%= link_to line.index, line %>
+			<%= line.content %>
+			<% if current_user.admin? %>
+				<%= link_to "edit", edit_line_path(line)%>
+				<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" } %>
+			<% end %>
+		</li>
+	</aside>
+	<div class="col-md-8">
+	</div>
+</div>

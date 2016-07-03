@@ -2,14 +2,16 @@ require 'test_helper'
 
 class LineTest < ActiveSupport::TestCase
   def setup
-		@line = Line.new(content: "sudo apt-get update", index: 0)
+		@line = Line.new(content: "sudo apt-get update3", index: 20)
 		@instalation = instalations(:gimp)
-		@line2 = @instalation.lines.build(content: "line for test", index: 1)
+		@line2 = @instalation.lines.build(content: "line for test", index: 21)
+		@line3 = @instalation.lines.build(content: "line for test3", index: 22)		
 	end
 
 	test "should be valid" do
 		assert @line.valid?
-		assert @line2.valid?		
+		assert @line2.valid?
+		assert @line3.valid?		
 	end
 	
 	test "content should be present" do
@@ -42,5 +44,19 @@ class LineTest < ActiveSupport::TestCase
 		assert_not @line.valid?
 		@line.index = -4097
 		assert_not @line.valid?
+	end
+	
+	test "content must be unique" do
+		duplicate_line = @line.dup
+		duplicate_line.index = @line.index + 1
+		@line.save
+		assert_not duplicate_line.valid?
+	end
+	
+	test "index must be unique" do
+		duplicate_line = @line.dup
+		duplicate_line.content = @line.content + "a"
+		@line.save
+		assert_not duplicate_line.valid?
 	end
 end

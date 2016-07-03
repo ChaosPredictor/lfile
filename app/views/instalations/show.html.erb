@@ -27,7 +27,10 @@
 	<div class="col-md-8">
 		<%= form_for(@line) do |f| %>
 			<div class="field">
-				<%= f.text_area :content, placeholder: "Compose new line..." %>
+				<%= f.text_area :content, placeholder: "Compose new line..." %>				
+			</div>
+			<div class="field">
+				<%= f.text_area :index, placeholder: "Compose new line index..." %>				
 			</div>
 			<%= f.submit "Post", class: "btn btn-primary" %>
 		<% end %>

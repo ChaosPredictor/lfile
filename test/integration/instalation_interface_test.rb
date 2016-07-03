@@ -33,7 +33,6 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_difference 'Instalation.count', -1 do
 			delete instalation_path(first_instalation)
 		end
-		# Visit a different user.
 		get instalations_path
 		assert_select 'a', text: 'delete', count: @amount
 	end
@@ -63,7 +62,6 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_no_difference 'Instalation.count' do
 			delete instalation_path(first_instalation)
 		end
-		# Visit a different user.
 		get instalations_path
 		assert_select 'a', text: 'delete', count: 0
 	end

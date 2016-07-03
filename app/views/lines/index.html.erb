@@ -1,0 +1,12 @@
+<% provide(:title, 'All Lines') %>
+<h1>All Lines</h1>
+<span><%= pluralize(@lines.count, "line") %></span>
+<%= will_paginate %>
+
+<ul class="instalations">
+	<%= render @lines %>
+</ul>
+
+<%= will_paginate %>
+
+<li><%= link_to "Create New Line", action: "new", method: :get %></li>	
