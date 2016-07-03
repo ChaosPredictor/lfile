@@ -3,10 +3,13 @@ require 'test_helper'
 class LineTest < ActiveSupport::TestCase
   def setup
 		@line = Line.new(content: "sudo apt-get update", index: 0)
+		@instalation = instalations(:gimp)
+		@line2 = @instalation.lines.build(content: "line for test", index: 1)
 	end
 
 	test "should be valid" do
 		assert @line.valid?
+		assert @line2.valid?		
 	end
 	
 	test "content should be present" do

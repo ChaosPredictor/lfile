@@ -46,3 +46,29 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+
+#Instalation
+Instalation.create!(
+  name: "GIMP",
+  version: "1.1",
+  os: "linux"
+	)
+
+Instalation.create!(
+  name: "Firefox",
+  version: "40.1",
+  os: "linux"
+	)
+
+Instalation.create!(
+  name: "VLC",
+  version: "4.1",
+  os: "linux"
+	)
+
+#Line
+Line.create!(
+  content: "sudo apt-get update",
+  index: 0
+	)

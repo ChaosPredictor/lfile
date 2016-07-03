@@ -36,7 +36,7 @@ class StepTest < ActiveSupport::TestCase
 		assert @step.valid?		
 	end
 	
-	test "should include and exclude line from instalation" do
+	test "should add and remove line from instalation" do
 		instalation = instalations(:gimp)
 		line = lines(:first)
 		assert_not instalation.hasline?(line)

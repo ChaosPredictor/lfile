@@ -3,7 +3,7 @@ require 'test_helper'
 class InstalationTest < ActiveSupport::TestCase
   def setup
 		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux")
-		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New")		
+		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New")
 	end
 	
 	test "should be valid" do

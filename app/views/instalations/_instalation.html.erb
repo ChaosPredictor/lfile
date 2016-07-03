@@ -1,7 +1,13 @@
-<li>
-	<%= link_to instalation.name, instalation %>
-	<% if current_user.admin? %>
-		<%= link_to "edit", edit_instalation_path(instalation)%>
-		<%= link_to "delete", instalation, method: :delete, data: { confirm: "You sure?" } %>
-	<% end %>
-</li>
+<div class="row">
+	<aside class="col-md-4">
+		<li>
+			<%= link_to instalation.name, instalation %>
+			<% if current_user.admin? %>
+				<%= link_to "edit", edit_instalation_path(instalation)%>
+				<%= link_to "delete", instalation, method: :delete, data: { confirm: "You sure?" } %>
+			<% end %>
+		</li>
+	</aside>
+	<div class="col-md-8">
+	</div>
+</div>

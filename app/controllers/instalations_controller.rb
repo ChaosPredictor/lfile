@@ -25,6 +25,7 @@ class InstalationsController < ApplicationController
 	
 	def show
 		@instalation = Instalation.find(params[:id])
+		@line = @instalation.lines.build
 		#@microposts = @user.microposts.paginate(page: params[:page])
 	end
 	
