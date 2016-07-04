@@ -1,5 +1,5 @@
 class LinesController < ApplicationController
-	before_action :logged_in_user,   only: [:edit, :update, :destroy, :new, :create, :index, :show]
+	before_action :logged_in_user,   only: [:edit, :update, :destroy, :new, :create, :show, :index]
   before_action :admin_user,       only: [:edit, :update, :destroy, :new, :create]
 	
   def new
@@ -24,6 +24,26 @@ class LinesController < ApplicationController
 		@lines = Line.paginate(page: params[:page])		
 	end
 	
+	def show
+		@line = Line.find(params[:id])
+	end
+	
+	def edit
+		@line = Line.find(params[:id])
+	end
+	
+	def update
+		@line = Line.find(params[:id])
+		if @line.update_attributes(line_params)
+			flash[:success] = "You know what you're doing!"
+			redirect_to lines_path
+			#flash[ :error] = "You know what you're doing!"			
+		else
+			flash[:error] = "There is a problem"
+			render 'edit'
+		end
+	end
+	
 	def destroy
 		if Line.find(params[:id]).destroy
 			flash[:success] = "Line deleted"
@@ -38,8 +58,8 @@ class LinesController < ApplicationController
 			params.require(:line).permit(:content, :index)
 		end
 
-		def correct_instalation
-			@line = current_instalation.lines.find_by(id: params[:id])
-			redirect_to root_url if @line.nil?
+		def correct_user
+			@user = User.find(params[:id])
+			redirect_to(root_url) unless current_user?(@user)
 		end
 end

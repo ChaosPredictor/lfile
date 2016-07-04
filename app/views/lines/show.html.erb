@@ -1,0 +1,23 @@
+<% provide(:title, "Show Line " + String(@line.index) )%>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<h1 id="index">
+				Index: <%= @line.index %>
+			</h1>			
+			<h2>
+				<div id="content">
+					Content: <%= @line.content %>
+				</div>
+				<div>
+					<% if current_user.admin? %>
+						<%= link_to "edit", edit_line_path(@line), :class => "edit"%>
+						<%= link_to "delete", @line, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+					<% end %>
+				</div>
+			</h2>
+		</section>
+	</aside>
+	<div class="col-md-8">
+	</div>
+</div>

@@ -2,12 +2,13 @@ require 'test_helper'
 
 class LinesInterfaceTest < ActionDispatch::IntegrationTest
   def setup
-		@user = users(:michael)
-		@user_notAdmin = users(:archer)
+		@line = lines(:first)
+		@user_admin = users(:michael)
+		@user_notadmin = users(:archer)
 	end
 	
 	test "line interface for admin user" do
-		log_in_as(@user)
+		log_in_as(@user_admin)
 		get root_path
 		assert_select 'div.pagination'
 		assert_select 'input[type=submit]'
@@ -38,7 +39,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 	end
 	
 	test "line interface for not admin user" do
-		log_in_as(@user_notAdmin)
+		log_in_as(@user_notadmin)
 		get root_path
 		assert_select 'div.pagination'
 		assert_select 'input[type=submit]'
@@ -68,7 +69,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 	
 	
 	test "line sidebar count" do
-		log_in_as(@user)
+		log_in_as(@user_admin)
 		get lines_path
 		assert_match "#{Line.count} lines", response.body
 		first_line = Line.paginate(page: 1).first
@@ -85,4 +86,36 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 		get lines_path
 		assert_match "2 lines", response.body
 	end
+	
+	
+#	test "line sidebar count2" do
+#		log_in_as(@user_admin)
+#		assert_match "gfd", response.body
+#
+#		get lines_path
+#		assert_match "#{Line.count} lines", response.body
+#		first_line = Line.paginate(page: 1).first
+#		while first_line
+#			delete line_path(first_line)
+#			first_line = Line.paginate(page: 1).first
+#		end
+#		get lines_path
+#		assert_match "0 lines", response.body
+#		Line.create!(content: "gimp1 line", index: 56)
+#		get lines_path
+#		assert_match "1 line", response.body
+#		Line.create!(content: "gimp2 line", index: 57)
+#		get lines_path
+#		assert_match "2 lines", response.body
+#	end
+	
+#	test "open show as admin2" do
+#		log_in_as(@user_admin)
+#		get line_path(@line)
+#		#get lines_path
+#		#assert_template 'lines/show'
+#		#assert_select 'a.delete'
+#		#assert_select 'a', text: 'delete', response.body
+#		assert_match "detete", response.body
+#	end
 end

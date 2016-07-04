@@ -25,14 +25,16 @@
 		</section>
 	</aside>
 	<div class="col-md-8">
-		<%= form_for(@line) do |f| %>
-			<div class="field">
-				<%= f.text_area :content, placeholder: "Compose new line..." %>				
+		<%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+			<div class="col-md-8">
+				<% cities_array = Line.all.map { |line| [line.content, line.id] } %>
+				<select>
+					<%= options_for_select(cities_array) %>
+				</select>
 			</div>
-			<div class="field">
-				<%= f.text_area :index, placeholder: "Compose new line index..." %>				
+			<div class="col-md-4">
+				<%= f.submit "Add line", class: "btn btn-primary" %>
 			</div>
-			<%= f.submit "Post", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>
