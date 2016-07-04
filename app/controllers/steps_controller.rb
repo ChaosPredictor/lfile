@@ -1,0 +1,4 @@
+class StepsController < ApplicationController
+	
+
+end

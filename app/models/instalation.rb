@@ -16,12 +16,24 @@ class Instalation < ActiveRecord::Base
 	end
 	
 	# Add line to instaaltion.
-	def addline(line)
-		steps.create(line_id: line.id, order: 1)
+	def addline(line, order)
+		steps.create(line_id: line.id, order: order)
 	end
 	
 	# Reomve line from instalation.
 	def removeline(line)
 		steps.find_by(line_id: line.id).destroy
+	end
+	
+	def allline
+		
+	end
+	# Follows a user.
+	#def addline(line, order)
+	#	Step.create(instalation_id: self.id, line_id: line.id, order: order)
+	#end
+	
+	def step?(line)
+		true
 	end
 end

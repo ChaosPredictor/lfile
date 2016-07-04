@@ -2,6 +2,7 @@ require 'test_helper'
 
 class InstalationTest < ActiveSupport::TestCase
   def setup
+		@line = Line.first
 		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux")
 		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New")
 	end
@@ -38,4 +39,6 @@ class InstalationTest < ActiveSupport::TestCase
 		@instalation2.save
 		assert_not duplicate_instalation.valid?		
 	end
+	
+	
 end

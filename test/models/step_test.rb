@@ -4,6 +4,9 @@ class StepTest < ActiveSupport::TestCase
   
 	def setup
 		@step = Step.new(instalation_id: 1, line_id: 1, order: 1)
+		@instalation = instalations(:gimp)
+		@line = lines(:first)
+		@line2 = lines(:second)
 	end
 	
 	test "should be valid" do
@@ -37,12 +40,14 @@ class StepTest < ActiveSupport::TestCase
 	end
 	
 	test "should add and remove line from instalation" do
-		instalation = instalations(:gimp)
-		line = lines(:first)
-		assert_not instalation.hasline?(line)
-		instalation.addline(line)
-		assert instalation.hasline?(line)
-		instalation.removeline(line)
-		assert_not instalation.hasline?(line)
+		assert_not @instalation.hasline?(@line)
+		@instalation.addline(@line, 1)
+		assert @instalation.hasline?(@line)
+		@instalation.removeline(@line)
+		assert_not @instalation.hasline?(@line)
+	end
+	
+	test "get all lines of instalation" do
+		
 	end
 end

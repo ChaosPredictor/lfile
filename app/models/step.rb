@@ -9,4 +9,8 @@ class Step < ActiveRecord::Base
 														greater_than_or_equal_to: 0							
 													},
 						presence: true
+	
+	def maxorder
+		Step.maximum("order")		
+	end
 end
