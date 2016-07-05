@@ -4,8 +4,8 @@
 			<%= link_to line.index, line %>
 			<%= line.content %>
 			<% if current_user.admin? %>
-				<%= link_to "edit", edit_line_path(line)%>
-				<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" } %>
+				<%= link_to "edit", edit_line_path(line), :class => "edit" %>
+				<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
 			<% end %>
 		</li>
 	</aside>
