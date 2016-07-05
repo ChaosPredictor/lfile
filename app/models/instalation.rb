@@ -7,7 +7,9 @@ class Instalation < ActiveRecord::Base
 	validates :version, 
 						presence: true, 
 						length: { maximum: 20 }
-	has_many :lines, through: :steps
+	has_many :lines, 
+					through: :steps,
+					source: :line
 	has_many :steps
 	
 	# Returns true if the current instalation has the line.

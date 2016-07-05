@@ -25,7 +25,11 @@ class InstalationsController < ApplicationController
 	
 	def show
 		@instalation = Instalation.find(params[:id])
-		@line = @instalation.lines.build
+		@lines = @instalation.lines.paginate(page: params[:page])
+		@title = "Lines"
+
+		#render 'show_lines'
+		#@line = @instalation.lines.build
 		#@microposts = @user.microposts.paginate(page: params[:page])
 	end
 	
@@ -54,6 +58,12 @@ class InstalationsController < ApplicationController
 		end
 	end
 	
+	def lines
+		@title = "Lines"
+		@instalation = Instalation.find(params[:id])
+		@lines = @instalation.lines.paginate(page: params[:page])
+		render 'show_lines'
+	end
 	
 	private
 	
