@@ -119,5 +119,4 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 		end		
 	end
 	
-	
 end
