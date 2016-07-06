@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 first:
-  instalation_id: 1
-  line_id: 1
+  instalation_id: Instaltin.first
+  line_id: Line.first
   order: 1

@@ -110,26 +110,4 @@ class InstalationsControllerTest < ActionController::TestCase
 		assert_match @instalation2.name, "GIMP"
 	end
 	
-	
-	test "open instalation link as admin user" do		
-		log_in_as(users(:michael))
-		@instalation = instalations(:gimp)
-		get :show, id: @instalation
-		assert_select 'a', text: 'delete', count: 1
-		assert_select 'a', text: 'edit', count: 1
-		assert_select 'h1', text: 'GIMP', count: 1		
-		assert_select 'h2 div#version', text: 'Vession: 1.1', count: 1		
-		assert_select 'h2 div#os', text: 'Operation System: linux', count: 1		
-	end
-	
-	test "open instalation link as not admin user" do		
-		log_in_as(users(:archer))
-		@instalation = instalations(:gimp)
-		get :show, id: @instalation
-		assert_select 'a', text: 'delete', count: 0
-		assert_select 'a', text: 'edit', count: 0
-		assert_select 'h1', text: 'GIMP', count: 1		
-		assert_select 'h2 div#version', text: 'Vession: 1.1', count: 1		
-		assert_select 'h2 div#os', text: 'Operation System: linux', count: 1		
-	end
 end

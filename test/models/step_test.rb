@@ -5,6 +5,7 @@ class StepTest < ActiveSupport::TestCase
 	def setup
 		@step = Step.new(instalation_id: 1, line_id: 1, order: 1)
 		@instalation = instalations(:gimp)
+		@instalation2 = instalations(:firefox)
 		@line = lines(:first)
 		@line2 = lines(:second)
 	end

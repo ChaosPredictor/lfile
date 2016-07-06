@@ -4,8 +4,8 @@
 			<%= link_to instalation.name, instalation %>
 			<!--lines_instalation_path(instalation)-->
 			<% if current_user.admin? %>
-				<%= link_to "edit", edit_instalation_path(instalation)%>
-				<%= link_to "delete", instalation, method: :delete, data: { confirm: "You sure?" } %>
+				<%= link_to "edit", edit_instalation_path(instalation), :class => "edit" %>
+				<%= link_to "delete", instalation, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
 			<% end %>
 		</li>
 	</aside>

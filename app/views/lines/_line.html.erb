@@ -1,14 +1,19 @@
 <div class="row">
-	<aside class="col-md-4">
+	<!--aside class="col-md-4"-->
+	<aside>
 		<li>
 			<%= link_to line.index, line %>
 			<%= line.content %>
 			<% if current_user.admin? %>
-				<%= link_to "edit", edit_line_path(line), :class => "edit" %>
-				<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+				<% if @instalation %>
+					<%= link_to "remove", @instalation.removeline(line), :class => "remove" %>
+				<% else %>
+					<%= link_to "edit", edit_line_path(line), :class => "edit" %>
+					<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+				<% end %>
 			<% end %>
 		</li>
 	</aside>
-	<div class="col-md-8">
-	</div>
+	<!--div class="col-md-8"-->
+	<!--/div-->
 </div>

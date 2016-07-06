@@ -1,21 +1,21 @@
-<% provide(:title, @instalation.name) %>
+<% provide(:title, "Instalation " + @instalation.name) %>
 <div class="row">
+	<h1>
+				<%= "Instalation of: " + @instalation.name %>
+	</h1>	
 	<aside class="col-md-4">
 		<section class="user_info">
-			<h1>
-				<%= @instalation.name %>
-			</h1>			
 			<h2>
 				<div id="version">
-					Vession: <%= @instalation.version %>
+					Version: <%= @instalation.version %>
 				</div>
 				<div id="os">
 					Operation System: <%= @instalation.os %>
 				</div>
 				<div>
 					<% if current_user.admin? %>
-						<%= link_to "edit", edit_instalation_path(@instalation)%>
-						<%= link_to "delete", @instalation, method: :delete, data: { confirm: "You sure?" } %>
+						<%= link_to "edit", edit_instalation_path(@instalation), :class => "edit" %>
+						<%= link_to "delete", @instalation, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
 					<% end %>
 				</div>
 			</h2>
