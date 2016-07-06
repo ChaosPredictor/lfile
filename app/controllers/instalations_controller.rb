@@ -25,7 +25,8 @@ class InstalationsController < ApplicationController
 	
 	def show
 		@instalation = Instalation.find(params[:id])
-		@lines = @instalation.lines.paginate(page: params[:page])
+		#@lines = @instalation.lines.paginate(page: params[:page])
+		@lines = nil #Line.all   #TODO get only line of this instalation
 		@title = "Lines"
 
 		#render 'show_lines'
@@ -57,14 +58,7 @@ class InstalationsController < ApplicationController
 			redirect_to root_path
 		end
 	end
-	
-	def lines
-		@title = "Lines"
-		@instalation = Instalation.find(params[:id])
-		@lines = @instalation.lines.paginate(page: params[:page])
-		render 'show_lines'
-	end
-	
+		
 	private
 	
 		def instalation_params

@@ -10,5 +10,7 @@ class Line < ActiveRecord::Base
 													},
 						uniqueness: true, 
 						presence: true
-	has_many :instalations, through: :steps
+	has_many :instalations, 
+					through: :steps
+	has_many :steps
 end

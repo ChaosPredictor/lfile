@@ -10,7 +10,7 @@ class Step < ActiveRecord::Base
 													},
 						presence: true
 	
-	def maxorder
-		Step.maximum("order")		
-	end
+	#def maxorder
+	#	Step.maximum("order")		
+	#end
 end

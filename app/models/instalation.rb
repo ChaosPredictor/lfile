@@ -7,33 +7,39 @@ class Instalation < ActiveRecord::Base
 	validates :version, 
 						presence: true, 
 						length: { maximum: 20 }
-	has_many :lines, 
-					through: :steps,
+	#has_many :lines, 
+	#				through: :steps,
+	#				source: :line
+	#has_many :steps
+	has_many :active_steps, 	
+						class_name: "Step",
+						foreign_key: "instalation_id",
+						dependent: :destroy
+	has_many :hasline,
+					through: :active_steps,
 					source: :line
-	has_many :steps
 	
 	# Returns true if the current instalation has the line.
 	def hasline?(line)
 		lines.include?(line)
 	end
 	
+	def line?(line)
+		hasline.include?(line)
+	end
+	
 	# Add line to instaaltion.
 	def addline(line, order)
-		steps.create(line_id: line.id, order: order)
+		#steps.create(instalation_id: self, line_id: line.id, order: order)
+		active_steps.create(line_id: line.id, order: order)
 	end
 	
 	# Reomve line from instalation.
-	def removeline(line)
-		steps.find_by(line_id: line.id).destroy
+	def removeline(line, order)
+		active_steps.find_by(line_id: line.id).destroy
+		#active_relationships.find_by(followed_id: other_user.id).destroy
+		#steps.find_by(instalation_id: self, line_id: line.id).destroy
 	end
-	
-	def allline
-		
-	end
-	# Follows a user.
-	#def addline(line, order)
-	#	Step.create(instalation_id: self.id, line_id: line.id, order: order)
-	#end
 	
 	def step?(line)
 		true
