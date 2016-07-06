@@ -25,13 +25,8 @@ class InstalationsController < ApplicationController
 	
 	def show
 		@instalation = Instalation.find(params[:id])
-		#@lines = @instalation.lines.paginate(page: params[:page])
-		@lines = nil #Line.all   #TODO get only line of this instalation
+		@lines = @instalation.hasline.paginate(page: params[:page])
 		@title = "Lines"
-
-		#render 'show_lines'
-		#@line = @instalation.lines.build
-		#@microposts = @user.microposts.paginate(page: params[:page])
 	end
 	
 	def edit

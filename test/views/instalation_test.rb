@@ -9,7 +9,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		@number_of_instalation   = Instalation.count
 		params                   = 1
 		@line                    = Line.first
-		@lines                   = @instalation.lines.paginate(page: params[0])
+		#@lines                   = @instalation.lines.paginate(page: params[0])
+		@lines                   = @instalation.hasline.paginate(page: params[0])
 		@number_of_lines         = @lines.count	
 		@user_admin              = users(:michael)
 		@user_notadmin           = users(:archer)		
@@ -20,7 +21,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 	test "show as admin" do
 		log_in_as(@user_admin)
 		@instalation.addline(@line, 1)
-		assert @instalation.hasline?(@line)
+		#assert @instalation.hasline?(@line)
+		assert @instalation.line?(@line)
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_match 'Instalation of: ' + String(@instalation.name) , response.body
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		

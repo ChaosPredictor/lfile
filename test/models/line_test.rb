@@ -3,9 +3,9 @@ require 'test_helper'
 class LineTest < ActiveSupport::TestCase
   def setup
 		@line = Line.new(content: "sudo apt-get update3", index: 20)
+		@line2 = Line.new(content: "line for test", index: 21)
+		@line3 = Line.new(content: "line for test3", index: 22)		
 		@instalation = instalations(:gimp)
-		@line2 = @instalation.lines.build(content: "line for test", index: 21)
-		@line3 = @instalation.lines.build(content: "line for test3", index: 22)		
 	end
 
 	test "should be valid" do

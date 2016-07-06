@@ -26,10 +26,11 @@
 	</aside>
 	<div class="col-md-8">
 		<h3><%= @title %></h3>
-		<% if @line && @lines.any? %>
+		<% if @lines.any? %>
+		<!--% if @user.microposts.any? %-->
 			<span><%= pluralize(@lines.count, "line") %></span>
 			<ul class="lines">
-				<%= render @lines %>
+				<!--%= render @lines %-->
 			</ul>
 			<!--%= will_paginate %-->
 		<% end %>
