@@ -7,10 +7,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		@instalation             = Instalation.first
 		@instalations            = Instalation.all
 		@number_of_instalation   = Instalation.count
-		params                   = 1
 		@line                    = Line.first
-		#@lines                   = @instalation.lines.paginate(page: params[0])
-		@lines                   = @instalation.hasline.paginate(page: params[0])
+		@lines                   = @instalation.hasline.paginate(page: 1)
 		@number_of_lines         = @lines.count	
 		@user_admin              = users(:michael)
 		@user_notadmin           = users(:archer)		

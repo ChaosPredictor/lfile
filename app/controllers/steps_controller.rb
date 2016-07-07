@@ -31,11 +31,28 @@ class StepsController < ApplicationController
 	def create
 		@line = Line.find(params[:line_id])
 		@instalation = Instalation.find(params[:instalation_id])
-		@instalation.addline(@line, 1)
+		@order = first_empty_order(@instalation)
+		@instalation.addline(@line, @order)
 		#redirect_to @instalation
 		respond_to do |format|
 			format.html { redirect_to @instalation }
 			format.js
 		end
+	end
+	
+	
+	
+	def first_empty_order(instalation)
+		@step = Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
+		if @step.empty?
+			return 0
+		end
+		@max = @step.last[:order]
+		(0..@max).each do |number|
+			if number != @step[number][:order]
+				return number
+			end
+		end
+		return @max + 1
 	end
 end
