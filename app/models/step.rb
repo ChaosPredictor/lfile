@@ -10,4 +10,7 @@ class Step < ActiveRecord::Base
 													},
 						presence: true
 	
+	#def move_down(instalation)
+	#	@steps = 		
+	#end
 end

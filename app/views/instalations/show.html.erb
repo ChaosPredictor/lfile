@@ -28,11 +28,28 @@
 		<h3><%= @title %></h3>
 		<% if @lines != nil && @lines != "" %>
 		<!--% if @user.microposts.any? %-->
-			<span><%= pluralize(@lines.count, "line") %></span>
-			<!--%= will_paginate %-->		
-			<ul class="lines">
+			<div class="col-md-12">
+				<span><%= pluralize(@lines.count, "line") %></span>
+			</div>
+				<!--%= will_paginate %-->	
+			<div class="col-md-1">
+				<%= render @steps %>
+			</div>
+			<div class="col-md-11">
 				<%= render @lines %>
-			</ul>
+			</div>
+			<!--tr>
+				<td-->
+					<!--ul class="steps"-->
+						<!--%= render @steps %-->
+					<!--/ul-->				
+				<!--/td>	
+				<td-->
+					<!--ul class="lines"-->
+						<!--%= render @lines %-->
+					<!--/ul-->
+				<!--/td>
+			</tr-->
 			<!--%= will_paginate %-->
 		<% end %>
 		<!--Step.maximum("order")+-->
