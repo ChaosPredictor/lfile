@@ -39,13 +39,17 @@
 		<!--%= form_for(@instalation.addline(Line.first, 1), remote: true) do |f| %-->
 		<%= form_for(@instalation.active_steps.build, remote: false) do |f| %>		
 			<div><%= hidden_field_tag :instalation_id, @instalation.id %></div>
-			<div><%= hidden_field_tag :line_id, Line.first.id %></div>	<!--TODO change to dinamic -->	
+				<!--TODO change to dinamic -->	
 			<div class="col-md-10">
-				<% lines_array = Line.all.map { |line| [line.content, line.id] } %>
-				<select>
-					<%= options_for_select(lines_array) %>
-				</select>
+				<!--% lines_array = Line.all.map { |line| [line.content, line.id] } %-->
+				<%= f.collection_select(:line_id, Line.all, :id, :content) %>
+				<!--select-->
+					<!--%= f.select :line, options_for_select(lines_array) %-->
+					<!--%= f.select :selected => :line, options_for_select(lines_array) %-->
+				<!--/select-->
 			</div>
+			<div><!--%= hidden_field_tag :line_id, Line.first.id %--></div>
+			<div><!--%= hidden_field_tag :line_id, @line %--></div>
 			<div class="col-md-2">
 				<%= f.submit "Add line", class: "btn btn-primary" %>
 			</div>

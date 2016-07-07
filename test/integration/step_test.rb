@@ -20,7 +20,7 @@ class StepIntegrationTest < ActionDispatch::IntegrationTest
 		#page.find(:value => "Add line").trigger('click') 
 		#response.find(:value => "Add line").trigger('click') 
 		#click_button "Add line"
-		click_button("Add line")
+		#click_button("Add line")
 	end
 	
 	

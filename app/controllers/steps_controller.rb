@@ -29,7 +29,7 @@ class StepsController < ApplicationController
 	end
 	
 	def create
-		@line = Line.find(params[:line_id])
+		@line = Line.find(params[:step][:line_id])
 		@instalation = Instalation.find(params[:instalation_id])
 		@order = first_empty_order(@instalation)
 		@instalation.addline(@line, @order)
