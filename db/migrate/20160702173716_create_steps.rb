@@ -9,6 +9,6 @@ class CreateSteps < ActiveRecord::Migration
     end
 		add_index :steps, :instalation_id
 		add_index :steps, :line_id
-		add_index :steps, [:instalation_id, :line_id, :order], unique: true
+		add_index :steps, [:instalation_id, :order], unique: true
   end
 end
