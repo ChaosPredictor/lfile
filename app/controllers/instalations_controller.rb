@@ -25,7 +25,17 @@ class InstalationsController < ApplicationController
 	
 	def show
 		@instalation = Instalation.find(params[:id])
-		@lines = @instalation.hasline.paginate(page: params[:page])
+		#@lines = @instalation.hasline.paginate(page: params[:page])
+		@steps = Step.all.select {|step| step[:instalation_id] == @instalation[:id] }.sort_by { |step| step[:order] }
+		if @steps.empty?
+			@lines = nil
+		else
+			@number_of_line = @steps.count
+			@lines = Array.new(@number_of_line) {Line.new}
+			(0..@number_of_line-1).each do |counter|
+				@lines[counter] = Line.find(@steps[counter][:line_id])
+			end
+		end
 		@title = "Lines"
 	end
 	

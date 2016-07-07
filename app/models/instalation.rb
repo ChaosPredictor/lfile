@@ -15,7 +15,7 @@ class Instalation < ActiveRecord::Base
 						class_name: "Step",
 						foreign_key: "instalation_id",
 						dependent: :destroy
-	has_many :hasline,
+	has_many :hasline, #-> { order "steps[:order]" },#:order => 'active_steps.order',
 					through: :active_steps,
 					source: :line
 	

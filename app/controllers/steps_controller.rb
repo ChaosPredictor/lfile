@@ -41,18 +41,19 @@ class StepsController < ApplicationController
 	end
 	
 	
+	private
 	
-	def first_empty_order(instalation)
-		@step = Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
-		if @step.empty?
-			return 0
-		end
-		@max = @step.last[:order]
-		(0..@max).each do |number|
-			if number != @step[number][:order]
-				return number
+		def first_empty_order(instalation)
+			@step = Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
+			if @step.empty?
+				return 0
 			end
+			@max = @step.last[:order]
+			(0..@max).each do |number|
+				if number != @step[number][:order]
+					return number
+				end
+			end
+			return @max + 1
 		end
-		return @max + 1
-	end
 end
