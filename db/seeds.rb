@@ -72,3 +72,38 @@ Line.create!(
   content: "sudo apt-get update",
   index: 0
 	)
+
+
+Line.create!(
+  content: "line for test 2",
+  index: 2
+	)
+
+Line.create!(
+  content: "line for test 3",
+  index: 3
+	)
+
+Line.create!(
+  content: "line for test 4",
+  index: 4
+	)
+
+
+
+#Step
+
+Step.create!(
+	instalation_id: 1,
+	line_id: 1,
+	order: 1
+	)
+
+Step.create!(
+	instalation_id: 1,
+	line_id: 2,
+	order: 2
+	)
+
+
+
