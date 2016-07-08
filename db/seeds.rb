@@ -90,8 +90,14 @@ Line.create!(
 	)
 
 
-
 #Step
+
+Step.create!(
+	instalation_id: 1,
+	line_id: 3,
+	order: 0
+	)
+
 
 Step.create!(
 	instalation_id: 1,
@@ -153,5 +159,26 @@ Step.create!(
 	order: 10
 	)
 
+Step.create!(
+	instalation_id: 2,
+	line_id: 1,
+	order: 0
+	)
 
+Step.create!(
+	instalation_id: 2,
+	line_id: 4,
+	order: 1
+	)
 
+Step.create!(
+	instalation_id: 2,
+	line_id: 2,
+	order: 2
+	)
+
+Step.create!(
+	instalation_id: 2,
+	line_id: 3,
+	order: 3
+	)

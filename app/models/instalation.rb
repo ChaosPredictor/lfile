@@ -35,8 +35,10 @@ class Instalation < ActiveRecord::Base
 	end
 	
 	# Reomve line from instalation.
-	def removeline(line, order)
-		active_steps.find_by(line_id: line.id).destroy
+	def removeline(step, order)
+		#active_steps.find_by(line_id: line.id).destroy
+		active_steps.find_by(id: step.id).destroy
+		
 		#active_relationships.find_by(followed_id: other_user.id).destroy
 		#steps.find_by(instalation_id: self, line_id: line.id).destroy
 	end

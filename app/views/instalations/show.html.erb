@@ -19,54 +19,26 @@
 					<% end %>
 				</div>
 			</h2>
-			<!--section class="stats">
-				<!--%= render 'shared/stats' %-->
 			</section-->
 		</section>
 	</aside>
 	<div class="col-md-8">
 		<h3><%= @title %></h3>
 		<% if @lines != nil && @lines != "" %>
-		<!--% if @user.microposts.any? %-->
 			<div class="col-md-12">
 				<span><%= pluralize(@lines.count, "line") %></span>
-			</div>
-				<!--%= will_paginate %-->	
-			<div class="col-md-1">
+			</div>	
+			<div class="col-md-6">
 				<%= render @steps %>
 			</div>
-			<div class="col-md-11">
-				<%= render @lines %>
-			</div>
-			<!--tr>
-				<td-->
-					<!--ul class="steps"-->
-						<!--%= render @steps %-->
-					<!--/ul-->				
-				<!--/td>	
-				<td-->
-					<!--ul class="lines"-->
-						<!--%= render @lines %-->
-					<!--/ul-->
-				<!--/td>
-			</tr-->
-			<!--%= will_paginate %-->
+
+			</div-->
 		<% end %>
-		<!--Step.maximum("order")+-->
-		<!--%= form_for(@instalation.addline(Line.first, 1), remote: true) do |f| %-->
 		<%= form_for(@instalation.active_steps.build, remote: false) do |f| %>		
 			<div><%= hidden_field_tag :instalation_id, @instalation.id %></div>
 				<!--TODO change to dinamic -->	
 			<div class="col-md-10">
-				<!--% lines_array = Line.all.map { |line| [line.content, line.id] } %-->
 				<%= f.collection_select(:line_id, Line.all, :id, :content) %>
-				<!--select-->
-					<!--%= f.select :line, options_for_select(lines_array) %-->
-					<!--%= f.select :selected => :line, options_for_select(lines_array) %-->
-				<!--/select-->
-			</div>
-			<div><!--%= hidden_field_tag :line_id, Line.first.id %--></div>
-			<div><!--%= hidden_field_tag :line_id, @line %--></div>
 			<div class="col-md-2">
 				<%= f.submit "Add line", class: "btn btn-primary" %>
 			</div>

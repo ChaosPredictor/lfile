@@ -1,5 +1,50 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-first:
-  instalation_id: Instaltin.first
-  line_id: Line.first
+s1:
+  instalation_id: 1 #Instaltin.first
+  line_id: 1 #Line.first
   order: 1
+
+s2:
+  instalation_id: Instalation.first.id
+  line_id: :l1
+  order: 3
+
+s3:
+  instalation_id: 1 #Instaltin.first
+  line_id: 3 #Line.first
+  order: 5
+
+s4:
+  instalation_id: 1 #Instaltin.first
+  line_id: 4 #Line.first
+  order: 7
+
+s5:
+  instalation_id: 1 #Instaltin.first
+  line_id: 3 #Line.first
+  order: 8
+
+s6:
+  instalation_id: 1 #Instaltin.first
+  line_id: 2 #Line.first
+  order: 6
+
+s7:
+  instalation_id: 1 #Instaltin.first
+  line_id: 1 #Line.first
+  order: 4
+
+s8:
+  instalation_id: 1 #Instaltin.first
+  line_id: 4 #Line.first
+  order: 2
+
+s9:
+  instalation_id: 1 #Instaltin.first
+  line_id: 1 #Line.first
+  order: 9
+
+s10:
+  instalation_id: 1 #Instaltin.first
+  line_id: 3 #Line.first
+  order: 10

@@ -6,4 +6,20 @@ first:
 
 second:
   content: "sudo apt-get update2"
+  index: 10
+
+l1:
+  content: "line for test 1"
   index: 1
+
+l2:
+  content: "line for test 2"
+  index: 2
+
+l3:
+  content: "line for test 3"
+  index: 3
+
+l4:
+  content: "line for test 4"
+  index: 4

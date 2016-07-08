@@ -7,7 +7,13 @@ class StepTest < ActiveSupport::TestCase
 		@instalation = instalations(:gimp)
 		@instalation2 = instalations(:firefox)
 		@line = lines(:first)
-		@line2 = lines(:second)
+		@lineb = lines(:second)
+		@step1 = steps(:s1)
+		@line1 = lines(:l1)
+		@line2 = lines(:l2)
+		@line3 = lines(:l3)
+		@line4 = lines(:l4)
+
 	end
 	
 	test "should be valid" do
@@ -40,40 +46,51 @@ class StepTest < ActiveSupport::TestCase
 		assert @step.valid?		
 	end
 	
-	test "should add and remove line from instalation" do
+	test "should add and remove line from 2 instalations" do
 		assert_not @instalation.line?(@line)
 		assert_not @instalation.line?(@line2)
 		assert_not @instalation2.line?(@line)
 		assert_not @instalation2.line?(@line2)
 		@instalation.addline(@line, 1)
-		@instalation2.addline(@line2, 1)
+		@instalation2.addline(@lineb, 1)
 		assert @instalation.line?(@line)
-		assert @instalation2.line?(@line2)
-		assert_not @instalation.line?(@line2)
+		assert @instalation2.line?(@lineb)
+		assert_not @instalation.line?(@lineb)
 		assert_not @instalation2.line?(@line)
-		@instalation.addline(@line2, 1)
+		@instalation.addline(@lineb, 1)
 		assert @instalation.line?(@line)
-		assert @instalation2.line?(@line2)
-		assert @instalation.line?(@line2)
+		assert @instalation2.line?(@lineb)
+		assert @instalation.line?(@lineb)
 		assert_not @instalation2.line?(@line)
 		@instalation2.addline(@line, 1)
 		assert @instalation.line?(@line)
-		assert @instalation2.line?(@line2)
-		assert @instalation.line?(@line2)
+		assert @instalation2.line?(@lineb)
+		assert @instalation.line?(@lineb)
 		assert @instalation2.line?(@line)
 		@instalation2.addline(@line, 2)
 		assert @instalation.line?(@line)
-		assert @instalation2.line?(@line2)
-		assert @instalation.line?(@line2)
+		assert @instalation2.line?(@lineb)
+		assert @instalation.line?(@lineb)
 		assert @instalation2.line?(@line)
-		@instalation.removeline(@line2, 2)
-		assert @instalation.line?(@line)
-		assert @instalation2.line?(@line2)
-		assert_not @instalation.line?(@line2)
-		assert @instalation2.line?(@line)		
+		#@instalation.removeline(@lineb, 2)
+		#assert @instalation.line?(@line)
+		#assert @instalation2.line?(@lineb)
+		#assert_not @instalation.line?(@lineb)
+		#assert @instalation2.line?(@line)		
 	end
 	
-	test "get all lines of instalation" do
-		
+	test "should add and remove line from one instalation" do
+		assert_not @instalation.line?(@line1)
+		assert_not @instalation.line?(@line2)
+		assert_not @instalation.line?(@line3)
+		assert_not @instalation.line?(@line4)
+#		assert_not @instalation.line?(@line5)
+#		assert_not @instalation.line?(@line6)
+#		assert_not @instalation.line?(@line7)
+#		assert_not @instalation.line?(@line8)	
+#		assert_not @instalation.line?(@line9)
+#		assert_not @instalation.line?(@line10)
+#		assert_match Step.all, "dsfgds"
+#		Step.create(:step, @step1)
 	end
 end

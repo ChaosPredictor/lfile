@@ -23,7 +23,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Line.count', 1 do
-			post lines_path, line: { content: "odus teg-tpa etadpu", index: 3 }
+			post lines_path, line: { content: "odus teg-tpa etadpu", index: 23 }
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!

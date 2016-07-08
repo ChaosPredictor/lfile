@@ -1,26 +1,17 @@
 class StepsController < ApplicationController
-#	def create
-#		#@instalation = Instalation.find(params[:instalation_id])
-#		@instalation = Instalation.first
-#		#@line = Line.find(params[:line_id])
-#		@line = Line.first           #TODO change hardcore line
-#		@instalation.addline(@line, 1)   #TODO change hardcore order
-#		#redirect_to @user
-#		redirect_to @instalation
-#		#respond_to do |format|
-#		#	format.html { redirect_to @instalation }
-#		#	format.js
-#		#end
-#	end
+
 	def destroy
-		#@line = Step.find(params[:id]).line #followed
 		@step = Step.find(params[:id])
-		#@line_id = @step[:line_id]
-		#@instalation_id = @step[:instalation_id]
-		@line = Line.find(@step[:line_id])
 		@instalation = Instalation.find(@step[:instalation_id])
 		@order = @step[:order]
-		@instalation.removeline(@line, @order)
+		@instalation.removeline(@step, @order)
+		@high = highest_order(@instalation)
+		if ((@order != @hign) && (@high != nil))
+			@steps = all_step_of_instalation(@instalation)
+			(@order..@high-1).each do |i|
+				@steps[i].update(order: i)
+			end
+		end
 		#redirect_to @instalation		
 		respond_to do |format|
 			format.html { redirect_to @instalation }
@@ -29,6 +20,7 @@ class StepsController < ApplicationController
 	end
 	
 	def create
+		#TODO understand why it's with :step
 		@line = Line.find(params[:step][:line_id])
 		@instalation = Instalation.find(params[:instalation_id])
 		@order = first_empty_order(@instalation)
@@ -44,16 +36,29 @@ class StepsController < ApplicationController
 	private
 	
 		def first_empty_order(instalation)
-			@step = Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
-			if @step.empty?
+			@steps = all_step_of_instalation(instalation)
+			if @steps.empty?
 				return 0
 			end
-			@max = @step.last[:order]
+			@max = @steps.last[:order]
 			(0..@max).each do |number|
-				if number != @step[number][:order]
+				if number != @steps[number][:order]
 					return number
 				end
 			end
 			return @max + 1
+		end
+	
+		def highest_order(instalation)
+			@steps = all_step_of_instalation(instalation)
+			if @steps.empty?
+				return nil
+			else
+				return @steps.last[:order]
+			end
+		end
+		
+		def all_step_of_instalation(instalation)
+			return Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
 		end
 end
