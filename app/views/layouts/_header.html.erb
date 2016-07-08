@@ -3,8 +3,8 @@
 		<%= link_to "linux apps installer", root_path, id: "logo" %>
 		<nav>
 			<ul class="nav navbar-nav navbar-right">
+				<li><%= link_to "Instalation", instalations_path %></li>
 				<% if logged_in? %>
-					<li><%= link_to "Instalation", instalations_path %></li>
 					<li><%= link_to "Line", lines_path %></li>	
 				<% end %>				
 				<li><%= link_to "Home", root_path %></li>

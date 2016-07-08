@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+	before_action :logged_in_user,   only: [:edit, :update, :destroy, :new, :create, :index, :show]
+  before_action :admin_user,       only: [:edit, :update, :destroy, :new, :create]	
 
 	def destroy
 		@step = Step.find(params[:id])

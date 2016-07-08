@@ -1,5 +1,6 @@
 class InstalationsController < ApplicationController
-	before_action :logged_in_user,   only: [:edit, :update, :destroy, :index, :create, :new, :show]
+	#:index,
+	before_action :logged_in_user,   only: [:edit, :update, :destroy, :create, :new, :show]
   before_action :admin_user,       only: [:edit, :update, :destroy]	
 
 	
@@ -24,6 +25,7 @@ class InstalationsController < ApplicationController
 	end
 	
 	def show
+		#@user = current_user
 		@instalation = Instalation.find(params[:id])
 		#@lines = @instalation.hasline.paginate(page: params[:page])
 		@steps = Step.all.select {|step| step[:instalation_id] == @instalation[:id] }.sort_by { |step| step[:order] }

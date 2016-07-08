@@ -5,18 +5,24 @@
 			<div class = "col-md-1 <%= "order" + String(step_counter) %>">
 				<%= step.order %>
 			</div>
-			<div class="col-md-1 <%= "id" + String(step_counter) %>">			
-				<%= step.id %>
-			</div>
+			<% if current_user.admin? %>
+				<div class="col-md-1 <%= "id" + String(step_counter) %>">			
+					<%= step.id %>
+				</div>
 			<div class="col-md-1 <%= "line_id" + String(step_counter) %>">			
 				<%= step.line_id %>
 			</div>
+			<% end %>
 			<div class="col-md-6 <%= "line_content" + String(step_counter) %>">			
 				<%= Line.find(step.line_id)[:content] %>
 			</div>
-			<div class="col-md-3 <%= "delete_link" + String(step_counter) %>">			
-				<%= link_to "remove", step_path(step), :method => :delete, :class => "remove" %>
-			</div>
+			<!--%= if current_user.admin? %-->
+			<% if current_user.admin? %>
+				<div class="col-md-3 <%= "delete_link" + String(step_counter) %>">			
+					<%= link_to "remove", step_path(step), :method => :delete, :class => "remove" %>
+				</div>
+			<!--%= end %--> 
+			<% end %> 
 		</li>
 	</aside>
 	<!--div class="col-md-8"-->
