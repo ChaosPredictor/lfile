@@ -10,8 +10,8 @@ s2:
   order: 3
 
 s3:
-  instalation_id: 1 #Instaltin.first
-  line_id: 3 #Line.first
+  instalation_id: Instalation.first.id
+  line_id: l2 #Line.first
   order: 5
 
 s4:

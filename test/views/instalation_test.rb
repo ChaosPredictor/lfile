@@ -8,6 +8,10 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		@instalations            = Instalation.all
 		@number_of_instalation   = Instalation.count
 		@line                    = Line.first
+		@line1                   = lines(:l1)
+		@line2                   = lines(:l2)
+		@line3                   = lines(:l3)
+		@line4                   = lines(:l4)
 		@lines                   = @instalation.hasline.paginate(page: 1)
 		@number_of_lines         = @lines.count	
 		@user_admin              = users(:michael)
@@ -18,9 +22,13 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 	##################################
 	test "show as admin" do
 		log_in_as(@user_admin)
-		@instalation.addline(@line, 1)
-		#assert @instalation.hasline?(@line)
+		@instalation.addline(@line1, 0)
+		@instalation.addline(@line2, 1)
+		@instalation.addline(@line3, 2)
+		@instalation.addline(@line4, 3)
 		assert @instalation.line?(@line)
+		@steps = Step.all.select{|step| step[:instalation_id] == @instalation.id }
+		number_of_steps = @steps.count
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_match 'Instalation of: ' + String(@instalation.name) , response.body
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
@@ -28,30 +36,17 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'h2 div#os', text: 'Operation System: ' + @instalation.os, count: 1	
 		assert_select 'a.edit', text: 'edit', count: 1
 		assert_select 'a.delete', text: 'delete', count: 1
-		#assert_match String(@number_of_lines) + ' line'.pluralize(@amount) + "i", response.body
-		#assert_match 'ttt'+String(@instalation.id), response.body
+		assert_select 'a.remove', text: 'remove', count: number_of_steps
+		(0..number_of_steps-1).each do |t|			
+			assert_select 'div.order' + String(t), text: String(@steps[t][:order]), count: 1
+			assert_select 'div.id' + String(t), text: String(@steps[t][:id]), count: 1
+			assert_select 'div.line_id' + String(t), text: String(Line.find(@steps[t][:line_id])[:id]), count: 1
+			assert_select 'div.line_content' + String(t), text: String(Line.find(@steps[t][:line_id])[:content]), count: 1
+			assert_select 'div.delete_link' + String(t), text: 'remove', count: 1
+		end
 	end
 	
-	
-#	test "show as notadmin" do
-#		log_in_as(@user_notadmin)
-#		get line_path(@line)
-#		assert_select 'h1#index', text: 'Index: ' + String(@line.index), count: 1		
-#		assert_select 'div#content', text: 'Content: ' + @line.content, count: 1		
-#		assert_select 'a.edit', text: 'edit', count: 0
-#		assert_select 'a.delete', text: 'delete', count: 0
-#	end
-#
-#	test "show as not loged" do
-#		get line_path(@line)
-#		assert_redirected_to login_path
-#		assert_select 'h1#index', text: 'Index: ' + String(@line.index), count: 0
-#		assert_select 'div#content', text: 'Content: ' + @line.content, count: 0		
-#		assert_select 'a.edit', text: 'edit', count: 0
-#		assert_select 'a.delete', text: 'delete', count: 0
-#	end
-#	
-#	
+
 	#EDIT
 	###################################
 	test "edit as admin" do

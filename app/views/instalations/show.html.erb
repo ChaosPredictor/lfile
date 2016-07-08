@@ -31,14 +31,13 @@
 			<div class="col-md-6">
 				<%= render @steps %>
 			</div>
-
-			</div-->
 		<% end %>
 		<%= form_for(@instalation.active_steps.build, remote: false) do |f| %>		
 			<div><%= hidden_field_tag :instalation_id, @instalation.id %></div>
 				<!--TODO change to dinamic -->	
 			<div class="col-md-10">
 				<%= f.collection_select(:line_id, Line.all, :id, :content) %>
+			</div>
 			<div class="col-md-2">
 				<%= f.submit "Add line", class: "btn btn-primary" %>
 			</div>
