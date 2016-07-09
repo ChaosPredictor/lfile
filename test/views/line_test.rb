@@ -119,7 +119,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 			assert_no_match line.content, response.body
 			assert_no_match String(line.index), response.body			
 		end		
-		assert_select 'li.create_new_line a', text: "Create New Line", count: 0		
+		assert_select 'li.create_new_line a', text: "Create New Line", count: 0
 	end
 	
 end

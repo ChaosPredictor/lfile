@@ -1,12 +1,19 @@
 <% provide(:title, 'All Instalations') %>
 <h1>All Instalations</h1>
-<span><%= pluralize(@instalations.count, "instalation") %></span>
-<%= will_paginate %>
+<div class="row">
+	<div class="col-md-6">
+		<span><%= pluralize(@instalations.count, "instalation") %></span>
+	
+		<%= will_paginate %>
 
-<ul class="instalations">
-	<%= render @instalations %>
-</ul>
+		<ul class="instalations">
+			<%= render @instalations %>
+		</ul>
 
-<%= will_paginate %>
-
-<li><%= link_to "Create New Instalation", instanew_path %></li>	
+		<%= will_paginate %>
+	</div>
+	<div class="col-md-6">	
+		<%= link_to "Create New Instalation", instanew_path %>
+		<%= link_to "Generate File", instanew_path %>	
+	</div>
+</div>	
