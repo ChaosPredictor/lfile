@@ -9,4 +9,6 @@
 
 <%= will_paginate %>
 
-<li><%= link_to "Create New Line", action: "new", method: :get %></li>	
+<% if current_user.admin? %>
+	<li class = "create_new_line" ><%= link_to "Create New Line", action: "new", method: :get  %></li>	
+<% end %>

@@ -91,12 +91,13 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 			assert_match line.content, response.body
 			assert_match String(line.index), response.body			
 		end
+		assert_select 'li.create_new_line a', text: "Create New Line", count: 1		
 	end
 	
 	test "index as not admin" do
 		log_in_as(@user_notadmin)
 		get lines_path
-		assert_select 'h1', text: 'All Lines', count: 1	
+		assert_select 'h1', text: 'All Lines', count: 1
 		assert_match String(@number_of_lines) + ' lines', response.body
 		assert_select 'a.edit', text: "edit", count: 0	
 		assert_select 'a.delete', text: "delete", count: 0
@@ -104,6 +105,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 			assert_match line.content, response.body
 			assert_match String(line.index), response.body			
 		end	
+		assert_select 'li.create_new_line a', text: "Create New Line", count: 0		
 	end
 
 	test "index as not loged in" do
@@ -117,6 +119,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 			assert_no_match line.content, response.body
 			assert_no_match String(line.index), response.body			
 		end		
+		assert_select 'li.create_new_line a', text: "Create New Line", count: 0		
 	end
 	
 end
