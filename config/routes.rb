@@ -24,19 +24,20 @@ Rails.application.routes.draw do
   #root 'static_pages#home'
 
 
-	root                     'static_pages#home'
-	get    'help'         => 'static_pages#help'
-	get    'about'        => 'static_pages#about'
-	get    'contact'      => 'static_pages#contact'
-	get    'signup'       => 'users#new'
-	get    'login'        => 'sessions#new'
-	post   'login'        => 'sessions#create'
-	delete 'logout'       => 'sessions#destroy'
-	get    'instalations' => 'instalations#index'
-	get    'instanew'     => 'instalations#new'
-	get    'instaedit'    => 'instalations#edit'
-	get    'createfile'   => 'run_files#new'
-	post   'createfile'   => 'run_files#create'
+	root                       'static_pages#home'
+	get    'help'           => 'static_pages#help'
+	get    'about'          => 'static_pages#about'
+	get    'contact'        => 'static_pages#contact'
+	get    'signup'         => 'users#new'
+	get    'login'          => 'sessions#new'
+	post   'login'          => 'sessions#create'
+	delete 'logout'         => 'sessions#destroy'
+	get    'instalations'   => 'instalations#index'
+	get    'instanew'       => 'instalations#new'
+	get    'instaedit'      => 'instalations#edit'
+	get    'createfile'     => 'run_files#new'
+	post   'createfile'     => 'run_files#create'
+	post   'download_file'  => 'run_files#download_file'
 	resources :users do
 		member do
 			get :following, :followers
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
 	resources :instalations#,          only: [:new, :index, :edit, :update, :create, :destroy]
 	resources :lines#,            only: [:create, :destroy]	
 	resources :steps
+	resources :run_files
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

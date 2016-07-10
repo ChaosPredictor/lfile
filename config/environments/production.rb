@@ -91,4 +91,8 @@ Rails.application.configure do
 		:domain => 'heroku.com',
 		:enable_starttls_auto => true
 	}
+	
+	#downlaod files
+	config.serve_static_files = false
+	config.serve_static_assets = true
 end
