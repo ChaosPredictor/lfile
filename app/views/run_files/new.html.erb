@@ -11,13 +11,20 @@
 		
 				<% @instalations.each do |product| -%>
 
-  				<%= fields_for 'product[]' , product do |product_fields| -%>
+  				<!--%= fields_for 'product[]' , product do |product_fields| -%-->
+  				<%= fields_for '@instalations[]' , product do |product_fields| -%>
+					<div class="row">
+ 					<div class="col-md-1">
+						<!--%= product_fields.check_box :torun %-->
+						<%= product_fields.check_box :torun %>
+					</div>
+					<div class="col-md-8">
 
- 
-    			<%= product_fields.check_box :torun %>
 					<!--%= link_to product_fields, product.name %-->
-					<%= link_to product.name, product %>
+						<%= link_to product.name, product %>
+					</div>
     			<!--%= product_fields.check_box :torun %-->
+					</div>
 
   			<% end -%>
 
