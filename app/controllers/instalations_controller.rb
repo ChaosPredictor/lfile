@@ -65,11 +65,16 @@ class InstalationsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	
+	def tofile
+		@new = para
+		redirect_to root_path
+	end
 		
 	private
 	
 		def instalation_params
-			params.require(:instalation).permit(:name, :version, :os)
+			params.require(:instalation).permit(:name, :version, :os, :torun)
 		end
 	
 		def correct_user

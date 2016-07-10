@@ -1,0 +1,18 @@
+<div class="row">
+	<aside>
+		<li>
+			<%= link_to line.index, line %>
+			<%= line.content %>
+			<% if current_user.admin? %>
+				<% if @instalation %>
+					<!--%= link_to "remove", @instalation.removeline(line, 1), :class => "remove" %-->
+					<%= hidden_field_tag @step = @instalation.active_steps.find_by(line_id: line.id) %>
+					<%= link_to "remove", step_path(@step), :method => :delete, :class => "remove" %>
+				<% else %>
+					<%= link_to "edit", edit_line_path(line), :class => "edit" %>
+					<%= link_to "delete", line, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+				<% end %>
+			<% end %>
+		</li>
+	</aside>
+</div>

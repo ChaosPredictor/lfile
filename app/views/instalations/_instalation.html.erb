@@ -3,7 +3,9 @@
 		<!--li-->
 			<div class = "col-md-1 instalation_check_box">
 				<!--%= check_box_tag(:instalation) %-->
-				<input type="checkbox" name="tag_ids[]" value="<%= "check_box_" + String(instalation_counter) %>" />
+				<!--input type="checkbox" name="tag_ids[]" value="<!--%= "check_box_" + String(instalation_counter) %>" /-->
+				<%= f.check_box :torun %>
+				<%= hidden_field_tag :number, String(instalation_counter) %>
 			</div>			
 			<div class = "col-md-4">
 				<%= link_to instalation.name, instalation %>

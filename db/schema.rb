@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702173716) do
+ActiveRecord::Schema.define(version: 20160709211016) do
 
   create_table "instalations", force: :cascade do |t|
     t.string   "name"
     t.string   "version"
     t.string   "os"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "torun",      default: false
   end
 
   add_index "instalations", ["name"], name: "index_instalations_on_name", unique: true
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160702173716) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "steps", ["instalation_id", "line_id", "order"], name: "index_steps_on_instalation_id_and_line_id_and_order", unique: true
+  add_index "steps", ["instalation_id", "order"], name: "index_steps_on_instalation_id_and_order", unique: true
   add_index "steps", ["instalation_id"], name: "index_steps_on_instalation_id"
   add_index "steps", ["line_id"], name: "index_steps_on_line_id"
 

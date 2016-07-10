@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'run_files/new'
+
   get 'lines/new'
 
   get 'instalations/new'
@@ -32,7 +34,9 @@ Rails.application.routes.draw do
 	delete 'logout'       => 'sessions#destroy'
 	get    'instalations' => 'instalations#index'
 	get    'instanew'     => 'instalations#new'
-	get    'instaedit'    => 'instalations#edit'	
+	get    'instaedit'    => 'instalations#edit'
+	get    'createfile'   => 'run_files#new'
+	post   'createfile'   => 'run_files#create'
 	resources :users do
 		member do
 			get :following, :followers

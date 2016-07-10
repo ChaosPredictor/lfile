@@ -1,0 +1,30 @@
+<% provide(:title, "Create File") %>
+<h1>Create File</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<!--%= form_for(:run_file, url: createfile_path) do |f| %-->
+		<%= form_for(:Instalation, url: createfile_path(@instalations)) do |f| %>
+			
+			<!--%= render @instalations,  f: f  %-->
+		
+		
+				<% @instalations.each do |product| -%>
+
+  				<%= fields_for 'product[]' , product do |product_fields| -%>
+
+ 
+    			<%= product_fields.check_box :torun %>
+					<!--%= link_to product_fields, product.name %-->
+					<%= link_to product.name, product %>
+    			<!--%= product_fields.check_box :torun %-->
+
+  			<% end -%>
+
+			<% end -%>
+		
+
+			<%= f.submit "Create File", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
