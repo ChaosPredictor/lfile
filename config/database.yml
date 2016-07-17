@@ -22,4 +22,12 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  host: localhost
+# host: 178.62.26.95
+  adapter: postgresql
+# port: 3000
+  encoding: utf8
+  database: lfile_production
+  pool: 5
+  username: <%= ENV['LFILE_DATABASE_USER'] %>
+  password: <%= ENV['LFILE_DATABASE_PASSWORD'] %>

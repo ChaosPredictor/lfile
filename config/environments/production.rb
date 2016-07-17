@@ -94,5 +94,6 @@ Rails.application.configure do
 	
 	#downlaod files
 	config.serve_static_files = false
-	config.serve_static_assets = true
+	#config.serve_static_assets = true
+	config.serve_static_files = true
 end
