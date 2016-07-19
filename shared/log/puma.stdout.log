@@ -407,3 +407,39 @@ Processing by UsersController#index as HTML
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 100ms (Views: 97.4ms | ActiveRecord: 1.0ms)
 >>>>>>> a4d96b3868d5f1ed742e69a810fd2c80564fc210
+=== puma startup: 2016-07-19 13:28:37 +0000 ===
+[11793] * Starting control server on unix:///tmp/puma-status-1468934917021-11793
+[11793] - Worker 0 (pid: 11841) booted, phase: 0
+[11793] - Gracefully shutting down workers...
+[11793] === puma shutdown: 2016-07-19 13:33:20 +0000 ===
+[11793] - Goodbye!
+=== puma startup: 2016-07-19 13:33:21 +0000 ===
+[12423] * Starting control server on unix:///tmp/puma-status-1468935201485-12423
+[12423] - Worker 0 (pid: 12471) booted, phase: 0
+[12423] - Gracefully shutting down workers...
+[12627] Early termination of worker
+[12423] === puma shutdown: 2016-07-19 13:48:36 +0000 ===
+[12423] - Goodbye!
+=== puma startup: 2016-07-19 13:48:37 +0000 ===
+[12639] * Starting control server on unix:///tmp/puma-status-1468936117752-12639
+[12639] - Worker 0 (pid: 12687) booted, phase: 0
+[12639] - Gracefully shutting down workers...
+[12639] === puma shutdown: 2016-07-19 13:49:02 +0000 ===
+[12639] - Goodbye!
+=== puma startup: 2016-07-19 13:55:05 +0000 ===
+[12778] * Starting control server on unix:///tmp/puma-status-1468936505543-12778
+[12778] - Worker 0 (pid: 12826) booted, phase: 0
+=== puma startup: 2016-07-19 13:57:05 +0000 ===
+[12905] * Starting control server on unix:///tmp/puma-status-1468936625470-12905
+[12905] - Worker 0 (pid: 12948) booted, phase: 0
+[12905] - Gracefully shutting down workers...
+[12905] === puma shutdown: 2016-07-19 13:57:29 +0000 ===
+[12905] - Goodbye!
+Exiting
+=== puma startup: 2016-07-19 13:58:21 +0000 ===
+[13008] * Starting control server on unix:///tmp/puma-status-1468936701419-13008
+[13008] - Worker 0 (pid: 13052) booted, phase: 0
+[13008] - Gracefully shutting down workers...
+[13008] === puma shutdown: 2016-07-19 13:58:39 +0000 ===
+[13008] - Goodbye!
+Exiting
