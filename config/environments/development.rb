@@ -11,8 +11,8 @@ Rails.application.configure do
 	
 	#downlaod files
 	config.serve_static_files = false
-	config.serve_static_assets = true
-	
+	#config.serve_static_assets = true
+	config.serve_static_files	= true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
