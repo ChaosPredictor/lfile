@@ -23,9 +23,7 @@ test:
 production:
   <<: *default
   host: localhost
-# host: 178.62.26.95
   adapter: postgresql
-# port: 3000
   encoding: utf8
   database: lfile_production
   pool: 5
