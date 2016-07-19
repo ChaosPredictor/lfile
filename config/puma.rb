@@ -15,7 +15,6 @@
 #	ActiveRecord::Base.establish_connection
 #end
 
-
 # Change to match your CPU core count
 workers 1
 

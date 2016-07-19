@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 === puma startup: 2016-07-18 14:32:34 +0000 ===
 [1969] * Starting control server on unix:///tmp/puma-status-1468852354031-1969
 [1969] - Worker 0 (pid: 2017) booted, phase: 0
@@ -13,3 +14,396 @@
 === puma startup: 2016-07-19 12:45:10 +0000 ===
 [11147] * Starting control server on unix:///tmp/puma-status-1468932310602-11147
 [11147] - Worker 0 (pid: 11195) booted, phase: 0
+=======
+=== puma startup: 2016-07-19 12:42:16 +0400 ===
+[20014] * Starting control server on unix:///tmp/puma-status-1468917736721-20014
+[20014] - Worker 0 (pid: 20059) booted, phase: 0
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-19 12:42:30 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/_home_notlogedin.html.erb (0.6ms)
+  Rendered static_pages/home.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 464ms (Views: 450.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/account_activations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/microposts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/instalations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/custom.self-a2d249869c24350362c5a4d647a7acca57eabe73edfe0d91bca008413669fc00.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/lines.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/password_resets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/relationships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/run_files.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/steps.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/users.self-332386aa1d882321c78bc08aef1ecb7c5e57503c5a96649292e8b5e014713be9.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/account_activations.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/bootstrap.self-cdea7efeac1597b89ddd6fd86b0e8e0bec5d5fb1fac9c6e8a045f2c59eef2d13.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/turbolinks.self-c846e670826600e8c91b1a5ada3e6547110d996cd6ff24cde55024f7a135a1b4.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/instalations.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/lines.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/microposts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/password_resets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/relationships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/run_files.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/steps.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 127.0.0.1 at 2016-07-19 12:42:31 +0400
+
+
+Started GET "/login" for 127.0.0.1 at 2016-07-19 12:42:34 +0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (317.3ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 363ms (Views: 361.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 12:42:50 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S4uaD+5EKMcxr+h9fPlnu1P1PX8rtVHJ5l8xBK7+FaLmI/e6+DTZBrpQC4tH4fCZHPgkxVcQNmVJPGOEDVklQg==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "example@railstutorial.org"]]
+  Rendered sessions/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 130ms (Views: 80.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 12:53:22 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HQ86l0YF3x+hxZjZCA5J0cjeSH/ldtv1Bib4/1jV8Ruwp1ciUHUu3io6ey8zFt7zh9NRxZnTvFmpRap/+3LB+w==", "session"=>{"email"=>"ku@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "ku@ku.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 85ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-19 12:53:22 +0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/_home_notlogedin.html.erb (0.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-07-19 12:54:39 +0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 106ms (Views: 105.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 12:54:50 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oFdN9diut5Qt5Rl7pYkFJZ2vp6+5/BomDmy+Ig55P+kN/yBAzt5GVaYa+o2ekZIH0qK+FcVZfYqhD+yird4PCQ==", "session"=>{"email"=>"ku2@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "ku2@ku.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["remember_digest", "$2a$10$u/OuKODx4kZ1gzA8vTNXpu6YPOaz8qH362n48b3flD/hScTVeEJv."], ["updated_at", "2016-07-19 08:54:50.316796"], ["id", 2]]
+  [1m[36m (10.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 197ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2016-07-19 12:54:50 +0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 2]]
+  Rendered shared/_stats.html.erb (16.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/_follow_form.html.erb (0.5ms)
+  [1m[35mMicropost Exists (0.2ms)[0m  SELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = ? LIMIT 1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (23.4ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 87ms (Views: 67.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-07-19 12:54:54 +0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" LIMIT 30 OFFSET 0[0m
+  Rendered users/_user.html.erb (1.7ms)
+  Rendered users/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 84ms (Views: 82.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-19 13:08:26 +0400
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered static_pages/_home_notlogedin.html.erb (0.5ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 69ms (Views: 58.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-19 14:36:49 +0400
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered static_pages/_home_notlogedin.html.erb (0.2ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 81ms (Views: 78.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-07-19 14:36:53 +0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 90ms (Views: 88.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:37:01 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+F5EkdDEcTtdn0N/159RHSCcPvf8b0EIoaFMuKQHQM1V9ikkxrSA+tZgoInsh8Y/b5EnTYDKJqQOwh44B6BwLQ==", "session"=>{"email"=>"ku2@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "ku2@ku.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:38:20 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CXtdlX1AJ9GSBMcWFQNaStV2/KvNmE2L06ew9DZVjwCk0zAgazDWEBn7JOAuG81omnvlEbE9Kid8xOJ0lfK/4A==", "session"=>{"email"=>"ku@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "ku@ku.com"]]
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 84ms (Views: 81.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-07-19 14:38:24 +0400
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered static_pages/_home_notlogedin.html.erb (0.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 52ms (Views: 50.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-07-19 14:38:26 +0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 81ms (Views: 79.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:38:42 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/FrXgxlZImcWn57N4zRzA+bDwfNtqXr+1WiYx+xrZvxR8ro2DynTpp1gfTvYLOQhqc7YSREMHVJ6C8pHT8xWHA==", "session"=>{"email"=>"ku2@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "ku2@ku.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 65ms (Views: 63.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:38:53 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+4q9MungxSlUofc1cXZ0CKO4ro4o4dnLUEF81mD+iFBWItCH/5A06N9eFMNKbuMq7LW3NFREvmf/Ii5Ww1m4sA==", "session"=>{"email"=>"ku2@ku.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "ku2@ku.com"]]
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 88ms (Views: 86.6ms | ActiveRecord: 0.3ms)
+[20014] - Gracefully shutting down workers...
+[20014] === puma shutdown: 2016-07-19 14:40:05 +0400 ===
+[20014] - Goodbye!
+Exiting
+=== puma startup: 2016-07-19 14:40:09 +0400 ===
+[22066] * Starting control server on unix:///tmp/puma-status-1468924809084-22066
+[22066] - Worker 0 (pid: 22111) booted, phase: 0
+[22066] - Gracefully shutting down workers...
+[22066] === puma shutdown: 2016-07-19 14:42:14 +0400 ===
+[22066] - Goodbye!
+Exiting
+=== puma startup: 2016-07-19 14:51:27 +0400 ===
+[22700] * Starting control server on unix:///tmp/puma-status-1468925487113-22700
+[22700] - Worker 0 (pid: 22745) booted, phase: 0
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:51:41 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/4wyrtvH/JWxmkb/EtzsP5FExL+Yo/FfZWYfgfiMgIWVl1/rR/uM905iu3HU+SSsUgKqILH6GnS9sr+pEUC4g==", "session"=>{"email"=>"qw@qw.qw", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "qw@qw.qw"]]
+  Rendered sessions/new.html.erb within layouts/application (262.9ms)
+  Rendered layouts/_shim.html.erb (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_header.html.erb (13.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 730ms (Views: 703.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-07-19 14:51:55 +0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c7pTT8WKKlFDIvFu7crlX7IZ68vyuX0Onw1yV3+aSxveEj760/rbkMjdEpjW0nJ9/RTycY4cGqIwbiDX3D17+w==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "example@railstutorial.org"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "remember_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["remember_digest", "$2a$10$OBepM.kxZHb0tZp9SM/2kOqhYPhHclc6eV.rBAcvkEhh3g//CF5B."], ["updated_at", "2016-07-19 10:51:55.728559"], ["id", 1]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 166ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-07-19 14:51:55 +0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 1]]
+  Rendered shared/_stats.html.erb (24.8ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/_follow_form.html.erb (0.4ms)
+  [1m[35mMicropost Exists (0.2ms)[0m  SELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mMicropost Load (0.3ms)[0m  SELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ?  ORDER BY "microposts"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered microposts/_micropost.html.erb (12.5ms)
+  Rendered users/show.html.erb within layouts/application (55.3ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 131ms (Views: 107.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-07-19 14:51:59 +0400
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" LIMIT 30 OFFSET 0
+  Rendered users/_user.html.erb (13.1ms)
+  Rendered users/index.html.erb within layouts/application (22.1ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 94ms (Views: 90.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users?page=4" for 127.0.0.1 at 2016-07-19 14:52:08 +0400
+Processing by UsersController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" LIMIT 30 OFFSET 90[0m
+  Rendered users/_user.html.erb (5.6ms)
+  Rendered users/index.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 100ms (Views: 97.4ms | ActiveRecord: 1.0ms)
+>>>>>>> a4d96b3868d5f1ed742e69a810fd2c80564fc210
