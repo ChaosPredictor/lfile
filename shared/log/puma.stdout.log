@@ -389,3 +389,7 @@ Processing by UsersController#index as HTML
   Rendered layouts/_header.html.erb (0.8ms)
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 100ms (Views: 97.4ms | ActiveRecord: 1.0ms)
+[22700] - Gracefully shutting down workers...
+[22700] === puma shutdown: 2016-07-19 16:56:50 +0400 ===
+[22700] - Goodbye!
+Exiting

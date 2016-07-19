@@ -24,3 +24,6 @@
 
 # DB login
 .rbenv-vars
+
+# Puma log file
+shared/log/puma.stdout.log
