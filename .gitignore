@@ -26,4 +26,5 @@
 .rbenv-vars
 
 # Puma log file
-shared/log/puma.stdout.log
+/shared/log/puma.stdout.log
+/shared/log/puma.stderr.log
