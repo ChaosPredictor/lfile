@@ -31,3 +31,6 @@
 
 # Puma pids file
 /shared/pids/
+
+# email user
+/config/application.yml
