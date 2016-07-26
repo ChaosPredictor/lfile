@@ -94,7 +94,7 @@ Rails.application.configure do
 
 	ActionMailer::Base.smtp_settings = { 
 		:address => 'smtp.yandex.ru',
-		:port => '25',
+		:port => '587',
 		:authentication => :plain,
 		:user_name => ENV['email_username'],
 		:password => ENV['email_password'],
