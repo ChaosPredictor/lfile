@@ -96,8 +96,8 @@ Rails.application.configure do
 		:address => 'smtp.yandex.ru',
 		:port => '25',
 		:authentication => :plain,
-		:user_name => ENV['SENDGRID_USERNAME'],
-		:password => ENV['SENDGRID_PASSWORD'],
+		:user_name => ENV['email_username'],
+		:password => ENV['email_password'],
 		:domain => 'yandex.ru',
 		:enable_starttls_auto => true
 	}
