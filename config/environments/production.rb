@@ -77,11 +77,58 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+#Yandex
+
+#  config.action_mailer.default_url_options = {:host => 'lfile.website', :from => 'webmaster@lfile.website'}
+#  config.action_mailer.delivery_method = :smtp
+#  config.action_mailer.smtp_settings = {
+#    #:tls => true,
+#    :address => "smtp.yandex.ru",
+#    :port => 587,
+#    :domain => 'lfile.website',
+#    :authentication => :plain,
+#    :user_name => ENV['email_username'],
+#    :password => ENV['email_password'],
+#  }
+
+
+#Gmail
+
+#  config.action_mailer.default_url_options = { :host => 'lfile.website' }
+
+#  ActionMailer::Base.delivery_method = :smtp
+#  ActionMailer::Base.perform_deliveries = true
+#  ActionMailer::Base.raise_delivery_errors = true
+#  ActionMailer::Base.smtp_settings = {
+#    :address            => 'smtp.gmail.com',
+#    :port               => 587,
+#    :domain             => 'gmail.com', #you can also use google.com
+#    :authentication     => :plain,
+#    :user_name          => "dmitrykuznichov@gmail.com",
+#    :password           => "adgjmp12"
+#}
+
+
+
+
+# Postfix
+
+config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i -t'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'no-reply@llfile.download'}
+
 	
-	config.action_mailer.raise_delivery_errors = true
-	config.action_mailer.delivery_method = :smtp
-	host = '<your heroku app>.herokuapp.com'
-	config.action_mailer.default_url_options = { host: host }
+#	config.action_mailer.raise_delivery_errors = true
+#	config.action_mailer.delivery_method = :smtp
+#	host = '<your heroku app>.herokuapp.com'
+#	config.action_mailer.default_url_options = { host: host }
 #	ActionMailer::Base.smtp_settings = { 
 #		:address => 'smtp.sendgrid.net',
 #		:port => '587',
@@ -92,16 +139,16 @@ Rails.application.configure do
 #		:enable_starttls_auto => true
 #	}
 
-	ActionMailer::Base.smtp_settings = { 
-		:address => 'smtp.yandex.ru',
-		:portt => '587', #465
-		:tls => true,
-		:authentication => :plain,
-		:user_name => ENV['email_username'],
-		:password => ENV['email_password'],
-		:domain => 'yandex.ru',
-		:enable_starttls_auto => true
-	}
+#	ActionMailer::Base.smtp_settings = { 
+#		:address => 'smtp.yandex.ru',
+#		:portt => '465', #'587', #'465'
+#		:tls => true,
+#		:authentication => :plain,
+#		:user_name => ENV['email_username'],
+#		:password => ENV['email_password'],
+#		:domain => 'yandex.ru',
+#		:enable_starttls_auto => true
+#	}
 	
 	#downlaod files
 	config.serve_static_files = false

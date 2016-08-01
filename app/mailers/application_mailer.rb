@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "webmaster@lfile.website"
+  #default from: "dmitrykuznichov@gmail.com"
+  default from: "no-reply@lfie.download"
   layout 'mailer'
 end
