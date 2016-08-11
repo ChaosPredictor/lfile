@@ -191,7 +191,7 @@ when "production"
 	User.create!(
 		name: "Chaos Predictor",
 		email: "kuzi81@gmail.com",
-		password_digest: "$2a$10$QheUufgNXsJIPkzpBLNRHeLRX66A.U4pgm5azqz3Hd0UMYUw5ygIi",
+		password_digest: "$2a$10$Uedhk9nAbE84J3j26DNPweeFdEs6dQzk9tK/ifZs.jm5J1fAkkGM.",
 		admin: true,
 		activated: true,
 		activated_at: Time.zone.now
