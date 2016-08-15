@@ -37,3 +37,4 @@
 
 #bundle Puma in development mode bad wordaround
 Gemfile
+Gemfile.lock
