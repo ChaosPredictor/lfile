@@ -34,3 +34,6 @@
 
 # email user/db password/dropbox
 /config/application.yml
+
+#bundle Puma in development mode bad wordaround
+Gemfile
