@@ -38,3 +38,7 @@
 #bundle Puma in development mode bad wordaround
 Gemfile
 Gemfile.lock
+
+
+#file to save
+public/temp.txt

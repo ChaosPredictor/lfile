@@ -4,13 +4,20 @@ class RunFilesController < ApplicationController
   end
 	
 	def create
+		logger.debug "Create start"
 		number_of_instalations = params[:@instalations].count
+		logger.debug number_of_instalations
 		@instalations  =Instalation.all
+		logger.debug @instalations
+		logger.debug params[:@instalations].keys
+		@instalation_key = params[:@instalations].keys
+		logger.debug @instalation_key[0]
 		@instalation_array = []
 		@line_array = []
-		(1..number_of_instalations).each do |counter|
-			if params[:@instalations][String(counter)][:torun] == "1"
-				@instalation = @instalations[counter-1]
+		(0..number_of_instalations-1).each do |counter|
+			#if params[:@instalations][String(counter)][:torun] == "1"
+			if params[:@instalations][@instalation_key[counter]][:torun] == "1"
+				@instalation = @instalations[counter]
 				@instalation_array.push(@instalation)
 				@steps = Step.all.select {|step| step[:instalation_id] == @instalation[:id] }.sort_by { |step| step[:order] }
 				@steps.each do |step|
