@@ -1,4 +1,6 @@
 class RunFilesController < ApplicationController
+	#respond_to :html, :json
+	
   def new
 		@instalations = Instalation.all
   end
@@ -27,12 +29,11 @@ class RunFilesController < ApplicationController
 		end
 		@string = @line_array.join("\r\n")
 		File.open('public/temp.txt', 'w') { |file| file.write(@string) }
-		#@instalations = Instalation.find_by(id: params[:instalations][:torun])
-		#redirect root_path
-		download_file('public/temp.txt')
+  	download_file('public/temp.txt')
 	end
 	
 	def download_file(file_path)
-   send_file(file_path, :type => 'text/csv', :disposition => "attachment")
+   send_file(file_path, :type => 'text/lfile', :disposition => "attachment")
 	end
+	
 end

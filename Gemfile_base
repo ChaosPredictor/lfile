@@ -18,5 +18,5 @@ gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
 gem 'rename'
 gem 'sprockets', 							 '3.6.3'
-
-
+gem 'responders',           '~> 2.0' 
+gem 'inherited_resources'
