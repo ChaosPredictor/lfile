@@ -3,8 +3,8 @@ require 'test_helper'
 class InstalationTest < ActiveSupport::TestCase
   def setup
 		@line = Line.first
-		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux")
-		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New")
+		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux", source_link: "web1.com")
+		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New", source_link: "web2.com")
 	end
 	
 	test "should be valid" do
@@ -28,6 +28,11 @@ class InstalationTest < ActiveSupport::TestCase
 	
 	test "version should not be too long" do
 		@instalation.version = "a" * 21
+		assert_not @instalation.valid?
+	end
+	
+	test "source link should not be too long" do
+		@instalation.source_link = "a" * 129
 		assert_not @instalation.valid?
 	end
 	

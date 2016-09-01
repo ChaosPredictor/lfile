@@ -12,6 +12,9 @@
 				<div id="os">
 					Operation System: <%= @instalation.os %>
 				</div>
+				<div id="Source link">
+					Source link: <%= link_to @instalation.source_link  %>
+				</div>
 				<div>
 					<!--% if current_user.admin? && !current_user?(@user) TODO understand why it's not working %--> 
 					<% if current_user.admin? %>

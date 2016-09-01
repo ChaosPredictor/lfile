@@ -7,6 +7,8 @@ class Instalation < ActiveRecord::Base
 	validates :version, 
 						presence: true, 
 						length: { maximum: 20 }
+	validates :source_link,
+						length: { maximum: 128}
 	#has_many :lines, 
 	#				through: :steps,
 	#				source: :line
