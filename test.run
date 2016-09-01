@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rspec spec/models/spec.rb
+bundle exec rake test
