@@ -25,9 +25,9 @@ class InstalationsController < ApplicationController
 		end
 	end
 	
-	def show
-		#@user = current_user
+	def show 
 		@instalation = Instalation.find(params[:id])
+		@user = User.find(@instalation.user_id)
 		#@lines = @instalation.hasline.paginate(page: params[:page])
 		@steps = Step.all.select {|step| step[:instalation_id] == @instalation[:id] }.sort_by { |step| step[:order] }
 		if @steps.empty?

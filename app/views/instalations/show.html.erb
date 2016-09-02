@@ -19,6 +19,9 @@
 						No link attached
 					<% end %>
 				</div>
+				<div id="added_by">
+					Added by: <%= link_to String(@user.name), @user, :target => '_blank' %>
+				</div>
 				<div>
 					<!--% if current_user.admin? && !current_user?(@user) TODO understand why it's not working %--> 
 					<% if current_user.admin? %>

@@ -22,6 +22,8 @@ class StepIntegrationTest < ActionDispatch::IntegrationTest
 	
 	test "add/remove line from instalation" do
 		log_in_as(@user_admin)
+		@instalation3.user_id = @user_admin.id
+		@instalation3.save
 		get instalation_path(@instalation3)
 		#assert_match "0 microposts", response.body
 		@instalation3.addline(@line1,0)

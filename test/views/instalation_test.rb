@@ -16,7 +16,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		@lines                   = @instalation.hasline.paginate(page: 1)
 		@number_of_lines         = @lines.count	
 		@user_admin              = users(:michael)
-		@user_notadmin           = users(:archer)		
+		@user_notadmin           = users(:archer)
+		@user                    = User.first
 	end
 	
 	#SHOW
@@ -30,12 +31,15 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert @instalation.line?(@line)
 		@steps = Step.all.select{|step| step[:instalation_id] == @instalation.id }
 		number_of_steps = @steps.count
+		@instalation.user_id = @user.id
+		@instalation.save
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_match 'Instalation of: ' + String(@instalation.name) , response.body
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
 		assert_select 'h2 div#version', text: 'Version: ' + @instalation.version, count: 1		
 		assert_select 'h2 div#os', text: 'Operation System: ' + @instalation.os, count: 1	
 		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 1	
+		assert_select 'h2 div#added_by', text: 'Added by: ' + @user.name, count: 1	
 		assert_select 'a.edit', text: 'edit', count: 1
 		assert_select 'a.delete', text: 'delete', count: 1
 		assert_select 'a.remove', text: 'remove', count: number_of_steps
@@ -57,6 +61,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert @instalation.line?(@line)
 		@steps = Step.all.select{|step| step[:instalation_id] == @instalation.id }
 		number_of_steps = @steps.count
+		@instalation.user_id = @user.id
+		@instalation.save
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_match 'Instalation of: ' + String(@instalation.name) , response.body
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
@@ -184,6 +190,8 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 	
 	test "with and without source link" do
 		log_in_as(@user_admin)
+		@instalation.user_id = @user.id
+		@instalation.save
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
 		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 1
