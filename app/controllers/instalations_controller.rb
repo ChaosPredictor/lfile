@@ -74,7 +74,7 @@ class InstalationsController < ApplicationController
 	private
 	
 		def instalation_params
-			params.require(:instalation).permit(:name, :version, :os, :torun)
+			params.require(:instalation).permit(:name, :version, :os, :source_link, :torun)
 		end
 	
 		def correct_user

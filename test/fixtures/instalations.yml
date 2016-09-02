@@ -4,6 +4,7 @@ gimp:
   name: GIMP
   version: 1.1
   os: linux
+  source_link: gimp.com
 
 firefox:
   name: Firefox

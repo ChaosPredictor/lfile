@@ -55,7 +55,8 @@ when "development"
 	Instalation.create!(
 	  name: "GIMP",
 	  version: "1.1",
-	  os: "linux"
+	  os: "linux",
+		source_link: "gimp.com"
 		)
 
 	Instalation.create!(

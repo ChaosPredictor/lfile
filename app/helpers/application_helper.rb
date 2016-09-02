@@ -8,4 +8,8 @@ module ApplicationHelper
 			page_title + " | " + base_title
 		end
 	end
+	
+	def url_with_protocol(url)
+    /^http/i.match(url) ? url : "http://#{url}"
+  end
 end
