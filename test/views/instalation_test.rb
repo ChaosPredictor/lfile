@@ -6,6 +6,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 	def setup
 		@instalation             = Instalation.first
 		@instalations            = Instalation.all
+		@instalation2            = Instalation.all[1]
 		@number_of_instalation   = Instalation.count
 		@line                    = Line.first
 		@line1                   = lines(:l1)
@@ -179,6 +180,18 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		@instalations.each do |instalation|
 			assert_match instalation.name, response.body		
 		end
+	end
+	
+	test "with and without source link" do
+		log_in_as(@user_admin)
+		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
+		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
+		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 1
+		@instalation.source_link = nil
+		@instalation.save
+		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
+		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
+		assert_select 'h2 div#source_link', text: 'No link attached', count: 1	
 	end
 	
 end

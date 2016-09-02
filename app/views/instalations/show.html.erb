@@ -13,7 +13,11 @@
 					Operation System: <%= @instalation.os %>
 				</div>
 				<div id="source_link">
-					Source link: <%= link_to String(@instalation.source_link), url_with_protocol(@instalation.source_link), :target => '_blank' %>
+					<% if @instalation.source_link != nil %>
+						Source link: <%= link_to String(@instalation.source_link), url_with_protocol(@instalation.source_link), :target => '_blank' %>
+					<% else %>
+						No link attached
+					<% end %>
 				</div>
 				<div>
 					<!--% if current_user.admin? && !current_user?(@user) TODO understand why it's not working %--> 
