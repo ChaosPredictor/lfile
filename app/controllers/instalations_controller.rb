@@ -14,7 +14,8 @@ class InstalationsController < ApplicationController
   end
 	
 	def create
-		@instalation = Instalation.new(instalation_params)
+		#@instalation = Instalation.new(instalation_params)
+		@instalation = current_user.instalations.build(instalation_params)
 		if @instalation.save
 			redirect_to instalations_path
 			flash[:success] = "New Instalation Saved!!!"
@@ -74,7 +75,7 @@ class InstalationsController < ApplicationController
 	private
 	
 		def instalation_params
-			params.require(:instalation).permit(:name, :version, :os, :source_link, :torun)
+			params.require(:instalation).permit(:name, :version, :os, :source_link, :torun, :user_id)
 		end
 	
 		def correct_user

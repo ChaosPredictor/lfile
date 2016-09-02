@@ -3,7 +3,7 @@ require 'test_helper'
 class InstalationTest < ActiveSupport::TestCase
   def setup
 		@line = Line.first
-		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux", source_link: "web1.com")
+		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux", source_link: "web1.com", user_id: 1)
 		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New", source_link: "web2.com")
 	end
 	
@@ -13,6 +13,11 @@ class InstalationTest < ActiveSupport::TestCase
 	
 	test "name should be present" do
 		@instalation.name = " "
+		assert_not @instalation.valid?
+	end
+	
+	test "user id should be present" do
+		@instalation.user_id = nil
 		assert_not @instalation.valid?
 	end
 	

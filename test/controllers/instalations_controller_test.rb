@@ -7,7 +7,7 @@ class InstalationsControllerTest < ActionController::TestCase
 		@user_notadmin    = users(:archer)		
 	end
 	
-  test "should get new only if login" do
+  test "should create new only if login" do
 		#get :new
 		assert_no_difference 'Instalation.count' do
 			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
@@ -17,17 +17,23 @@ class InstalationsControllerTest < ActionController::TestCase
 		log_in_as(@user_admin)
 		#get :new
 		assert_difference 'Instalation.count' do
-			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com", user_id: Integer(@user_admin.id) }
 		end
 		assert_equal flash[:success], "New Instalation Saved!!!"
 		assert_response :redirect
 		assert_redirected_to instalations_path
+		@instalation2 = Instalation.last
+		assert_match @instalation2.name, "Lorem"
+		assert_match @instalation2.version, "1.1"
+		assert_match @instalation2.os, "new"
+		assert_match @instalation2.source_link, "google.com"
+		assert_equal @instalation2.user_id, Integer(@user_admin.id)
   end
 	
 	test "should create when admin" do
 		log_in_as(@user_admin)
 		assert_difference 'Instalation.count', 1 do
-			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com", user_id: 1 }
 		end
 		assert_redirected_to instalations_path
 		@instalation2 = Instalation.last
@@ -40,7 +46,7 @@ class InstalationsControllerTest < ActionController::TestCase
 	test "should create when logged in" do
 		log_in_as(@user_notadmin)
 		assert_difference 'Instalation.count', 1 do
-			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com", user_id: 1 }
 		end
 		assert_redirected_to instalations_path
 		@instalation2 = Instalation.last
@@ -52,7 +58,7 @@ class InstalationsControllerTest < ActionController::TestCase
 	
 	test "should redirect create when not logged in" do
 		assert_no_difference 'Instalation.count' do
-			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+			post :create, instalation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com", user_id: 1 }
 		end
 		assert_redirected_to login_url
 	end

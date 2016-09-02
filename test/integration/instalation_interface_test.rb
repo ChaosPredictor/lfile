@@ -21,7 +21,7 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Instalation.count', 1 do
-			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
+			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com", user_id: 1 }
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!
@@ -46,12 +46,12 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: 0
 		# Invalid submission
 		assert_no_difference 'Instalation.count' do
-			post instalations_path, instalation: { name: "", version: "1.1", os: "ubuntu", source_link: "" }
+			post instalations_path, instalation: { name: "", version: "1.1", os: "ubuntu", source_link: "", user_id: 1 }
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Instalation.count', 1 do
-			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
+			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com", user_id: 1 }
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!
@@ -77,10 +77,10 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		end
 		get instalations_path
 		assert_match "0 instalations", response.body
-		Instalation.create!(name: "gimp1", version: "1.1", os: "ubuntu", source_link: "gimp1.com")
+		Instalation.create!(name: "gimp1", version: "1.1", os: "ubuntu", source_link: "gimp1.com", user_id: 1)
 		get instalations_path
 		assert_match "1 instalation", response.body
-		Instalation.create!(name: "gimp2", version: "1.1", os: "ubuntu", source_link: "gimp2.com")
+		Instalation.create!(name: "gimp2", version: "1.1", os: "ubuntu", source_link: "gimp2.com", user_id: 1)
 		get instalations_path
 		assert_match "2 instalations", response.body
 	end

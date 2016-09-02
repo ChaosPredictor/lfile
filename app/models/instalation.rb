@@ -1,5 +1,7 @@
 class Instalation < ActiveRecord::Base
-	has_many :lines
+  belongs_to :user
+	has_many :lines	
+	validates :user_id, presence: true
 	validates :name, 
 						presence: true, 
 						length: { maximum: 50 }, 

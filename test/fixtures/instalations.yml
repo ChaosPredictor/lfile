@@ -5,6 +5,7 @@ gimp:
   version: 1.1
   os: linux
   source_link: gimp.com
+  user_id: 1
 
 firefox:
   name: Firefox

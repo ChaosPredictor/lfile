@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901130400) do
+ActiveRecord::Schema.define(version: 20160902134246) do
 
   create_table "instalations", force: :cascade do |t|
     t.string   "name"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20160901130400) do
     t.datetime "updated_at",                  null: false
     t.boolean  "torun",       default: false
     t.string   "source_link"
+    t.integer  "user_id"
   end
 
   add_index "instalations", ["name"], name: "index_instalations_on_name", unique: true
+  add_index "instalations", ["user_id"], name: "index_instalations_on_user_id"
 
   create_table "lines", force: :cascade do |t|
     t.string   "content"
