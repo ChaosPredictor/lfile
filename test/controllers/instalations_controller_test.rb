@@ -107,13 +107,55 @@ class InstalationsControllerTest < ActionController::TestCase
 	test "should edit for admin user version only" do		
 		log_in_as(users(:michael))
 		@instalation = Instalation.first
+		assert_match @instalation.name, "GIMP"
 		assert_match @instalation.version, "1.1"
+		assert_match @instalation.os, "linux"
+		assert_match @instalation.source_link, "gimp.com"
 		assert_no_difference 'Instalation.count' do
 			patch :update, id: @instalation, instalation: {version: "1.2"}
 		end
 		assert_redirected_to instalations_path
 		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "GIMP"
 		assert_match @instalation2.version, "1.2"
+		assert_match @instalation2.os, "linux"
+		assert_match @instalation2.source_link, "gimp.com"
+	end
+	
+	test "should edit for admin user os only" do		
+		log_in_as(users(:michael))
+		@instalation = Instalation.first
+		assert_match @instalation.name, "GIMP"
+		assert_match @instalation.version, "1.1"
+		assert_match @instalation.os, "linux"
+		assert_match @instalation.source_link, "gimp.com"
+		assert_no_difference 'Instalation.count' do
+			patch :update, id: @instalation, instalation: {os: "xos"}
+		end
+		assert_redirected_to instalations_path
+		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "GIMP"
+		assert_match @instalation2.version, "1.1"
+		assert_match @instalation2.os, "xos"
+		assert_match @instalation2.source_link, "gimp.com"
+	end
+	
+	test "should edit for admin user source link only" do		
+		log_in_as(users(:michael))
+		@instalation = Instalation.first
+		assert_match @instalation.name, "GIMP"
+		assert_match @instalation.version, "1.1"
+		assert_match @instalation.os, "linux"
+		assert_match @instalation.source_link, "gimp.com"
+		assert_no_difference 'Instalation.count' do
+			patch :update, id: @instalation, instalation: {source_link: "pmig.com"}
+		end
+		assert_redirected_to instalations_path
+		@instalation2 = Instalation.first
+		assert_match @instalation2.name, "GIMP"
+		assert_match @instalation2.version, "1.1"
+		assert_match @instalation2.os, "linux"
+		assert_match @instalation2.source_link, "pmig.com"
 	end
 	
 	test "should not edit for not admin user" do		
