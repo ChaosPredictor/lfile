@@ -34,6 +34,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
 		assert_select 'h2 div#version', text: 'Version: ' + @instalation.version, count: 1		
 		assert_select 'h2 div#os', text: 'Operation System: ' + @instalation.os, count: 1	
+		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 1	
 		assert_select 'a.edit', text: 'edit', count: 1
 		assert_select 'a.delete', text: 'delete', count: 1
 		assert_select 'a.remove', text: 'remove', count: number_of_steps
@@ -60,6 +61,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 1		
 		assert_select 'h2 div#version', text: 'Version: ' + @instalation.version, count: 1		
 		assert_select 'h2 div#os', text: 'Operation System: ' + @instalation.os, count: 1	
+		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 1	
 		assert_select 'a.edit', text: 'edit', count: 0
 		assert_select 'a.delete', text: 'delete', count: 0
 		assert_select 'a.remove', text: 'remove', count: 0
@@ -82,11 +84,12 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		number_of_steps = @steps.count
 		get instalation_path(@instalation) # SAME AS get :show, id: @instalation
 		assert_redirected_to login_path
-
 		assert_no_match 'Instalation of: ' + String(@instalation.name) , response.body
+		#TODO maybe it should be chnaged
 		assert_select 'h1', text: 'Instalation of: ' + @instalation.name, count: 0		
 		assert_select 'h2 div#version', text: 'Version: ' + @instalation.version, count: 0		
 		assert_select 'h2 div#os', text: 'Operation System: ' + @instalation.os, count: 0	
+		assert_select 'h2 div#source_link', text: 'Source link: ' + @instalation.source_link, count: 0
 		assert_select 'a.edit', text: 'edit', count: 0
 		assert_select 'a.delete', text: 'delete', count: 0
 		assert_select 'a.remove', text: 'remove', count: 0
@@ -110,6 +113,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'input#instalation_name', value: @instalation.name, count: 1		
 		assert_select 'input#instalation_version', value: @instalation.version, count: 1		
 		assert_select 'input#instalation_os', value: @instalation.os, count: 1		
+		assert_select 'input#instalation_source_link', value: @instalation.source_link, count: 1		
 		assert_select 'input.btn', type: "submit", value: "Save changes", count: 1		
 	end
 	
@@ -122,6 +126,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'input#instalation_name', value: @instalation.name, count: 0	
 		assert_select 'input#instalation_version', value: @instalation.version, count: 0		
 		assert_select 'input#instalation_os', value: @instalation.os, count: 0
+		assert_select 'input#instalation_source_link', value: @instalation.source_link, count: 0		
 		assert_select 'input.btn', type: "submit", value: "Save changes", count: 0	
 	end
 
@@ -133,6 +138,7 @@ class InstalationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'input#instalation_name', value: @instalation.name, count: 0	
 		assert_select 'input#instalation_version', value: @instalation.version, count: 0		
 		assert_select 'input#instalation_os', value: @instalation.os, count: 0
+		assert_select 'input#instalation_source_link', value: @instalation.source_link, count: 0				
 		assert_select 'input.btn', type: "submit", value: "Save changes", count: 0	
 	end
 
