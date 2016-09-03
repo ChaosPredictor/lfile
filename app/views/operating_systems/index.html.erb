@@ -1,0 +1,25 @@
+<% provide(:title, 'All Operating Systems') %>
+<h1>Operating System list</h1>
+<div class="row">
+	<%= form_for(operating_systems_path) do |f| %>
+		<%= hidden_field_tag :id, 2%>
+	
+		<div class="col-md-6">
+			<span><%= pluralize(@operating_systems.count, "operating system") %></span>
+	
+			<%= will_paginate %>
+
+			<ul class="operating_systems">
+				<!--%= render @instalations %-->
+				<%= render @operating_systems,  f: f  %>
+			</ul>
+
+			<%= will_paginate %>
+		</div>
+		<div class="col-md-6">	
+			<div class="row">
+				<%= link_to "Add New Operating System", osnew_path %>
+			</div>
+		</div>
+	<% end %>
+</div>	

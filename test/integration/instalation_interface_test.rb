@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class InstalationInterfaceTest < ActionDispatch::IntegrationTest
-  def setup
+
+	def setup
 		@user = users(:michael)
 		@user_notAdmin = users(:archer)
 	end

@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  version: MyString
-
-two:
-  name: MyString
-  version: MyString
+linux:
+  name: "linux"
+  version: "16.04"

@@ -1,34 +1,23 @@
 Rails.application.routes.draw do
 
   get 'operating_systems/new'
-
-  get 'operating/systems'
-
-  get 'operating/new'
-
+  #get 'operating_systems/edit'	
+  #get 'operating/systems'
+  #get 'operating/new'
   get 'run_files/new'
-
   get 'lines/new'
-
   get 'instalations/new'
-
   get 'password_resets/new'
-
   get 'password_resets/edit'
-
   get 'sessions/new'
-
   get 'users/new'
-
-  get 'users/new'
-
-  get 'users/new'
+  #get 'users/new'
+  #get 'users/new'
 
   #get 'static_pages/help'
   #get 'static_pages/about'
   #get 'static_pages/contact'
   #root 'static_pages#home'
-
 
 	root                       'static_pages#home'
 	get    'help'           => 'static_pages#help'
@@ -44,6 +33,7 @@ Rails.application.routes.draw do
 	get    'createfile'     => 'run_files#new'
 	post   'createfile'     => 'run_files#create'
 	post   'download_file'  => 'run_files#download_file'
+	get    'osnew'     => 'operating_systems#new'
 	resources :users do
 		member do
 			get :following, :followers
@@ -63,6 +53,7 @@ Rails.application.routes.draw do
 	resources :lines#,            only: [:create, :destroy]	
 	resources :steps
 	resources :run_files
+	resources :operating_systems	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
