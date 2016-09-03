@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'operating_systems/new'
+
+  get 'operating/systems'
+
+  get 'operating/new'
+
   get 'run_files/new'
 
   get 'lines/new'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902134246) do
+ActiveRecord::Schema.define(version: 20160903115120) do
 
   create_table "instalations", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20160902134246) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "operating_systems", force: :cascade do |t|
+    t.string   "name"
+    t.string   "version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
