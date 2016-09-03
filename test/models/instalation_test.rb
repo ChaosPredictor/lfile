@@ -2,6 +2,7 @@ require 'test_helper'
 
 class InstalationTest < ActiveSupport::TestCase
   def setup
+		@user = users(:michael)
 		@line = Line.first
 		@instalation  = Instalation.new(name: "R", version: "1.1", os: "Linux", source_link: "web1.com", user_id: 1)
 		@instalation2 = Instalation.new(name: "R", version: "2.1", os: "New", source_link: "web2.com")
@@ -40,6 +41,16 @@ class InstalationTest < ActiveSupport::TestCase
 		@instalation.source_link = "a" * 129
 		assert_not @instalation.valid?
 	end
+	
+	test "user id should not be nil" do
+		@instalation.user_id = nil
+		assert_not @instalation.valid?
+	end
+
+	test "user id should be user id" do
+		@instalation.user_id = @user.id
+		assert @instalation.valid?
+	end	
 	
 	test "name should be unique" do
 		duplicate_instalation = @instalation.dup

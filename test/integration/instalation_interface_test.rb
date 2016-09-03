@@ -21,7 +21,7 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Instalation.count', 1 do
-			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com", user_id: 1 }
+			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!
@@ -46,12 +46,12 @@ class InstalationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: 0
 		# Invalid submission
 		assert_no_difference 'Instalation.count' do
-			post instalations_path, instalation: { name: "", version: "1.1", os: "ubuntu", source_link: "", user_id: 1 }
+			post instalations_path, instalation: { name: "", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Instalation.count', 1 do
-			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com", user_id: 1 }
+			post instalations_path, instalation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!
