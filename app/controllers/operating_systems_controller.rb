@@ -33,7 +33,7 @@ class OperatingSystemsController < ApplicationController
 	def update
 		@operating_system = OperatingSystem.find(params[:id])
 		if @operating_system.update_attributes(operating_system_params)
-			flash[:success] = "You know what you're doing!"
+			flash[:success] = "Operating System Editted!"
 			redirect_to operating_systems_path
 			#flash[:error] = "You know what you're doing!"			
 		else
@@ -44,7 +44,7 @@ class OperatingSystemsController < ApplicationController
 	
 	def destroy
 		if OperatingSystem.find(params[:id]).destroy
-			flash[:success] = "Operating System deleted from the list"
+			flash[:success] = "Operating System Deleted from the list!"
 			redirect_to operating_systems_path
 		else
 			redirect_to root_path
