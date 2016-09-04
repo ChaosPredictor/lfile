@@ -1,7 +1,6 @@
 class OperatingSystemsController < ApplicationController
-  before_action :logged_in_user,   only: [:new, :create, :edit, :update, :show, :index, :destroy]
-	#before_action :logged_in_user,   only: [:edit, :update, :destroy, :create, :new, :show]
-  before_action :admin_user,   only: [:edit, :update, :create, :index]
+  before_action :logged_in_user,   only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :admin_user,       only: [        :show, :new, :create, :edit, :update, :destroy]
 	
 	
 	def show
