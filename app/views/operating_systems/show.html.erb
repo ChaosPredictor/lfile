@@ -1,0 +1,26 @@
+<% provide(:title, "Orepating System " + @operating_system.name) %>
+<div class="row">
+	<h1>
+				<%= "Orepating System: " + @operating_system.name %>
+	</h1>	
+	<aside class="col-md-4">
+		<section class="user_info">
+			<h2>
+				<div id="version">
+					Version: <%= @operating_system.version %>
+				</div>
+				<!--div id="added_by"-->
+					Added by: <!--%= link_to String(@user.name), @user, :target => '_blank' %-->
+				<!--/div-->
+				<div>
+					<!--% if current_user.admin? && !current_user?(@user) TODO understand why it's not working %--> 
+					<% if logged_in? && current_user.admin? %>
+						<%= link_to "edit", edit_operating_system_path(@operating_system), :class => "edit" %>
+						<%= link_to "delete", @operating_system, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+					<% end %>
+				</div>
+			</h2>
+			</section-->
+		</section>
+	</aside>
+</div>
