@@ -3,9 +3,9 @@ require 'test_helper'
 class StepTest < ActiveSupport::TestCase
   
 	def setup
-		@step = Step.new(instalation_id: 1, line_id: 1, order: 1)
-		@instalation = instalations(:gimp)
-		@instalation2 = instalations(:firefox)
+		@step = Step.new(installation_id: 1, line_id: 1, order: 1)
+		@installation = installations(:gimp)
+		@installation2 = installations(:firefox)
 		@line = lines(:first)
 		@lineb = lines(:second)
 		@step1 = steps(:s1)
@@ -20,8 +20,8 @@ class StepTest < ActiveSupport::TestCase
 		assert @step.valid?
 	end
 	
-	test "should require a instalation_id" do
-		@step.instalation_id = nil
+	test "should require a installation_id" do
+		@step.installation_id = nil
 		assert_not @step.valid?
 	end
 	
@@ -46,50 +46,50 @@ class StepTest < ActiveSupport::TestCase
 		assert @step.valid?		
 	end
 	
-	test "should add and remove line from 2 instalations" do
-		assert_not @instalation.line?(@line)
-		assert_not @instalation.line?(@line2)
-		assert_not @instalation2.line?(@line)
-		assert_not @instalation2.line?(@line2)
-		@instalation.addline(@line, 1)
-		@instalation2.addline(@lineb, 1)
-		assert @instalation.line?(@line)
-		assert @instalation2.line?(@lineb)
-		assert_not @instalation.line?(@lineb)
-		assert_not @instalation2.line?(@line)
-		@instalation.addline(@lineb, 13)
-		assert @instalation.line?(@line)
-		assert @instalation2.line?(@lineb)
-		assert @instalation.line?(@lineb)
-		assert_not @instalation2.line?(@line)
-		@instalation2.addline(@line, 14)
-		assert @instalation.line?(@line)
-		assert @instalation2.line?(@lineb)
-		assert @instalation.line?(@lineb)
-		assert @instalation2.line?(@line)
-		@instalation2.addline(@line, 2)
-		assert @instalation.line?(@line)
-		assert @instalation2.line?(@lineb)
-		assert @instalation.line?(@lineb)
-		assert @instalation2.line?(@line)
-		#@instalation.removeline(@lineb, 2)
-		#assert @instalation.line?(@line)
-		#assert @instalation2.line?(@lineb)
-		#assert_not @instalation.line?(@lineb)
-		#assert @instalation2.line?(@line)		
+	test "should add and remove line from 2 installations" do
+		assert_not @installation.line?(@line)
+		assert_not @installation.line?(@line2)
+		assert_not @installation2.line?(@line)
+		assert_not @installation2.line?(@line2)
+		@installation.addline(@line, 1)
+		@installation2.addline(@lineb, 1)
+		assert @installation.line?(@line)
+		assert @installation2.line?(@lineb)
+		assert_not @installation.line?(@lineb)
+		assert_not @installation2.line?(@line)
+		@installation.addline(@lineb, 13)
+		assert @installation.line?(@line)
+		assert @installation2.line?(@lineb)
+		assert @installation.line?(@lineb)
+		assert_not @installation2.line?(@line)
+		@installation2.addline(@line, 14)
+		assert @installation.line?(@line)
+		assert @installation2.line?(@lineb)
+		assert @installation.line?(@lineb)
+		assert @installation2.line?(@line)
+		@installation2.addline(@line, 2)
+		assert @installation.line?(@line)
+		assert @installation2.line?(@lineb)
+		assert @installation.line?(@lineb)
+		assert @installation2.line?(@line)
+		#@installation.removeline(@lineb, 2)
+		#assert @installation.line?(@line)
+		#assert @installation2.line?(@lineb)
+		#assert_not @installation.line?(@lineb)
+		#assert @installation2.line?(@line)		
 	end
 	
-	test "should add and remove line from one instalation" do
-		assert_not @instalation.line?(@line1)
-		assert_not @instalation.line?(@line2)
-		assert_not @instalation.line?(@line3)
-		assert_not @instalation.line?(@line4)
-#		assert_not @instalation.line?(@line5)
-#		assert_not @instalation.line?(@line6)
-#		assert_not @instalation.line?(@line7)
-#		assert_not @instalation.line?(@line8)	
-#		assert_not @instalation.line?(@line9)
-#		assert_not @instalation.line?(@line10)
+	test "should add and remove line from one installation" do
+		assert_not @installation.line?(@line1)
+		assert_not @installation.line?(@line2)
+		assert_not @installation.line?(@line3)
+		assert_not @installation.line?(@line4)
+#		assert_not @installation.line?(@line5)
+#		assert_not @installation.line?(@line6)
+#		assert_not @installation.line?(@line7)
+#		assert_not @installation.line?(@line8)	
+#		assert_not @installation.line?(@line9)
+#		assert_not @installation.line?(@line10)
 #		assert_match Step.all, "dsfgds"
 #		Step.create(:step, @step1)
 	end

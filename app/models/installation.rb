@@ -1,4 +1,4 @@
-class Instalation < ActiveRecord::Base
+class Installation < ActiveRecord::Base
   belongs_to :user
 	has_many :lines	
 	validates :user_id, presence: true
@@ -17,13 +17,13 @@ class Instalation < ActiveRecord::Base
 	#has_many :steps
 	has_many :active_steps, 	
 						class_name: "Step",
-						foreign_key: "instalation_id",
+						foreign_key: "installation_id",
 						dependent: :destroy
 	has_many :hasline, #-> { order "steps[:order]" },#:order => 'active_steps.order',
 					through: :active_steps,
 					source: :line
 	
-	# Returns true if the current instalation has the line.
+	# Returns true if the current installation has the line.
 	def hasline?(line)
 		lines.include?(line)
 	end
@@ -34,17 +34,17 @@ class Instalation < ActiveRecord::Base
 	
 	# Add line to instaaltion.
 	def addline(line, order)
-		#steps.create(instalation_id: self, line_id: line.id, order: order)
+		#steps.create(installation_id: self, line_id: line.id, order: order)
 		active_steps.create(line_id: line.id, order: order)
 	end
 	
-	# Reomve line from instalation.
+	# Reomve line from installation.
 	def removeline(step, order)
 		#active_steps.find_by(line_id: line.id).destroy
 		active_steps.find_by(id: step.id).destroy
 		
 		#active_relationships.find_by(followed_id: other_user.id).destroy
-		#steps.find_by(instalation_id: self, line_id: line.id).destroy
+		#steps.find_by(installation_id: self, line_id: line.id).destroy
 	end
 	
 	def step?(line)

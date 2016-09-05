@@ -4,15 +4,15 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<!--%= form_for(:run_file, url: createfile_path) do |f| %-->
-		<%= form_for(:Instalation, url: createfile_path(@instalations)) do |f| %>
+		<%= form_for(:Installation, url: createfile_path(@installations)) do |f| %>
 			
-			<!--%= render @instalations,  f: f  %-->
+			<!--%= render @installations,  f: f  %-->
 		
 		
-				<% @instalations.each do |product| -%>
+				<% @installations.each do |product| -%>
 
   				<!--%= fields_for 'product[]' , product do |product_fields| -%-->
-  				<%= fields_for '@instalations[]' , product do |product_fields| -%>
+  				<%= fields_for '@installations[]' , product do |product_fields| -%>
 					<div class="row">
  					<div class="col-md-1">
 						<!--%= product_fields.check_box :torun %-->

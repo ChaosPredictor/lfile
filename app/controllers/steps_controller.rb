@@ -4,19 +4,19 @@ class StepsController < ApplicationController
 
 	def destroy
 		@step = Step.find(params[:id])
-		@instalation = Instalation.find(@step[:instalation_id])
+		@installation = installation.find(@step[:installation_id])
 		@order = @step[:order]
-		@instalation.removeline(@step, @order)
-		@high = highest_order(@instalation)
+		@installation.removeline(@step, @order)
+		@high = highest_order(@installation)
 		if ((@order != @hign) && (@high != nil))
-			@steps = all_step_of_instalation(@instalation)
+			@steps = all_step_of_installation(@installation)
 			(@order..@high-1).each do |i|
 				@steps[i].update(order: i)
 			end
 		end
-		#redirect_to @instalation		
+		#redirect_to @installation		
 		respond_to do |format|
-			format.html { redirect_to @instalation }
+			format.html { redirect_to @installation }
 			format.js
 		end
 	end
@@ -24,12 +24,12 @@ class StepsController < ApplicationController
 	def create
 		#TODO understand why it's with :step
 		@line = Line.find(params[:step][:line_id])
-		@instalation = Instalation.find(params[:instalation_id])
-		@order = first_empty_order(@instalation)
-		@instalation.addline(@line, @order)
-		#redirect_to @instalation
+		@installation = installation.find(params[:installation_id])
+		@order = first_empty_order(@installation)
+		@installation.addline(@line, @order)
+		#redirect_to @installation
 		respond_to do |format|
-			format.html { redirect_to @instalation }
+			format.html { redirect_to @installation }
 			format.js
 		end
 	end
@@ -37,8 +37,8 @@ class StepsController < ApplicationController
 	
 	private
 	
-		def first_empty_order(instalation)
-			@steps = all_step_of_instalation(instalation)
+		def first_empty_order(installation)
+			@steps = all_step_of_installation(installation)
 			if @steps.empty?
 				return 0
 			end
@@ -51,8 +51,8 @@ class StepsController < ApplicationController
 			return @max + 1
 		end
 	
-		def highest_order(instalation)
-			@steps = all_step_of_instalation(instalation)
+		def highest_order(installation)
+			@steps = all_step_of_installation(installation)
 			if @steps.empty?
 				return nil
 			else
@@ -60,7 +60,7 @@ class StepsController < ApplicationController
 			end
 		end
 		
-		def all_step_of_instalation(instalation)
-			return Step.all.select {|step| step[:instalation_id] == instalation[:id] }.sort_by { |step| step[:order] }
+		def all_step_of_installation(installation)
+			return Step.all.select {|step| step[:installation_id] == installation[:id] }.sort_by { |step| step[:order] }
 		end
 end

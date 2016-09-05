@@ -51,24 +51,27 @@ when "development"
 	followers.each { |follower| follower.follow(user) }
 
 
-	#Instalation
-	Instalation.create!(
+	#Installation
+	Installation.create!(
 	  name: "GIMP",
 	  version: "1.1",
 	  os: "linux",
-		source_link: "gimp.com"
+		source_link: "gimp.com",
+		user_id: 1
 		)
 
-	Instalation.create!(
+	Installation.create!(
 	  name: "Firefox",
 	  version: "40.1",
-	  os: "linux"
+	  os: "linux",
+		user_id: 1
 		)
 
-	Instalation.create!(
+	Installation.create!(
 	  name: "VLC",
 	  version: "4.1",
-	  os: "linux"
+	  os: "linux",
+		user_id: 1
 		)
 
 	#Line
@@ -97,92 +100,92 @@ when "development"
 	#Step
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 3,
 		order: 0
 		)
 
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 1,
 		order: 1
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 2,
 		order: 3
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 3,
 		order: 5
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 4,
 		order: 7
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 3,
 		order: 8
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 2,
 		order: 6
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 1,
 		order: 4
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 4,
 		order: 2
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 1,
 		order: 9
 		)
 
 	Step.create!(
-		instalation_id: 1,
+		installation_id: 1,
 		line_id: 3,
 		order: 10
 		)
 
 	Step.create!(
-		instalation_id: 2,
+		installation_id: 2,
 		line_id: 1,
 		order: 0
 		)
 
 	Step.create!(
-		instalation_id: 2,
+		installation_id: 2,
 		line_id: 4,
 		order: 1
 		)
 
 	Step.create!(
-		instalation_id: 2,
+		installation_id: 2,
 		line_id: 2,
 		order: 2
 		)
 
 	Step.create!(
-		instalation_id: 2,
+		installation_id: 2,
 		line_id: 3,
 		order: 3
 		)

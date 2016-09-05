@@ -5,7 +5,7 @@ class LineTest < ActiveSupport::TestCase
 		@line = Line.new(content: "sudo apt-get update3", index: 20)
 		@line2 = Line.new(content: "line for test", index: 21)
 		@line3 = Line.new(content: "line for test3", index: 22)		
-		@instalation = instalations(:gimp)
+		@installation = installations(:gimp)
 	end
 
 	test "should be valid" do

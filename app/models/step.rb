@@ -1,7 +1,7 @@
 class Step < ActiveRecord::Base
-	belongs_to :instalation,  class_name: "Instalation"
+	belongs_to :installation,  class_name: "Installation"
   belongs_to :line,         class_name: "Line"
-	validates :instalation_id, presence: true
+	validates :installation_id, presence: true
 	validates :line_id, presence: true
 	validates :order,
 						numericality: { only_integer: true, 
@@ -10,7 +10,7 @@ class Step < ActiveRecord::Base
 													},
 						presence: true
 	
-	#def move_down(instalation)
+	#def move_down(installation)
 	#	@steps = 		
 	#end
 end

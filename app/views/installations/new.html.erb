@@ -1,9 +1,9 @@
-<% provide(:title, "Edit Instalation " + String(@instalation.id)) %>
-<h1>Edit Instalation</h1>
+<% provide(:title, 'Installations') %>
+<h1>Installations</h1>
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for(@instalation) do |f| %>
+		<%= form_for(@installation) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			<%= f.label :name %>
 			<%= f.text_field :name, class: 'form-control' %>
@@ -13,11 +13,12 @@
 
 			<%= f.label :os %>
 			<%= f.text_field :os, class: 'form-control' %>
+			<!--%= f.collection_select :os, class: 'form-control' %-->			
 		
 			<%= f.label :source_link %>
 			<%= f.text_field :source_link, class: 'form-control' %>
 
-			<%= f.submit "Save changes", class: "btn btn-primary" %>
+			<%= f.submit "Create my new Installation", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>

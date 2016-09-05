@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #get 'operating/new'
   get 'run_files/new'
   get 'lines/new'
-  get 'instalations/new'
+  get 'installations/new'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
@@ -27,9 +27,9 @@ Rails.application.routes.draw do
 	get    'login'          => 'sessions#new'
 	post   'login'          => 'sessions#create'
 	delete 'logout'         => 'sessions#destroy'
-	get    'instalations'   => 'instalations#index'
-	get    'instanew'       => 'instalations#new'
-	get    'instaedit'      => 'instalations#edit'
+	get    'installations'  => 'installations#index'
+	get    'instanew'       => 'installations#new'
+	get    'instaedit'      => 'installations#edit'
 	get    'createfile'     => 'run_files#new'
 	post   'createfile'     => 'run_files#create'
 	post   'download_file'  => 'run_files#download_file'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 			get :following, :followers
 		end
 	end
-	resources :instalations do
+	resources :installations do
 		member do
 			get :lines
 		end
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 	resources :password_resets,       only: [:new, :create, :edit, :update]
 	resources :microposts,            only: [:create, :destroy]
 	resources :relationships,         only: [:create, :destroy]
-	resources :instalations#,          only: [:new, :index, :edit, :update, :create, :destroy]
+	resources :installations#,          only: [:new, :index, :edit, :update, :create, :destroy]
 	resources :lines#,            only: [:create, :destroy]	
 	resources :steps
 	resources :run_files

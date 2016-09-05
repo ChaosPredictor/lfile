@@ -1,6 +1,6 @@
-class CreateInstalations < ActiveRecord::Migration
+class CreateInstallations < ActiveRecord::Migration
   def change
-    create_table :instalations do |t|
+    create_table :installations do |t|
       t.string :name
       t.string :version
       t.string :os

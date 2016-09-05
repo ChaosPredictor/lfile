@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160903115120) do
 
-  create_table "instalations", force: :cascade do |t|
+  create_table "installations", force: :cascade do |t|
     t.string   "name"
     t.string   "version"
     t.string   "os"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160903115120) do
     t.integer  "user_id"
   end
 
-  add_index "instalations", ["name"], name: "index_instalations_on_name", unique: true
-  add_index "instalations", ["user_id"], name: "index_instalations_on_user_id"
+  add_index "installations", ["name"], name: "index_installations_on_name", unique: true
+  add_index "installations", ["user_id"], name: "index_installations_on_user_id"
 
   create_table "lines", force: :cascade do |t|
     t.string   "content"
@@ -66,15 +66,15 @@ ActiveRecord::Schema.define(version: 20160903115120) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "steps", force: :cascade do |t|
-    t.integer  "instalation_id"
+    t.integer  "installation_id"
     t.integer  "line_id"
     t.integer  "order"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "steps", ["instalation_id", "order"], name: "index_steps_on_instalation_id_and_order", unique: true
-  add_index "steps", ["instalation_id"], name: "index_steps_on_instalation_id"
+  add_index "steps", ["installation_id", "order"], name: "index_steps_on_installation_id_and_order", unique: true
+  add_index "steps", ["installation_id"], name: "index_steps_on_installation_id"
   add_index "steps", ["line_id"], name: "index_steps_on_line_id"
 
   create_table "users", force: :cascade do |t|

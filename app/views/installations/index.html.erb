@@ -1,24 +1,24 @@
-<% provide(:title, 'All Instalations') %>
-<h1>All Instalations</h1>
+<% provide(:title, 'All Installations') %>
+<h1>All Installations</h1>
 <div class="row">
-	<%= form_for(instalations_path ) do |f| %>
+	<%= form_for(installations_path ) do |f| %>
 		<%= hidden_field_tag :id, 2%>
 	
 		<div class="col-md-6">
-			<span><%= pluralize(@instalations.count, "instalation") %></span>
+			<span><%= pluralize(@installations.count, "installation") %></span>
 	
 			<%= will_paginate %>
 
-			<ul class="instalations">
-				<!--%= render @instalations %-->
-				<%= render @instalations,  f: f  %>
+			<ul class="installations">
+				<!--%= render @installations %-->
+				<%= render @installations,  f: f  %>
 			</ul>
 
 			<%= will_paginate %>
 		</div>
 		<div class="col-md-6">	
 			<div class="row">
-				<%= link_to "Create New Instalation", instanew_path %>
+				<%= link_to "Create New Installation", instanew_path %>
 			</div>
 			<div class="row">
 			<!--%= f.submit "Add line", class: "btn btn-primary" %-->

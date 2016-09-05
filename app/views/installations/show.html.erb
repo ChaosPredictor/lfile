@@ -1,20 +1,20 @@
-<% provide(:title, "Instalation " + @instalation.name) %>
+<% provide(:title, "Installation " + @installation.name) %>
 <div class="row">
 	<h1>
-				<%= "Instalation of: " + @instalation.name %>
+				<%= "Installation of: " + @installation.name %>
 	</h1>	
 	<aside class="col-md-4">
 		<section class="user_info">
 			<h2>
 				<div id="version">
-					Version: <%= @instalation.version %>
+					Version: <%= @installation.version %>
 				</div>
 				<div id="os">
-					Operation System: <%= @instalation.os %>
+					Operation System: <%= @installation.os %>
 				</div>
 				<div id="source_link">
-					<% if @instalation.source_link != nil %>
-						Source link: <%= link_to String(@instalation.source_link), url_with_protocol(@instalation.source_link), :target => '_blank' %>
+					<% if @installation.source_link != nil %>
+						Source link: <%= link_to String(@installation.source_link), url_with_protocol(@installation.source_link), :target => '_blank' %>
 					<% else %>
 						No link attached
 					<% end %>
@@ -25,8 +25,8 @@
 				<div>
 					<!--% if current_user.admin? && !current_user?(@user) TODO understand why it's not working %--> 
 					<% if current_user.admin? %>
-						<%= link_to "edit", edit_instalation_path(@instalation), :class => "edit" %>
-						<%= link_to "delete", @instalation, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
+						<%= link_to "edit", edit_installation_path(@installation), :class => "edit" %>
+						<%= link_to "delete", @installation, method: :delete, data: { confirm: "You sure?" }, :class => "delete" %>
 					<% end %>
 				</div>
 			</h2>
@@ -43,8 +43,8 @@
 				<%= render @steps %>
 			</div>
 		<% end %>
-		<%= form_for(@instalation.active_steps.build, remote: false) do |f| %>		
-			<div><%= hidden_field_tag :instalation_id, @instalation.id %></div>
+		<%= form_for(@installation.active_steps.build, remote: false) do |f| %>		
+			<div><%= hidden_field_tag :installation_id, @installation.id %></div>
 				<!--TODO change to dinamic -->	
 			<div class="col-md-10">
 				<%= f.collection_select(:line_id, Line.all, :id, :content) %>
