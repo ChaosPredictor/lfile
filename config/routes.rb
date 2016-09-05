@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #get 'static_pages/contact'
   #root 'static_pages#home'
 
-	root                       'static_pages#home'
+	root                       'static_pages#home' #'run_files#new'
 	get    'help'           => 'static_pages#help'
 	get    'about'          => 'static_pages#about'
 	get    'contact'        => 'static_pages#contact'

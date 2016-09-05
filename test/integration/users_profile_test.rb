@@ -24,7 +24,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get root_path
 		assert_template 'static_pages/home'
-		assert_select 'title', full_title("")
+		assert_select 'title', full_title("Home")
 		assert_select 'h3', text: @user.name
 		assert_select 'a>img.gravatar'
 		id = @user.id
