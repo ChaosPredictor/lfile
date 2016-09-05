@@ -5,9 +5,15 @@
 	</small>
 	<nav>
 		<ul>
-			<li><%= link_to "Help", help_path %></li>
-			<li><%= link_to "About", about_path %></li>
-			<li><%= link_to "Contact", contact_path %></li>
+			<% if current_page != "help" %>
+				<li><%= link_to "Help", help_path %></li>
+			<% end %>
+			<% if current_page != "about" %>
+				<li><%= link_to "About", about_path %></li>
+			<% end %>
+			<% if current_page != "contact" %>
+				<li><%= link_to "Contact", contact_path %></li>
+			<% end %>			
 			<li><a href="http://news.railstutorial.org/">News</a></li>
 		</ul>
 	</nav>

@@ -66,4 +66,15 @@ module SessionsHelper
 		!current_user.admin?
 	end
 	
+	def current_page
+		current_uri = request.env['PATH_INFO']
+		if current_uri == "/help"
+			@current_page = "help"
+		elsif current_uri == "/about"
+			@current_page = "about"
+		elsif current_uri == "/contact"
+			@current_page = "contact"	
+		end
+	end
+	
 end
