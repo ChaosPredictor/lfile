@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
-	before_action :correct_user,   only: [:edit, :update]
-	before_action :admin_user,     only: [:destroy]
+	before_action :not_logged_in_user,  only: [:new, :create]
+	before_action :logged_in_user,      only: [:index, :show, :edit, :update, :destroy, :following, :followers]
+	before_action :correct_user,        only: [        :show, :edit, :update]
+	before_action :admin_user,          only: [:destroy]
 	
 	def index
 		#@users = User.all #without paginate
@@ -90,7 +91,10 @@ class UsersController < ApplicationController
 		# Confirms the correct user.
 		def correct_user
 			@user = User.find(params[:id])
-			redirect_to(root_url) unless current_user?(@user)
+			unless current_user?(@user)
+				flash[:danger] = "Log in as a right user!"
+				redirect_to root_url
+			end
 		end
 	
 		# Confirms an admin user.

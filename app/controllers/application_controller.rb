@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
 			end
 		end
 	
+		def not_logged_in_user
+			unless !logged_in?
+				flash[:danger] = "Log out first!"
+				redirect_to root_url
+			end
+		end
+	
 		# Returns the current logged-in user (if any).
 		def current_user
 			if (user_id = session[:user_id])
