@@ -2,16 +2,43 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 	def setup
-		@user        = 	users(:michael)
-		@other_user  = users(:archer)
+		@user         =	users(:michael)
+		@other_user   = users(:archer)
 		@other_user2  = users(:lana)		
 	end
 	
-	test "should get new" do
-    get :new
-    assert_response :success
+	#User Not logged in
+	####################################################
+	
+	test "should not get index for not logged in user" do
+    get :index
+		assert_not flash.empty?
+		assert_equal "Please log in.", flash[:danger]
   end
+	
+	test "should not get show for not logged in user" do
+    get :show, id: @user
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+  end
+	
+	test "should get new for not logged in user" do
+    get :new
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: "Sign up", count: 1
+  end	
+	
+	test "should get create for not logged in user" do
+    get :create, id: @user, user: { name: "My Name", email: "this@my.email", password: "password", password_confirmation: "password"}
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_not flash.empty?
+		assert_equal  "Please check your email to activate your account.", flash[:success]
+	end
 
+	
+	
 	test "should redirect edit when not logged in" do
 		get :edit, id: @user
 		assert_not flash.empty?
