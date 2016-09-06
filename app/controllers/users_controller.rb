@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :not_logged_in_user,  only: [:new, :create]
-	before_action :logged_in_user,      only: [:index, :show, :edit, :update, :destroy, :following, :followers]
-	before_action :correct_user,        only: [        :show, :edit, :update]
+	before_action :logged_in_user,      only: [              :index, :show, :edit, :update, :destroy, :following, :followers]
+	before_action :correct_user,        only: [                      :show, :edit, :update]
 	before_action :admin_user,          only: [:destroy]
 	
 	def index
@@ -44,7 +44,8 @@ class UsersController < ApplicationController
 		if @user.update_attributes(user_params)
 			#flash[:success] = "Profile updated"
 			redirect_to @user
-			flash[:success] = "Nice Chose, Welcome back!"
+			flash[:success] = "Nice Chose, Welcome back!"			
+
 			#redirect_to @user
 		else
 			render 'edit'

@@ -26,7 +26,7 @@ lana:
   name: Lana Kaneemail
   email: hands@example.gov
   password_digest: <%= User.digest('password') %>
-  activated: false
+  activated: true
   activated_at: <%= Time.zone.now %>
 
 malory:
