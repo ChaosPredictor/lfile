@@ -2,11 +2,104 @@ require 'test_helper'
 
 class InstallationsControllerTest < ActionController::TestCase
 	def setup
-		@installation      = installations(:gimp)
+		@installation     = installations(:gimp)
 		@user_admin       = users(:michael)
 		@user_notadmin    = users(:archer)		
 	end
 	
+	#Not Log in user
+	#######################################
+	
+	test "not logged in should index" do
+		get :index
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: "All Installations", count: 1
+	end
+
+	test "not logged in should not show" do
+    get :show, id: @installation
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+
+	test "not logged in should not new" do
+    get :new
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+	
+	test "not logged in should not create" do
+		assert_no_difference 'Installation.count' do
+			get :create, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+		end
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+	
+	test "not logged in should not edit" do
+    get :edit, id: @installation
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+	
+	test "not logged in should not update" do
+    patch :update, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+	
+	test "not logged in should not destroy" do
+		assert_no_difference 'Installation.count' do
+			delete :destroy, id: @installation
+		end
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to login_path
+		assert_not flash.empty?
+		assert_equal  "Please log in.", flash[:danger]
+	end
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	#Should move to view tests
   test "should create new only if login" do
 		#get :new
 		assert_no_difference 'Installation.count' do
