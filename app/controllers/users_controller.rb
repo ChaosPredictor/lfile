@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :not_logged_in_user,  only: [:new, :create]
 	before_action :logged_in_user,      only: [              :index, :show, :edit, :update, :destroy, :following, :followers]
-	before_action :correct_user,        only: [                        :update]
+	before_action :correct_user,        only: [                      ]
 	before_action :admin_user,          only: [              			    :destroy]
 	
 
@@ -53,22 +53,40 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-		#@user = User.find(params[:id])
-		if @user.update_attributes(user_params)
+		@user = User.find(params[:id])
+		if (current_user?(@user) or current_user.admin?)
+			if @user.update_attributes(user_params)
 			#flash[:success] = "Profile updated"
-			redirect_to @user
-			flash[:success] = "Nice Chose, Welcome back!"			
-
-			#redirect_to @user
+				redirect_to @user
+				if current_user?(@user)
+					if current_user.admin?
+						flash[:success] = "As usual, Nice Chose, Boss!"
+					else
+						flash[:success] = "Nice Chose, Welcome back!"	
+					end
+				else
+					flash[:success] = "Nice Chose, Boss!"
+				end
+				#redirect_to @user
+			else
+				render 'edit'
+			end
 		else
-			render 'edit'
+			redirect_to root_url		
+			flash[:danger] = "Log in as a right user!"	
 		end
 	end
 	
 	def destroy
-		User.find(params[:id]).destroy
-		flash[:success] = "User deleted"
-		redirect_to users_url
+		@user = User.find(params[:id])
+		if current_user?(@user)
+			flash[:danger] = "You can't do it for yourself, Boss!"
+			redirect_to root_url
+		else
+			@user.destroy
+			flash[:success] = "Yes it was a bad guy, Boss!"
+			redirect_to users_url
+		end
 	end
 	
 	def following

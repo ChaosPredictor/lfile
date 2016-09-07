@@ -60,36 +60,20 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :redirect
 		assert_redirected_to login_url
 		assert_equal flash[:danger], "Please log in."
-	end	
+	end
 	
-	#User logged in, not admin
-	####################################################
+	#User logged in don't care (Correct) not admin
+	####################################################	
 	
-	test "should get index for logged in user, not admin" do
+	test "logged in, don't care, not admin should index" do
 		log_in_as(@user_notadmin)
     get :index
 		assert_equal 200, response.status
     assert_response :success
 		assert_select 'h1', text: "All users", count: 1		
-  end
+  end	
 	
-	test "should get show for correct logged in user, not admin" do
-		log_in_as(@user_notadmin)
-    get :show, id: @user_notadmin
-		assert_equal 200, response.status
-    assert_response :success
-		assert_select 'h1', text: @user_notadmin.name, count: 1
-  end
-	
-	test "should not get show for not current logged in user, not admin" do
-		log_in_as(@user_notadmin)
-    get :show, id: @user
-		assert_equal 302, response.status
-    assert_response :redirect
-		assert_redirected_to root_path
-  end
-	
-	test "should get new for logged in user, not admin" do
+	test "logged in, don't care, not admin should not new" do
 		log_in_as(@user_notadmin)
     get :new
 		assert_equal 302, response.status
@@ -97,23 +81,57 @@ class UsersControllerTest < ActionController::TestCase
 		assert_redirected_to root_path
   end	
 	
-	test "should get create for logged in user, not admin" do
+	test "logged in, don't care, not admin should not create" do
 		log_in_as(@user_notadmin)
+    get :create, id: @user, user: { name: "My Name", email: "this@my.email", password: "password", password_confirmation: "password"}
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to root_path
+	end	
+	
+	
+	#User logged in don't care (correct) admin
+	####################################################	
+	
+	test "logged in, don't care, admin should index" do
+		log_in_as(@user_admin)
+    get :index
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: "All users", count: 1		
+  end	
+	
+	test "logged in, don't care, admin should not new" do
+		log_in_as(@user_admin)
+    get :new
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to root_path
+  end	
+	
+	test "logged in, don't care, admin should not create" do
+		log_in_as(@user_admin)
     get :create, id: @user, user: { name: "My Name", email: "this@my.email", password: "password", password_confirmation: "password"}
 		assert_equal 302, response.status
     assert_response :redirect
 		assert_redirected_to root_path
 	end
 	
-	test "should get edit for current logged in user, not admin" do
-		log_in_as(@user_notadmin)
-		get :edit, id: @user_notadmin
-		assert_equal 200, response.status
-    assert_response :success
-		assert_select 'h1', text: "Update your profile", count: 1
-	end
 	
-	test "should not get edit for not current logged in user, not admin" do
+	#User logged in, not correct, not admin
+	####################################################
+	
+	test "logged in, not correct, not admin should not show" do
+		log_in_as(@user_notadmin)
+    get :show, id: @user
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_not flash.empty?
+		assert_equal "Log in as a right user!", flash[:danger]
+		assert_redirected_to root_path
+  end
+	
+	test "logged in, not correct, not admin should not edit" do
 		log_in_as(@user_notadmin)
 		get :edit, id: @user
     assert_response :redirect
@@ -121,8 +139,48 @@ class UsersControllerTest < ActionController::TestCase
 		assert_not flash.empty?
 		assert_equal "Log in as a right user!", flash[:danger] 
 	end
-
-	test "should get update for current logged in user, not admin" do
+	
+	test "logged in, not correct, not admin should not update" do
+		log_in_as(@user_notadmin)
+		patch :update, id: @user.id, user: { name: @user.name, email: @user.email }
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to root_url
+		assert_not flash.empty?		
+		assert_equal "Log in as a right user!", flash[:danger] 
+	end
+	
+	test "logged in, not correct, not admin should not destroy" do
+		log_in_as(@user_notadmin)
+		assert_no_difference 'User.count' do
+			delete :destroy, id: @user
+		end
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_redirected_to root_url
+	end		
+	
+	
+	#User logged in, correct, not admin
+	####################################################
+	
+	test "logged in, correct, not admin should show" do
+		log_in_as(@user_notadmin)
+    get :show, id: @user_notadmin
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: @user_notadmin.name, count: 1
+  end
+	
+	test "logged in, correct, not admin should edit" do
+		log_in_as(@user_notadmin)
+		get :edit, id: @user_notadmin
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: "Update your profile", count: 1
+	end
+	
+	test "logged in, correct, not admin should update" do
 		log_in_as(@user_notadmin)
 		patch :update, id: @user_notadmin, user: { name: @user_notadmin.name, email: @user_notadmin.email }
 		assert_equal 302, response.status
@@ -132,17 +190,7 @@ class UsersControllerTest < ActionController::TestCase
 		assert_equal "Nice Chose, Welcome back!", flash[:success]  
 	end
 	
-	test "should not get update for not current logged in user, not admin" do
-		log_in_as(@user_notadmin)
-		patch :update, id: @user.id, user: { name: @user.name, email: @user.email }
-		assert_equal 302, response.status
-    assert_response :redirect
-		assert_redirected_to root_url
-		assert_not flash.empty?		
-		assert_equal flash[:danger], "Log in as a right user!"
-	end
-	
-	test "should not get destroy for current logged in user, not admin" do
+	test "logged in, correct, not admin should not destroy" do
 		log_in_as(@user_notadmin)
 		assert_no_difference 'User.count' do
 			delete :destroy, id: @user_notadmin
@@ -152,36 +200,93 @@ class UsersControllerTest < ActionController::TestCase
 		assert_redirected_to root_url		
 	end	
 	
-	test "should not get destroy for any logged in user, not admin" do
-		log_in_as(@user_notadmin)
-		assert_no_difference 'User.count' do
+	
+	
+		
+	#User logged in, not correct, admin
+	####################################################
+	
+	test "logged in, not correct, admin should show" do
+		log_in_as(@user_admin)
+    get :show, id: @user
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', text: @user.name, count: 1
+  end
+	
+	test "logged in, not correct, admin should edit" do
+		log_in_as(@user_admin)
+		get :edit, id: @user
+		assert_equal 200, response.status
+    assert_response :success
+		assert_select 'h1', "Update your profile", count: 1
+	end
+	
+	test "logged in, not correct, admin should update" do
+		log_in_as(@user_admin)
+		patch :update, id: @user.id, user: { name: @user.name, email: @user.email }
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_not flash.empty?		
+		assert_equal "Nice Chose, Boss!", flash[:success] 
+	end
+	
+	test "logged in, not correct, admin should destroy" do
+		log_in_as(@user_admin)
+		assert_difference 'User.count', -1 do
 			delete :destroy, id: @user
 		end
 		assert_equal 302, response.status
     assert_response :redirect
-		assert_redirected_to root_url
+		assert_not flash.empty?		
+		assert_equal "Yes it was a bad guy, Boss!", flash[:success] 
 	end	
-	
 		
-	# Admin User logged in 
+	#User logged in, correct, admin
 	####################################################
 	
-	
-	test "should get index for logged in admin user" do
+	test "logged in, correct, admin should show" do
 		log_in_as(@user_admin)
-    get :index
+    get :show, id: @user_admin
 		assert_equal 200, response.status
     assert_response :success
-		assert_select 'h1', text: "All users", count: 1		
+		assert_select 'h1', text: @user_admin.name, count: 1
   end
 	
-	test "should get show for correct logged in admin user" do
+	test "logged in, correct, admin should edit" do
 		log_in_as(@user_admin)
-    get :show, id: @user_notadmin
+		get :edit, id: @user_admin
 		assert_equal 200, response.status
     assert_response :success
-		assert_select 'h1', text: @user_notadmin.name, count: 1
-  end
+		assert_select 'h1', "Update your profile", count: 1
+	end
+	
+	test "logged in, correct, admin should update" do
+		log_in_as(@user_admin)
+		patch :update, id: @user_admin.id, user: { name: @user_admin.name, email: @user_admin.email }
+		assert_equal 302, response.status
+		#assert_match "fdsfsdfdsf", response.body
+    assert_response :redirect
+		assert_not flash.empty?		
+		assert_equal "As usual, Nice Chose, Boss!", flash[:success] 
+	end
+	
+	test "logged in, correct, admin should destroy" do
+		log_in_as(@user_admin)
+		assert_no_difference 'User.count' do
+			delete :destroy, id: @user_admin
+		end
+		assert_equal 302, response.status
+    assert_response :redirect
+		assert_not flash.empty?		
+		assert_equal "You can't do it for yourself, Boss!", flash[:danger] 
+	end	
+	
+	
+		
+	
+	
+
 	
 #	test "should not get show for not current logged in user, not admin" do
 #		log_in_as(@user_admin)
