@@ -1,7 +1,7 @@
 class InstallationsController < ApplicationController
 	#:index,
-	before_action :logged_in_user,   only: [:edit, :update, :destroy, :create, :new, :show]
-  before_action :admin_user,       only: [:edit, :update, :destroy]	
+	before_action :logged_in_user,   only: [       :show, :new, :create, :edit, :update, :destroy]
+  before_action :admin_user,       only: [                             :edit, :update, :destroy]	
 
 	
 	
@@ -27,19 +27,24 @@ class InstallationsController < ApplicationController
 	
 	def show 
 		@installation = Installation.find(params[:id])
-		@user = User.find(@installation.user_id)
-		#@lines = @installation.hasline.paginate(page: params[:page])
-		@steps = Step.all.select {|step| step[:installation_id] == @installation[:id] }.sort_by { |step| step[:order] }
-		if @steps.empty?
-			@lines = nil
-		else
-			@number_of_line = @steps.count
-			@lines = Array.new(@number_of_line) {Line.new}
-			(0..@number_of_line-1).each do |counter|
-				@lines[counter] = Line.find(@steps[counter][:line_id])
+		if (current_user.admin? or @installation.user_id == current_user.id)
+			@user = User.find(@installation.user_id)
+			#@lines = @installation.hasline.paginate(page: params[:page])
+			@steps = Step.all.select {|step| step[:installation_id] == @installation[:id] }.sort_by { |step| step[:order] }
+			if @steps.empty?
+				@lines = nil
+			else
+				@number_of_line = @steps.count
+				@lines = Array.new(@number_of_line) {Line.new}
+				(0..@number_of_line-1).each do |counter|
+					@lines[counter] = Line.find(@steps[counter][:line_id])
+				end
 			end
+			@title = "Lines"
+		else
+			redirect_to root_url		
+			flash[:danger] = "User can see only his installations!"	
 		end
-		@title = "Lines"
 	end
 	
 	def edit
