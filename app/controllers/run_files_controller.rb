@@ -32,8 +32,12 @@ class RunFilesController < ApplicationController
   	download_file('public/temp.txt')
 	end
 	
-	def download_file(file_path)
-   send_file(file_path, :type => 'text/lfile', :disposition => "attachment")
-	end
+	
+	
+	private
+	
+		def download_file(file_path)
+   		send_file(file_path, :type => 'text/lfile', :disposition => "attachment")
+		end
 	
 end

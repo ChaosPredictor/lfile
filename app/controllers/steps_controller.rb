@@ -2,6 +2,19 @@ class StepsController < ApplicationController
 	before_action :logged_in_user,   only: [:edit, :update, :destroy, :new, :create, :index, :show]
   before_action :admin_user,       only: [:edit, :update, :destroy, :new, :create]	
 
+	def create
+		#TODO understand why it's with :step
+		@line = Line.find(params[:step][:line_id])
+		@installation = installation.find(params[:installation_id])
+		@order = first_empty_order(@installation)
+		@installation.addline(@line, @order)
+		#redirect_to @installation
+		respond_to do |format|
+			format.html { redirect_to @installation }
+			format.js
+		end
+	end
+	
 	def destroy
 		@step = Step.find(params[:id])
 		@installation = installation.find(@step[:installation_id])
@@ -20,20 +33,6 @@ class StepsController < ApplicationController
 			format.js
 		end
 	end
-	
-	def create
-		#TODO understand why it's with :step
-		@line = Line.find(params[:step][:line_id])
-		@installation = installation.find(params[:installation_id])
-		@order = first_empty_order(@installation)
-		@installation.addline(@line, @order)
-		#redirect_to @installation
-		respond_to do |format|
-			format.html { redirect_to @installation }
-			format.js
-		end
-	end
-	
 	
 	private
 	

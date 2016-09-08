@@ -203,4 +203,57 @@ class InstallationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'h2 div#source_link', text: 'No link attached', count: 1	
 	end
 	
+#		#Should move to view tests
+#  test "should create new only if login" do
+#		#get :new
+#		assert_no_difference 'Installation.count' do
+#			post :create, installation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+#		end
+#		assert_response :redirect
+#		assert_redirected_to login_url
+#		log_in_as(@user_admin)
+#		#get :new
+#		assert_difference 'Installation.count' do
+#			post :create, installation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+#		end
+#		assert_equal flash[:success], "New Installation Saved!!!"
+#		assert_response :redirect
+#		assert_redirected_to installations_path
+#		@installation2 = Installation.last
+#		assert_match @installation2.name, "Lorem"
+#		assert_match @installation2.version, "1.1"
+#		assert_match @installation2.os, "new"
+#		assert_match @installation2.source_link, "google.com"
+#		assert_equal @installation2.user_id, @user_admin.id
+#  end
+#	
+#	test "should create when admin" do
+#		log_in_as(@user_admin)
+#		assert_difference 'Installation.count', 1 do
+#			post :create, installation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+#		end
+#		assert_redirected_to installations_path
+#		@installation2 = Installation.last
+#		assert_match @installation2.name, "Lorem"
+#		assert_match @installation2.version, "1.1"
+#		assert_match @installation2.os, "new"
+#		assert_match @installation2.source_link, "google.com"
+#		assert_equal @installation2.user_id, @user_admin.id
+#	end
+#	
+#	test "should create when logged in" do
+#		log_in_as(@user_notadmin)
+#		assert_difference 'Installation.count', 1 do
+#			post :create, installation: { name: "Lorem", version: "1.1", os: "new", source_link: "google.com" }
+#		end
+#		assert_redirected_to installations_path
+#		@installation2 = Installation.last
+#		assert_match @installation2.name, "Lorem"
+#		assert_match @installation2.version, "1.1"
+#		assert_match @installation2.os, "new"
+#		assert_match @installation2.source_link, "google.com"
+#		assert_equal @installation2.user_id, @user_notadmin.id
+#	end
+
+	
 end
