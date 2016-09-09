@@ -12,4 +12,17 @@ module ApplicationHelper
 	def url_with_protocol(url)
     /^http/i.match(url) ? url : "http://#{url}"
   end
+	
+	def current_page
+		current_uri = request.env['PATH_INFO']
+		if current_uri == "/help"
+			@current_page = "help"
+		elsif current_uri == "/about"
+			@current_page = "about"
+		elsif current_uri == "/contact"
+			@current_page = "contact"	
+		elsif current_uri == "/createfile"
+			@current_page = "createfile"	
+		end
+	end
 end
