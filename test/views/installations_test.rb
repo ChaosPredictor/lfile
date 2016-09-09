@@ -161,6 +161,7 @@ class InstallationsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_match String(@number_of_installations) + ' installations', response.body
 		assert_select 'a.edit', text: "edit", count: @number_of_installations	
 		assert_select 'a.delete', text: "delete", count: @number_of_installations
+		
 		@installations.each do |installation|
 			assert_match installation.name, response.body		
 		end

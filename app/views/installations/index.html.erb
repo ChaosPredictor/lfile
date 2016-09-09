@@ -3,28 +3,20 @@
 <div class="row">
 	<%= form_for(installations_path ) do |f| %>
 		<%= hidden_field_tag :id, 2%>
-	
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<span><%= pluralize(@installations.count, "installation") %></span>
-	
 			<%= will_paginate %>
-
 			<ul class="installations">
-				<!--%= render @installations %-->
 				<%= render @installations,  f: f  %>
 			</ul>
-
 			<%= will_paginate %>
 		</div>
-		<div class="col-md-6">	
-			<div class="row">
-				<%= link_to "Create New Installation", instanew_path %>
-			</div>
-			<div class="row">
-			<!--%= f.submit "Add line", class: "btn btn-primary" %-->
-				<%= f.submit "Generate File", class: "btn btn-primary" %>
-			<!--%= link_to "Generate File", createfile_path %-->	
-			</div>
+		<div class="col-md-4">
+			<% if logged_in? %>
+				<div class="row btn btn-default">
+					<%= link_to "Create New Installation", instanew_path %>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
 </div>	

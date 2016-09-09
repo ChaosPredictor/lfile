@@ -27,7 +27,7 @@ class InstallationsController < ApplicationController
 	
 	def show 
 		@installation = Installation.find(params[:id])
-		if (current_user.admin? or @installation.user_id == current_user.id)
+		#if (current_user.admin? or @installation.user_id == current_user.id)
 			@user = User.find(@installation.user_id)
 			#@lines = @installation.hasline.paginate(page: params[:page])
 			@steps = Step.all.select {|step| step[:installation_id] == @installation[:id] }.sort_by { |step| step[:order] }
@@ -41,10 +41,10 @@ class InstallationsController < ApplicationController
 				end
 			end
 			@title = "Lines"
-		else
-			redirect_to root_url		
-			flash[:danger] = "User can see only his installations!"	
-		end
+		#else
+		#	redirect_to root_url		
+		#	flash[:danger] = "User can see only his installations!"	
+		#end
 	end
 	
 	def edit
@@ -54,9 +54,12 @@ class InstallationsController < ApplicationController
 	def update
 		@installation = Installation.find(params[:id])
 		if @installation.update_attributes(installation_params)
+
 			flash[:success] = "You know what you're doing!"
 			redirect_to installations_path
-			#flash[:error] = "You know what you're doing!"			
+			#flash[:error] = "You know what you're doing!"		
+			@installation.user_id = @installation.user_id_was
+			@installation.save
 		else
 			flash[:error] = "There is a problem"
 			render 'edit'

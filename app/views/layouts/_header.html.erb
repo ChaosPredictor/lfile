@@ -5,20 +5,24 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><%= link_to "Create File", createfile_path %></li>
 				<% if logged_in? %>
-					<ul class="dropdown-menu">
-						<li><%= link_to "Operating System", operating_systems_path %></li>
-						<li><%= link_to "Line", lines_path %></li>
-						<li><%= link_to "Installation", installations_path %></li>
-					</ul>				
-				<% end %>				
-				<!--li><!--%= link_to "Home", root_path %--></li-->
-				<% if logged_in? %>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle part-toggle" data-toggle="dropdown"> 
+							Parts 
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><%= link_to "Operating System", operating_systems_path %></li>
+							<li><%= link_to "Line", lines_path %></li>
+							<li><%= link_to "Installation", installations_path %></li>
+						</ul>
+					</li>
 					<% if current_user.admin? %>
 						<li><%= link_to "Users", users_path %></li>
+						<li> <a id="admin-flag" class="admin-flag"> Admin!!! </a> </li>				
 					<% end %>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-							Account 
+						<a href="#" class="dropdown-toggle name-toggle" data-toggle="dropdown"> 
+							<%= current_user.name %> 
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
@@ -31,7 +35,7 @@
 				<% else %>
 					<li><%= link_to "Log in", login_path %></li>
 					<li><%= link_to "Sign up", signup_path %></li>
-				<% end %>			
+				<% end %>	
 			</ul>
 		</nav>
 	</div>
