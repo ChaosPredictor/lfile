@@ -45,13 +45,15 @@
 		<% end %>
 		<%= form_for(@installation.active_steps.build, remote: false) do |f| %>		
 			<div><%= hidden_field_tag :installation_id, @installation.id %></div>
-				<!--TODO change to dinamic -->	
-			<div class="col-md-10">
-				<%= f.collection_select(:line_id, Line.all, :id, :content) %>
-			</div>
-			<div class="col-md-2">
-				<%= f.submit "Add line", class: "btn btn-primary" %>
-			</div>
+				<!--TODO change to dynamic -->	
+			<% if current_user.admin? %>
+				<div class="col-md-10">
+					<%= f.collection_select(:line_id, Line.all, :id, :content) %>
+				</div>
+				<div class="col-md-2">
+					<%= f.submit "Add line", class: "btn btn-primary" %>
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 </div>

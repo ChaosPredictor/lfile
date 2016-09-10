@@ -15,4 +15,7 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+	
+	def resend_activation
+	end
 end
