@@ -14,7 +14,10 @@ class SessionsController < ApplicationController
 				message += "Check your email for the activation link."
 				#TODO send new link
 				flash[:warning] = message
+				flash[:info] = "If you can not find the email <a href='/installations'>Click Here</a> to resend".html_safe
 				redirect_to root_url
+				#render "/root_path"
+				#render 'new'
 			end
 		else
 			flash.now[:danger] = 'Invalid email/password combination'
