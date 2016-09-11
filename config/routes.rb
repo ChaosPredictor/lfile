@@ -11,29 +11,31 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   get 'users/new'
-  #get 'users/new'
-  #get 'users/new'
+  #get 'account_activations/new'
+  #post 'account_activations/create'
+	
 
-  #get 'static_pages/help'
-  #get 'static_pages/about'
-  #get 'static_pages/contact'
-  #root 'static_pages#home'
 
 	root                       'static_pages#home' #'run_files#new'
-	get    'help'           => 'static_pages#help'
-	get    'about'          => 'static_pages#about'
-	get    'contact'        => 'static_pages#contact'
-	get    'signup'         => 'users#new'
-	get    'login'          => 'sessions#new'
-	post   'login'          => 'sessions#create'
-	delete 'logout'         => 'sessions#destroy'
-	get    'installations'  => 'installations#index'
-	get    'instanew'       => 'installations#new'
-	get    'instaedit'      => 'installations#edit'
-	get    'createfile'     => 'run_files#new'
-	post   'createfile'     => 'run_files#create'
-	post   'download_file'  => 'run_files#download_file'
-	get    'osnew'     => 'operating_systems#new'
+	get    'help'              => 'static_pages#help'
+	get    'about'             => 'static_pages#about'
+	get    'contact'           => 'static_pages#contact'
+	get    'signup'            => 'users#new'
+	get    'login'             => 'sessions#new'
+	post   'login'             => 'sessions#create'
+	delete 'logout'            => 'sessions#destroy'
+	get    'installations'     => 'installations#index'
+	get    'instanew'          => 'installations#new'
+	get    'instaedit'         => 'installations#edit'
+	get    'createfile'        => 'run_files#new'
+	post   'createfile'        => 'run_files#create'
+	post   'download_file'     => 'run_files#download_file'
+	get    'osnew'             => 'operating_systems#new'
+	#get    'resendactivation'  => 'account_activations#new'
+	#post   'resendactivation'  => 'account_activations#create'
+	post   '/resend_activation/:email'  =>  'account_activations#resend_activation', :constraints => { :email => /[^\/]+/ }
+
+	
 	resources :users do
 		member do
 			get :following, :followers
@@ -45,7 +47,7 @@ Rails.application.routes.draw do
 		end
 	end
 	
-	resources :account_activations,   only: [:edit]
+	resources :account_activations,   only: [:edit, :resend_activation]
 	resources :password_resets,       only: [:new, :create, :edit, :update]
 	resources :microposts,            only: [:create, :destroy]
 	resources :relationships,         only: [:create, :destroy]

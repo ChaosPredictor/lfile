@@ -36,7 +36,7 @@ class SessionsControllerTest < ActionController::TestCase
 		assert_response :redirect
 		assert_redirected_to root_path
 		assert_equal  "Account not activated. Check your email for the activation link.", flash[:warning]
-		assert_equal  "If you can not find the email <a href='/installations'>Click Here</a> to resend", flash[:info]
+		assert_equal  "If you can not find the email <a rel=\"nofollow\" data-method=\"post\" href=\"/resend_activation/hand@examp.gov\">Click Here</a> to get a new one", flash[:info]
   end
 	
 	test "unactivated user wrong password" do
@@ -49,7 +49,6 @@ class SessionsControllerTest < ActionController::TestCase
 	
 	#Destroy
 	###########################################
-	
 	
 	test "destroy session" do
 		log_in_as(@user_activ)

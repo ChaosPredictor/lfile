@@ -18,7 +18,9 @@ class SessionsController < ApplicationController
 				message += "Check your email for the activation link."
 				#TODO send new link
 				flash[:warning] = message
-				flash[:info] = "If you can not find the email <a href='/installations'>Click Here</a> to resend".html_safe
+				#flash[:info] = "If you can not find the email <a href='/account_activation/new'>Click Here</a> to resend".html_safe
+				flash[:info] = "If you can not find the email #{view_context.link_to "Click Here", { action: "resend_activation",
+                controller: "account_activations", email: user.email }, method: :post} to get a new one".html_safe				
 				redirect_to root_url
 				#render "/root_path"
 				#render 'new'
