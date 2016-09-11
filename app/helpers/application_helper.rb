@@ -23,6 +23,10 @@ module ApplicationHelper
 			@current_page = "contact"	
 		elsif current_uri == "/createfile"
 			@current_page = "createfile"	
+		elsif current_uri == "/login"
+			@current_page = "login"	
+		elsif current_uri == "/signup"
+			@current_page = "signup"	
 		end
 	end
 

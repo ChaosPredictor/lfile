@@ -16,7 +16,8 @@ class SessionsControllerTest < ActionController::TestCase
 		get :create, id: @session, session: { email: @user_activ.email, password: @user_activ.password }
 		assert_equal 302, response.status
 		assert_response :redirect
-		assert_redirected_to "/users/#{@user_activ.id}"
+		#assert_redirected_to "/users/#{@user_activ.id}"
+		assert_redirected_to root_path
     assert_not flash.empty?
 		assert_equal  "You're right, man", flash[:success]
   end
