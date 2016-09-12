@@ -29,10 +29,24 @@ lana:
   activated: false
   activated_at: <%= Time.zone.now %>
 
+#wana:
+#  name: Wana Kaneemail
+#  email: hands@example.gov
+#  password_digest: <%= User.digest('wassword') %>
+#  activated: false
+#  activated_at: <%= Time.zone.now %>
+
 malory:
   name: Malory Archer
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+wrong:
+  name: Wrong Archer
+  email: wrong@example.gov
+  password_digest: <%= User.digest('password3') %>
   activated: true
   activated_at: <%= Time.zone.now %>
 
