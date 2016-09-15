@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
   #get 'account_activations/new'
-  #post 'account_activations/create'
 	
 
 
@@ -47,7 +46,7 @@ Rails.application.routes.draw do
 		end
 	end
 	
-	resources :account_activations,   only: [:edit, :resend_activation]
+	resources :account_activations,   only: [:edit, :update, :resend_activation]
 	resources :password_resets,       only: [:new, :create, :edit, :update]
 	resources :microposts,            only: [:create, :destroy]
 	resources :relationships,         only: [:create, :destroy]

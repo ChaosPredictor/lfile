@@ -1,33 +1,35 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 michael:
-  name: Michael Example
-  email: michael@example.com
-  password_digest: <%= User.digest('password') %>
-  admin: true
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: Michael Example
+ email: michael@example.com
+ password_digest: <%= User.digest('password') %>
+ admin: true
+ activated: true
+ activated_at: <%= Time.zone.now %>
 
 dmitry:
-  name: Dmitry Example
-  email: dmitry@example.com
-  password_digest: <%= User.digest('wordpass') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: Dmitry Example
+ email: dmitry@example.com
+ password_digest: <%= User.digest('wordpass') %>
+ activated: true
+ admin: false
+ activated_at: <%= Time.zone.now %>
 
 archer:
-  name: Sterling Archer
-  email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: Sterling Archer
+ email: duchess@example.gov
+ password_digest: <%= User.digest('password') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
 
 lana:
-  name: Lana Kaneemail
-  email: hands@example.gov
-  password_digest: <%= User.digest('password') %>
-  activated: false
-  activated_at: <%= Time.zone.now %>
+ name: Lana Kaneemail
+ email: hands@example.gov
+ password_digest: <%= User.digest('password') %>
+ activated: false
+ activated_at: <%= Time.zone.now %>
+ activation_digest: "$2a$10$KL8gFvOxjQWkOeB8veD5De6BtsPAGutD69fI0rSaBur4q8XACcE76"
 
 #wana:
 #  name: Wana Kaneemail
@@ -37,24 +39,24 @@ lana:
 #  activated_at: <%= Time.zone.now %>
 
 malory:
-  name: Malory Archer
-  email: boss@example.gov
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: Malory Archer
+ email: boss@example.gov
+ password_digest: <%= User.digest('password') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
 
 wrong:
-  name: Wrong Archer
-  email: wrong@example.gov
-  password_digest: <%= User.digest('password3') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: Wrong Archer
+ email: wrong@example.gov
+ password_digest: <%= User.digest('password3') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
-  name: <%= "User #{n}" %>
-  email: <%= "user-#{n}@example.com" %>
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
+ name: <%= "User #{n}" %>
+ email: <%= "user-#{n}@example.com" %>
+ password_digest: <%= User.digest('password') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
 <% end %>

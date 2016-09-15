@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 	
 	def create
-		logger.debug "debug!!!"
-		logger.debug params[:session][:email]
+		#logger.debug "debug!!!"
+		#logger.debug params[:session][:email]
 		user = User.find_by(email: params[:session][:email].downcase)
-		logger.debug user
+		#logger.debug user
 		#logger.debug String(user.activated?)
 		if user && user.authenticate(params[:session][:password])
 			if user.activated?
