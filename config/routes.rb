@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'operating_systems/new'
   #get 'operating_systems/edit'	
   #get 'operating/systems'
   #get 'operating/new'
-  get 'run_files/new'
-  get 'lines/new'
+#  get 'run_files/new'
+#  get 'lines/new'
 #  get 'installations/new'
-  get 'password_resets/new'
-  get 'password_resets/edit'
+#  get 'password_resets/new'
+#  get 'password_resets/edit'
 #  get 'sessions/new'
 #  get 'users/new'
   #get 'account_activations/new'
@@ -33,6 +32,7 @@ Rails.application.routes.draw do
 	#get    'resendactivation'  => 'account_activations#new'
 	#post   'resendactivation'  => 'account_activations#create'
 	post   '/resend_activation/:email'  =>  'account_activations#resend_activation', :constraints => { :email => /[^\/]+/ }
+# get    'operating_systems/new'
 
 	
 	resources :users do

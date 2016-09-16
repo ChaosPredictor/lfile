@@ -28,7 +28,7 @@ class SessionsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", installations_path, count: 0		
 		assert_select "a[href=?]", operating_systems_path, count: 0		
 		assert_select "a[href=?]", createfile_path, count: 1
-		assert_select "a[href=?]", password_resets_new_path, count: 1
+		assert_select "a[href=?]", new_password_reset_path, count: 1
 		assert_select "input[id=session_remember_me]", count: 1
 		assert_select "a[href=?]", "/resend_activation/#{@user_unactive.email}", count: 0
 	end
@@ -52,7 +52,7 @@ class SessionsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", installations_path, count: 0		
 		assert_select "a[href=?]", operating_systems_path, count: 0		
 		assert_select "a[href=?]", createfile_path, count: 1
-		assert_select "a[href=?]", password_resets_new_path, count: 1
+		assert_select "a[href=?]", new_password_reset_path, count: 1
 		assert_select "input[id=session_remember_me]", count: 1
 		assert_select "a[href=?]", "/resend_activation/#{@user_unactive.email}", count: 0
 	end
@@ -76,7 +76,7 @@ class SessionsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", installations_path, count: 0		
 		assert_select "a[href=?]", operating_systems_path, count: 0		
 		assert_select "a[href=?]", createfile_path, count: 1
-		assert_select "a[href=?]", password_resets_new_path, count: 0
+		assert_select "a[href=?]", new_password_reset_path, count: 0
 		assert_select "input[id=session_remember_me]", count: 0
 		assert_select "a[href=?]", "/resend_activation/#{@user_unactive.email}", count: 1
 	end
@@ -98,7 +98,7 @@ class SessionsInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", installations_path, count: 1		
 		assert_select "a[href=?]", operating_systems_path, count: 1		
 		assert_select "a[href=?]", createfile_path, count: 1
-		assert_select "a[href=?]", password_resets_new_path, count: 0
+		assert_select "a[href=?]", new_password_reset_path, count: 0
 		assert_select "input[id=session_remember_me]", count: 0
 		assert_select "a[href=?]", "/resend_activation/#{@user_unactive.email}", count: 0
 	end
