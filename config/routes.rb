@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   #get 'operating/new'
   get 'run_files/new'
   get 'lines/new'
-  get 'installations/new'
+#  get 'installations/new'
   get 'password_resets/new'
   get 'password_resets/edit'
-  get 'sessions/new'
-  get 'users/new'
+#  get 'sessions/new'
+#  get 'users/new'
   #get 'account_activations/new'
 	
 

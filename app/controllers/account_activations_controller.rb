@@ -34,7 +34,8 @@ class AccountActivationsController < ApplicationController
 	end
 		
 	def resend_activation
-		logger.debug "Debug: AccountActivationsController - Resend Activation"
+		#logger.debug "Debug: AccountActivationsController - Resend Activation"
+		#logger.debug "Debug: AccountActivationsController - Resend Activation"
   	user = User.find_by(email: params[:email])
   	if user
     	user.resend_activation_email
