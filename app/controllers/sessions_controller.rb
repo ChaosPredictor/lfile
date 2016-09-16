@@ -12,24 +12,20 @@ class SessionsController < ApplicationController
 			if user.activated?
 				log_in user
 				params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-				#redirect_back_or user
 				redirect_back_or root_url
 				flash[:success] = 'You\'re right, man'				
 			else
-				message = "Account not activated. "
-				message += "Check your email for the activation link."
-				#TODO send new link
-				flash[:warning] = message
+				#message = "Account not activated. "
+				#message += "Check your email for the activation link."
+				#flash[:warning] = message
 				#flash[:info] = "If you can not find the email <a href='/account_activation/new'>Click Here</a> to resend".html_safe
-				flash[:info] = "If you can not find the email #{view_context.link_to "Click Here", { action: "resend_activation",
-                controller: "account_activations", email: user.email }, method: :post} to get a new one".html_safe				
+				flash[:warning] = "Account not activated. Check your email for the activation link."
+				flash[:info] = "If you can not find the email #{view_context.link_to "Click Here", { action: "resend_activation", controller: "account_activations", email: user.email }, method: :post} to get a new one".html_safe				
 				redirect_to root_url
-				#render "/root_path"
-				#render 'new'
 			end
 		else
+			# TODO change status
 			flash.now[:danger] = 'Invalid email/password combination'
-			#render :status => 404
 			render 'new'
 		end
 	end
