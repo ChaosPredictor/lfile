@@ -9,7 +9,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup information" do
 		get signup_path
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "", email: "user@invalid", password: "foo", password_confirmation: "bar" }
+			post users_path, params: {'user' => { 'name' => "", 'email' => "user@invalid", 'password' => "foo", 'password_confirmation' => "bar" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -28,7 +28,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup name information" do
 		get signup_path
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "", email: "user@invalid.com", password: "foobar", password_confirmation: "foobar" }
+			post users_path, params: {'user' => { 'name' => "", 'email' => "user@invalid.com", 'password' => "foobar", 'password_confirmation' => "foobar" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -41,7 +41,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup email information" do
 		get signup_path
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "Dima", email: "user@invalid", password: "foobar", password_confirmation: "foobar" }
+			post users_path, params: {'user' => { 'name' => "Dima", 'email' => "user@invalid", 'password' => "foobar", 'password_confirmation' => "foobar" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -54,7 +54,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup password information" do
 		get signup_path
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "Dima", email: "user@invalid.com", password: "foo", password_confirmation: "foo" }
+			post users_path, params: {'user' => { 'name' => "Dima", 'email' => "user@invalid.com", 'password' => "foo", 'password_confirmation' => "foo" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -67,7 +67,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup password confirmation information" do
 		get signup_path
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "Dima", email: "user@invalid.com", password: "foobar1", password_confirmation: "foobar2" }
+			post users_path, params: {'user' => { 'name' => "Dima", 'email' => "user@invalid.com", 'password' => "foobar1", 'password_confirmation' => "foobar2" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -80,10 +80,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "invalid signup email already been taken" do
 		get signup_path
 		assert_difference 'User.count' do
-			post users_path, user: { name: "Dima1", email: "user@invalid.com", password: "foobar1", password_confirmation: "foobar1" }
+			post users_path, params: {'user' => { 'name' => "Dima1", 'email' => "user@invalid.com", 'password' => "foobar1", 'password_confirmation' => "foobar1" }}
 		end
 		assert_no_difference 'User.count' do
-			post users_path, user: { name: "Dima2", email: "user@invalid.com", password: "foobar2", password_confirmation: "foobar2" }
+			post users_path, params: {'user' => { 'name' => "Dima2", 'email' => "user@invalid.com", 'password' => "foobar2", 'password_confirmation' => "foobar2" }}
 		end
 		assert_template 'users/new'
 		assert_select 'div#error_explanation'
@@ -95,7 +95,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 	test "valid signup informationwith account activation" do
 		get signup_path
 		assert_difference 'User.count', 1 do
-			post users_path, user: { name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password" }
+			post users_path, params: {'user' => { 'name' => "Example User", 'email' => "user@example.com", 'password' => "password", 'password_confirmation' => "password" }}
 		end
 		assert_equal 1, ActionMailer::Base.deliveries.size
 		user = assigns(:user)

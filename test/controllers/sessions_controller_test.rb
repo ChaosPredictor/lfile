@@ -10,10 +10,16 @@ class SessionsControllerTest < ActionController::TestCase
 	end
 	
 	#Create
-	####################################33
+	######################################
 	
 	test "activated user right password" do
-		get :create, id: @session, session: { email: @user_activ.email, password: @user_activ.password }
+		#post :create, "session" => { "email" => @user_activ.email, "password" => @user_activ.password }
+		post :create, params: {"session" => { "email" => @user_activ.email, "password" => @user_activ.password }}
+		
+		#post :login, session: { email: "user@user.email", password: @user_activ.password }
+		#post login_path, session: { email: @user_activ.email, password: @user_activ.password }
+		#post password_resets_path, password_reset: { email: "" }
+		#post :create, micropost: { content: "Lorem ipsum" }
 		assert_equal 302, response.status
 		assert_response :redirect
 		#assert_redirected_to "/users/#{@user_activ.id}"
@@ -23,7 +29,9 @@ class SessionsControllerTest < ActionController::TestCase
   end
 	
 	test "activated user wrong password" do
-		get :create, id: @session, session: { email: @user_activ.email, password: "password2" }
+		#post :create, "session" => { "email" => @user_activ.email, "password" => "password2" }
+		post :create, params: {"session" => { "email" => @user_activ.email, "password" => "password2" }}
+		#get :create, id: @session, session: { email: @user_activ.email, password: "password2" }
  		assert_equal 200, response.status
 		assert_response :success
 		assert_not flash.empty?
@@ -31,7 +39,9 @@ class SessionsControllerTest < ActionController::TestCase
   end
 	
 	test "unactivated user right password" do
-		get :create, id: @session, session: { email: @user_unactiv.email, password: @user_unactiv.password }
+		#post :create, "session" => { "email" => @user_unactiv.email, "password" => @user_unactiv.password }
+		post :create, params: {"session" => { "email" => @user_unactiv.email, "password" => @user_unactiv.password }}
+		#get :create, id: @session, session: { email: @user_unactiv.email, password: @user_unactiv.password }
     assert_not flash.empty?
 		assert_equal 302, response.status
 		assert_response :redirect
@@ -41,7 +51,8 @@ class SessionsControllerTest < ActionController::TestCase
   end
 	
 	test "unactivated user wrong password" do
-		get :create, id: @session, session: { email: @user_unactiv.email, password: "password2" }
+		post :create, params: {"session" => { "email" => @user_unactiv.email, "password" => "password2" }}
+		#get :create, id: @session, session: { email: @user_unactiv.email, password: "password2" }
  		assert_equal 200, response.status
 		assert_response :success
 		assert_not flash.empty?
@@ -55,7 +66,7 @@ class SessionsControllerTest < ActionController::TestCase
 		log_in_as(@user_activ)
 		assert_equal 200, response.status
 		assert_response :success
-		delete :destroy, id: @session
+		delete :destroy, params: {'id' => @session}
 		assert_equal 302, response.status
 		assert_response :redirect
 		assert_redirected_to root_path

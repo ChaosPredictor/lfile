@@ -34,7 +34,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "not logged in should not create" do
 		assert_no_difference 'Installation.count' do
-			get :create, id: @installation, installation: {name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			get :create, params: {'id' => @installation, 'installation' => {'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -44,7 +44,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	end
 	
 	test "not logged in should not show" do
-    get :show, id: @installation
+    get :show, params: {'id' => @installation}
 		assert_equal 302, response.status
     assert_response :redirect
 		assert_redirected_to login_path
@@ -53,7 +53,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	end
 	
 	test "not logged in should not edit" do
-    get :edit, id: @installation
+    get :edit, params: {'id' => @installation}
 		assert_equal 302, response.status
     assert_response :redirect
 		assert_redirected_to login_path
@@ -63,7 +63,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "not logged in should not update" do
 		assert_no_difference 'Installation.count' do
-			patch :update, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			patch :update, params: {'id' => @installation, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -74,7 +74,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "not logged in should not destroy" do
 		assert_no_difference 'Installation.count' do
-			delete :destroy, id: @installation
+			delete :destroy, params: {'id' => @installation}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -106,7 +106,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, not admin should create" do
 		log_in_as(@user_notadmin)
 		assert_difference 'Installation.count', 1 do
-			get :create, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			get :create, params: {'id' => @installation, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -120,7 +120,7 @@ class InstallationsControllerTest < ActionController::TestCase
 		
 	test "logged in, not admin, not owner should not show" do
 		log_in_as(@user_notadmin)
-		get :show, id: @installation.id
+		get :show, params: {'id' => @installation.id}
 		assert_equal 200, response.status
     assert_response :success
 		assert_select 'h1', text: "Installation of: " + String(@installation.name), count: 1
@@ -133,7 +133,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "logged in, not admin, not owner should not edit" do
 		log_in_as(@user_notadmin)
-    get :edit, id: @installation
+    get :edit, params: {'id' => @installation}
 		assert_equal 302, response.status
     assert_response :redirect
 		assert_redirected_to root_path
@@ -144,7 +144,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, not admin, not owner should not update" do
 		log_in_as(@user_notadmin)
 		assert_no_difference 'Installation.count' do
-			patch :update, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			patch :update, params: {'id' => @installation, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -156,7 +156,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, not admin, not owner should not destroy" do
 		log_in_as(@user_notadmin)	
 		assert_no_difference 'Installation.count' do
-			delete :destroy, id: @installation
+			delete :destroy, params: {'id' => @installation}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -171,7 +171,7 @@ class InstallationsControllerTest < ActionController::TestCase
 		
 	test "logged in, not admin, owner should show" do
 		log_in_as(@user_notadmin)
-		get :show, id: @installation_notadmin
+		get :show, params: {'id' => @installation_notadmin}
 		assert_equal 200, response.status
     assert_response :success
 		assert_select 'h1', text: "Installation of: " + String(@installation_notadmin.name), count: 1
@@ -179,7 +179,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "logged in, not admin, owner should not edit" do
 		log_in_as(@user_notadmin)
-    get :edit, id: @installation_notadmin
+    get :edit, params: {'id' => @installation_notadmin}
 		assert_equal 302, response.status
     assert_response :redirect
 		assert_redirected_to root_path
@@ -190,7 +190,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, not admin, owner should not update" do
 		log_in_as(@user_notadmin)
 		assert_no_difference 'Installation.count' do
-			patch :update, id: @installation_notadmin, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			patch :update, params: {'id' => @installation_notadmin, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -202,7 +202,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, not admin, owner should not destroy" do
 		log_in_as(@user_notadmin)	
 		assert_no_difference 'Installation.count' do
-			delete :destroy, id: @installation_notadmin
+			delete :destroy, params: {'id' => @installation_notadmin}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -234,7 +234,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, admin should create" do
 		log_in_as(@user_admin)
 		assert_difference 'Installation.count', 1 do
-			get :create, id: @installation, installation: { name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			get :create, params: {'id' => @installation, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -245,7 +245,7 @@ class InstallationsControllerTest < ActionController::TestCase
 		
 	test "logged in, admin, should show" do
 		log_in_as(@user_admin)
-		get :show, id: @installation.id
+		get :show, params: {'id' => @installation.id}
 		assert_equal 200, response.status
     assert_response :success
 		assert_select 'h1', text: "Installation of: " + String(@installation.name), count: 1
@@ -253,7 +253,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	
 	test "logged in, admin, should edit" do
 		log_in_as(@user_admin)
-    get :edit, id: @installation
+    get :edit, params: {'id' => @installation}
 		assert_equal 200, response.status
     assert_response :success
 		assert_select 'h1', text: "Edit Installation", count: 1
@@ -262,7 +262,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, admin should update" do
 		log_in_as(@user_admin)
 		assert_no_difference 'Installation.count' do
-			patch :update, id: @installation, installation: {  name: "PMIG", version: "1.1", os: "linux", source_link: "pimg.com", user_id: @user_admin.id}
+			patch :update, params: {'id' => @installation, 'installation' => { 'name' => "PMIG", 'version' => "1.1", 'os' => "linux", 'source_link' => "pimg.com", 'user_id' => @user_admin.id}}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -273,7 +273,7 @@ class InstallationsControllerTest < ActionController::TestCase
 	test "logged in, admin should destroy" do
 		log_in_as(@user_admin)	
 		assert_difference 'Installation.count', -1 do
-			delete :destroy, id: @installation
+			delete :destroy, params: {'id' => @installation}
 		end
 		assert_equal 302, response.status
     assert_response :redirect
@@ -290,7 +290,7 @@ class InstallationsControllerTest < ActionController::TestCase
 		@installation = Installation.first
 		assert_equal @installation.user_id, @user.id
 		assert_no_difference 'Installation.count' do
-			patch :update, id: @installation, installation: {user_id: @user_admin.id}
+			patch :update, params: {'id' => @installation, 'installation' => {'user_id' => @user_admin.id}}
 		end
 		assert_redirected_to root_path
 		@installation2 = Installation.first

@@ -10,7 +10,7 @@ class LinesControllerTest < ActionController::TestCase
 	test "should create when admin" do
 		log_in_as(@user_admin)
 		assert_difference 'Line.count', 1 do
-			post :create, line: { content: "Lorem", index: 31 }
+			post :create, params: {'line' => { 'content' => "Lorem", 'index' => 31 }}
 		end
 		assert_redirected_to lines_path
 	end
@@ -18,7 +18,7 @@ class LinesControllerTest < ActionController::TestCase
 	test "should not create when not admin user" do
 		log_in_as(@user_notadmin)
 		assert_no_difference 'Line.count' do
-			post :create, line: { content: "Lorem", index: 31 }
+			post :create, params: {'line' => { 'content' => "Lorem", 'index' => 31 }}
 		end
 		#TODO assert_equal flash[:error], "Only Admin can add line"
 		assert_redirected_to root_path
@@ -26,7 +26,7 @@ class LinesControllerTest < ActionController::TestCase
 
 	test "should not create when not logged in" do
 		assert_no_difference 'Line.count' do
-			post :create, line: { content: "Lorem", index: 31 }
+			post :create, params: {'line' => { 'content' => "Lorem", 'index' => 31 }}
 		end
 		assert_redirected_to login_url
 	end
@@ -34,7 +34,7 @@ class LinesControllerTest < ActionController::TestCase
 	test "should destroy when admin user" do		
 		log_in_as(@user_admin)
 		assert_difference 'Line.count', -1 do
-			delete :destroy, id: @line	
+			delete :destroy, params: {'id' => @line}	
 		end
 		assert_redirected_to lines_path
 	end
@@ -42,14 +42,14 @@ class LinesControllerTest < ActionController::TestCase
 	test "should not destroy when not admin user" do
 		log_in_as(@user_notadmin)
 		assert_no_difference 'Line.count' do
-			delete :destroy, id: @line	
+			delete :destroy, params: {'id' => @line}	
 		end
 		assert_redirected_to root_path
 	end
 
 	test "should not destroy when not logged in" do
 		assert_no_difference 'Line.count' do
-			delete :destroy, id: @line	
+			delete :destroy, params: {'id' => @line}	
 		end
 		assert_redirected_to login_path
 	end
@@ -59,8 +59,7 @@ class LinesControllerTest < ActionController::TestCase
 		line_id = @line.id
 		new_content = "this line was edit"
 		assert_no_difference 'Line.count' do
-			patch :update, id: @line, line: {content: new_content, 
-																			index: 41}
+			patch :update, params: {'id' => @line, 'line' => {'content' => new_content, 'index' => 41}}
 		end
 		assert_redirected_to lines_path
 		@LineForTest = Line.find(line_id)
@@ -73,8 +72,7 @@ class LinesControllerTest < ActionController::TestCase
 		old_content = @line.content
 		new_content = "this line was edit"
 		assert_no_difference 'Line.count' do
-			patch :update, id: @line, line: {content: new_content, 
-																			index: 41}
+			patch :update, params: {'id' => @line, 'line' => {'content' => new_content, 'index' => 41}}
 		end
 		assert_redirected_to root_path
 		#TODO add error flash
@@ -87,8 +85,7 @@ class LinesControllerTest < ActionController::TestCase
 		old_content = @line.content
 		new_content = "this line was edit"
 		assert_no_difference 'Line.count' do
-			patch :update, id: @line, line: {content: new_content, 
-																			index: 41}
+			patch :update, params: {'id' => @line, 'line' => {'content' => new_content, 'index' => 41}}
 		end
 		assert_redirected_to login_path
 		#TODO add error flash

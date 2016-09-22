@@ -28,7 +28,7 @@ class StepIntegrationTest < ActionDispatch::IntegrationTest
 		#assert_match "0 microposts", response.body
 		@installation3.addline(@line1,0)
 		assert_difference 'Line.count' do
-			post lines_path, line: { id: 0, content: "fsdf" , index: 111}
+			post lines_path, params: {'line' => { 'id' => 0, 'content' => "fsdf" , 'index' => 111}}
 		end
 		#TODO good test!!!
 		#assert_difference 'Step.count' do

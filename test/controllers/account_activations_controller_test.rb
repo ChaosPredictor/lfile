@@ -11,7 +11,7 @@ class AccountActivationsControllerTest < ActionController::TestCase
 	#########################################################
 	
 	test "valid activation_digest, should edit" do
-		get :edit, id: "2tP7ERFoyrtlgniX5CEMPA", email: @user.email
+		get :edit, params: {'id' => "2tP7ERFoyrtlgniX5CEMPA", 'email' => @user.email}
     assert_response :redirect
 		assert_redirected_to @user
 		assert_not flash.empty?
@@ -19,7 +19,7 @@ class AccountActivationsControllerTest < ActionController::TestCase
 	end
 	
 	test "invalid activation_digest, should not edit" do
-		get :edit, id: "2tP7ERFoyrtlgniX5CEMPB", email: @user.email
+		get :edit, params: {'id' => "2tP7ERFoyrtlgniX5CEMPB", 'email' => @user.email}
     assert_response :redirect
 		assert_redirected_to root_path
 		assert_not flash.empty?
@@ -31,7 +31,7 @@ class AccountActivationsControllerTest < ActionController::TestCase
 	
 	test "logged in admin, should update" do
 		log_in_as(@user_admin)
-		get :update, id: @user.email
+		get :update, params: {'id' => @user.email}
 		assert_response :redirect
 		assert_redirected_to @user
 		assert_not flash.empty?
@@ -40,7 +40,7 @@ class AccountActivationsControllerTest < ActionController::TestCase
 	
 	test "logged in not admin, should not update" do
 		log_in_as(@user_notadmin)
-		get :update, id: @user.email
+		get :update, params: {'id' => @user.email}
 		assert_response :redirect
 		assert_redirected_to root_path
 		assert_not flash.empty?
@@ -48,7 +48,7 @@ class AccountActivationsControllerTest < ActionController::TestCase
 	end
 	
 	test "not logged in, should not update" do
-		get :update, id: @user.email
+		get :update, params: {'id' => @user.email}
 		assert_response :redirect
 		assert_redirected_to root_path
 		assert_not flash.empty?

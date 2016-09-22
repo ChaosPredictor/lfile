@@ -20,7 +20,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
   end
 	
 	test "not logged in should not show" do
-    get :show, id: @os
+    get :show, params: {'id' => @os}
 		assert_equal 302, response.status		
 		assert_redirected_to login_path
 		assert_not flash.empty?
@@ -36,7 +36,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
   end
 	
 	test "not logged in should not create" do
-    patch :create, id: @os, operating_system: { name: @os.name, version: "14.04" }
+    patch :create, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status		
 		assert_redirected_to login_path
 		assert_not flash.empty?
@@ -44,7 +44,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
   end
 
 	test "not logged in should not edit" do
-		get :edit, id: @os
+		get :edit, params: {'id' => @os}
 		assert_equal 302, response.status		
 		assert_redirected_to login_path
 		assert_not flash.empty?
@@ -52,7 +52,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
   end
 	
 	test "not logged in should not update" do
-		patch :update, id: @os, operating_system: { name: @os.name, version: "14.04" }
+		patch :update, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status		
 		assert_redirected_to login_path
 		assert_not flash.empty?
@@ -60,7 +60,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
   end
 	
 	test "not logged in should not destroy" do
-		delete :destroy, id: @os.id
+		delete :destroy, params: {'id' => @os.id}
 		assert_equal 302, response.status		
 		assert_redirected_to login_path
 		assert_not flash.empty?
@@ -80,7 +80,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 	
 	test "logged in, not admin should not show" do
 		log_in_as(@user_notadmin)
-    get :show, id: @os
+    get :show, params: {'id' => @os}
 		assert_equal 302, response.status		
 		assert_redirected_to root_path
   end
@@ -94,28 +94,28 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 	
 	test "logged in, not admin should not create" do
 		log_in_as(@user_notadmin)
-    patch :create, id: @os, operating_system: { name: @os.name, version: "14.04" }
+    patch :create, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status				
 		assert_redirected_to root_path
   end
 
 	test "logged in, not admin should not edit" do
 		log_in_as(@user_notadmin)
-		get :edit, id: @os
+		get :edit, params: {'id' => @os}
 		assert_equal 302, response.status				
 		assert_redirected_to root_path
   end
 	
 	test "logged in, not admin should not update" do
 		log_in_as(@user_notadmin)
-		patch :update, id: @os, operating_system: { name: @os.name, version: "14.04" }
+		patch :update, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status				
 		assert_redirected_to root_path
   end
 	
 	test "logged in, not admin should not destroy" do
 		log_in_as(@user_notadmin)
-		delete :destroy, id: @os.id
+		delete :destroy, params: {'id' => @os.id}
 		assert_equal 302, response.status				
 		assert_redirected_to root_path
   end
@@ -132,7 +132,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 	
 	test "logged in, admin should show" do
 		log_in_as(@user_admin)
-    get :show, id: @os.id
+    get :show, params: {'id' => @os.id}
 		assert_equal 200, response.status
 		assert_select 'h1', text: "Orepating System: " + String(@os.name), count: 1		
   end
@@ -146,7 +146,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 	
 	test "logged in, admin should create" do
 		log_in_as(@user_admin)
-    patch :create, id: @os, operating_system: { name: @os.name, version: "14.04" }
+    patch :create, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status
 		assert_redirected_to operating_systems_path
 		assert_not flash.empty?
@@ -155,14 +155,14 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 
 	test "logged in, admin should edit" do
 		log_in_as(@user_admin)
-		get :edit, id: @os
+		get :edit, params: {'id' => @os}
 		assert_equal 200, response.status
 		assert_select 'h1', text: "Edit Operating System", count: 1
 	end
 	
 	test "logged in, admin should update" do
 		log_in_as(@user_admin)
-		patch :update, id: @os, operating_system: { name: @os.name, version: "14.04" }
+		patch :update, params: {'id' => @os, 'operating_system' => { 'name' => @os.name, 'version' => "14.04" }}
 		assert_equal 302, response.status
 		assert_redirected_to operating_systems_path
 		assert_not flash.empty?
@@ -171,7 +171,7 @@ class OperatingSystemsControllerTest < ActionController::TestCase
 	
 	test "logged in, admin should destroy" do
 		log_in_as(@user_admin)
-		delete :destroy, id: @os.id
+		delete :destroy, params: {'id' => @os.id}
 		assert_equal 302, response.status
 		assert_redirected_to operating_systems_path
 		assert_not flash.empty?

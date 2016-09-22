@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   end
 	
 	def create
-		#logger.debug "debug!!!"
-		#logger.debug params[:session][:email]
+		logger.debug "debug!!!!!"
+		#logger.debug params.controller
+		#logger.debug params[:action].keys
 		user = User.find_by(email: params[:session][:email].downcase)
 		#logger.debug user
 		#logger.debug String(user.activated?)

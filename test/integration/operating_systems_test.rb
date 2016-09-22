@@ -17,12 +17,12 @@ class OperatingSystemsTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: @amount
 		# Invalid submission
 		assert_no_difference 'OperatingSystem.count' do
-			post operating_systems_path, operating_system: { name: "", version: "1.1" }
+			post operating_systems_path, params: {'operating_system' => { 'name' => "", 'version' => "1.1" }}
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'OperatingSystem.count' do
-			post operating_systems_path, operating_system: { name: "linux", version: "1.1" }
+			post operating_systems_path, params: {'operating_system' => { 'name' => "linux", 'version' => "1.1" }}
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!

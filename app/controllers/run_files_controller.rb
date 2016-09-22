@@ -6,12 +6,13 @@ class RunFilesController < ApplicationController
   end
 	
 	def create
-		logger.debug "Create start"
-		number_of_installations = params[:@installations].count
-		logger.debug number_of_installations
-		@installations  =Installation.all
-		logger.debug @installations
-		logger.debug params[:@installations].keys
+		#logger.debug "Create start"
+		#number_of_installations = params[:@installations].count
+		@installations  =Installation.all		
+		number_of_installations = @installations.count
+		#logger.debug number_of_installations
+		#logger.debug @installations
+		#logger.debug params[:@installations].keys
 		@installation_key = params[:@installations].keys
 		logger.debug @installation_key[0]
 		@installation_array = []

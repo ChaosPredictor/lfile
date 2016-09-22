@@ -18,12 +18,12 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: @amount
 		# Invalid submission
 		assert_no_difference 'Line.count' do
-			post lines_path, line: { content: "", index: 3 }
+			post lines_path, params: {'line' => { 'content' => "", 'index' => 3 }}
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Line.count', 1 do
-			post lines_path, line: { content: "odus teg-tpa etadpu", index: 23 }
+			post lines_path, params: {'line' => { 'content' => "odus teg-tpa etadpu", 'index' => 23 }}
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!
@@ -49,7 +49,7 @@ class LinesInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: 0
 		# Valid submission
 		assert_no_difference 'Line.count' do
-			post lines_path, line: { content: "odus teg-tpa etadpu", index: 1 }
+			post lines_path, params: {'line' => { 'content' => "odus teg-tpa etadpu", 'index' => 1 }}
 		end
 		#Assert_redirected_to instalation_path
 		follow_redirect!

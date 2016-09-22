@@ -42,6 +42,8 @@ class ApplicationController < ActionController::Base
 		end
 	
 		#before_filter -> { flash.now[:info] = flash[:info].html_safe if flash[:html_safe] && flash[:info] }
-		before_filter -> { flash.now[:info] = flash[:info].html_safe if flash[:info] }
+		
+		#before_filter -> { flash.now[:info] = flash[:info].html_safe if flash[:info] }
+		before_action -> { flash.now[:info] = flash[:info].html_safe if flash[:info] }
 	
 end

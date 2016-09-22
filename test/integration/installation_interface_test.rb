@@ -17,12 +17,12 @@ class InstallationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: @amount
 		# Invalid submission
 		assert_no_difference 'Installation.count' do
-			post installations_path, installation: { name: "", version: "1.1", os: "ubuntu", source_link: ".com" }
+			post installations_path, params: {'installation' => { 'name' => "", 'version' => "1.1", 'os' => "ubuntu", 'source_link' => ".com" }}
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Installation.count', 1 do
-			post installations_path, installation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
+			post installations_path, params: {'installation' => { 'name' => "gimpp", 'version' => "1.1", 'os' => "ubuntu", 'source_link' => "gimpp.com" }}
 		end
 		#Assert_redirected_to installation_path
 		follow_redirect!
@@ -47,12 +47,12 @@ class InstallationInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select 'a', text: 'delete', count: 0
 		# Invalid submission
 		assert_no_difference 'Installation.count' do
-			post installations_path, installation: { name: "", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
+			post installations_path, params: {'installation' => { 'name' => "", 'version' => "1.1", 'os' => "ubuntu", 'source_link' => "gimpp.com" }}
 		end
 		assert_select 'div#error_explanation'
 		# Valid submission
 		assert_difference 'Installation.count', 1 do
-			post installations_path, installation: { name: "gimpp", version: "1.1", os: "ubuntu", source_link: "gimpp.com" }
+			post installations_path, params: {'installation' => { 'name' => "gimpp", 'version' => "1.1", 'os' => "ubuntu", 'source_link' => "gimpp.com" }}
 		end
 		#Assert_redirected_to installation_path
 		follow_redirect!

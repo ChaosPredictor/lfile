@@ -11,7 +11,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
-		patch user_path(@user), user: {name: "", email: "foo@invalid", password: "foo", password_confirmation: "bar"}
+		patch user_path(@user), params: {'user' => {'name' => "", 'email' => "foo@invalid", 'password' => "foo", 'password_confirmation' => "bar"}}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 4 errors."
@@ -26,7 +26,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
-		patch user_path(@user), user: {name: "", email: "foo@invalid.com", password: "foobar", password_confirmation: "foobar"}
+		patch user_path(@user), params: {'user' => {'name' => "", 'email' => "foo@invalid.com", 'password' => "foobar", 'password_confirmation' => "foobar"}}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 1 error."
@@ -38,7 +38,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
-		patch user_path(@user), user: {name: "dima", email: "foo@invalid", password: "foobar", password_confirmation: "foobar"}
+		patch user_path(@user), params: {'user' => {'name' => "dima", 'email' => "foo@invalid", 'password' => "foobar", 'password_confirmation' => "foobar"}}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 1 error."
@@ -50,7 +50,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
-		patch user_path(@user), user: {name: "dima", email: "foo@invalid.com", password: "foo", password_confirmation: "foo"}
+		patch user_path(@user), params: {'user' => {'name' => "dima", 'email' => "foo@invalid.com", 'password' => "foo", 'password_confirmation' => "foo"}}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 1 error."
@@ -62,7 +62,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get edit_user_path(@user)
 		assert_template 'users/edit'
-		patch user_path(@user), user: {name: "dima", email: "foo@invalid.com", password: "foobar1", password_confirmation: "foobar2"}
+		patch user_path(@user), params: {'user' => {'name' => "dima", 'email' => "foo@invalid.com", 'password' => "foobar1", 'password_confirmation' => "foobar2"}}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 1 error."
@@ -73,7 +73,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 	test "unsuccessful edit email already been taken" do
 		get signup_path
 		assert_difference 'User.count' do
-			post users_path, user: { name: "Dima1", email: "user@invalid.com", password: "foobar1", password_confirmation: "foobar1" }
+			post users_path, params: {'user' => { 'name' => "Dima1", 'email' => "user@invalid.com", 'password' => "foobar1", 'password_confirmation' => "foobar1" }}
 		end
 		logout_path
 		log_in_as(@user)
@@ -81,7 +81,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		assert_template 'users/edit'
 		name = "Foo Bar"
 		email = "foo@bar.com"
-		patch user_path(@user), user: { name: name, email: "user@invalid.com", password: "", password_confirmation: "" }
+		patch user_path(@user), params: {'user' => { 'name' => name, 'email' => "user@invalid.com", 'password' => "", 'password_confirmation' => "" }}
 		assert_template 'users/edit'
 		assert_select 'div#error_explanation'
 		assert_select 'div.alert-danger', "The form contains 1 error."
@@ -95,7 +95,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		assert_template 'users/edit'
 		name = "Foo Bar"
 		email = "foo@bar.com"
-		patch user_path(@user), user: { name: name, email: email, password: "", password_confirmation: "" }
+		patch user_path(@user), params: {'user' => { 'name' => name, 'email' => email, 'password' => "", 'password_confirmation' => "" }}
 		assert_not flash.empty?
 		assert_equal "As usual, Nice Chose, Boss!", flash[:success]
 		assert_redirected_to @user
@@ -110,7 +110,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 		assert_redirected_to edit_user_path(@user)
 		name = "Foo Bar"
 		email = "foo@bar.com"
-		patch user_path(@user), user: { name: name, email: email, password: "", password_confirmation: "" }
+		patch user_path(@user), params: {'user' => { 'name' => name, 'email' => email, 'password' => "", 'password_confirmation' => "" }}
 		assert_not flash.empty?
 		assert_redirected_to @user
 		@user.reload
