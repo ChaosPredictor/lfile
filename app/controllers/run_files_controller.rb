@@ -30,15 +30,17 @@ class RunFilesController < ApplicationController
 		end
 		@string = @line_array.join("\r\n")
 		File.open('public/temp.txt', 'w') { |file| file.write(@string) }
-  	download_file('public/temp.txt')
+  	unless download_file('public/temp.txt')
+			redirect_to root_url
+		end
 	end
 	
 	
 	
 	private
 	
-		def download_file(file_path)
-   		send_file(file_path, :type => 'text/lfile', :disposition => "attachment")
+		def download_file(file_path) 
+			send_file(file_path, :type => 'text/lfile', :disposition => "attachment")
 		end
 	
 end

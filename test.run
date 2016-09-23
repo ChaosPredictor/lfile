@@ -1,4 +1,4 @@
 #!/bin/bash
 
-bundle exec rake test TESTOPTS="--seed=1981"
+bundle exec rake test -s SEED=1981
 rspec spec/models/spec.rb

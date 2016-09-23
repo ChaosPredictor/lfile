@@ -1,5 +1,5 @@
   describe 'Download file' do
- 
+		
     specify do
       visit '/createfile'
  			#save_and_open_page
@@ -11,6 +11,8 @@
       #expect( DownloadHelpers::download_content ).to include temp.txt
 			#expect(DownloadHelpers::download_content).to have_content('temp.txt')
 			page.response_headers['Content-Type'].should == "text/lfile"
+			#expect page.response_headers['Content-Type'] == "texts/lfile"
+			
 			page.status_code.should == 200
 			#page.response_headers['Content-Type'].must_equal "text/lfile"
 			#page.response_headers['Content-Disposition'].should == "attachment; filename=\"temp.txt\""
@@ -25,6 +27,6 @@
   		#page.must_have_content "U13"
   		#page.wont_have_content "5000"
 			#page.should match "sudo"
-			expect(page).to have_http_status(:success)
+			#expect(page).to have_http_status(:success)
     end
 	end

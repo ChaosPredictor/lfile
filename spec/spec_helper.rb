@@ -19,7 +19,7 @@
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
+#require 'rspec/rails'
 
 # Add this to load Capybara integration:
 require 'capybara/rspec'
@@ -72,6 +72,12 @@ RSpec.configure do |config|
 	
 	config.include Capybara::DSL
 
+	config.expect_with(:rspec) { |c| c.syntax = :should }
+
+	
+	#waring to errors
+	#config.raise_errors_for_deprecations!
+	
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
