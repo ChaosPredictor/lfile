@@ -155,5 +155,5 @@ config.action_mailer.default_url_options = { :host => 'lfile.download' }
 	#config.serve_static_files = false
 	#config.serve_static_assets = true
 	#config.serve_static_files = true
-	public_file_server.enabled = true
+	config.public_file_server.enabled = true
 end
