@@ -20,8 +20,12 @@ test: &test
   <<: *default
   database: db/test.sqlite3
 
+
+cucumber:
+  <<: *test
+
 production:
-  <<: *default
+#  <<: *default
   host: localhost
   adapter: postgresql
   encoding: utf8
@@ -29,6 +33,3 @@ production:
   pool: 5
   username: <%= ENV['LFILE_DATABASE_USER'] %>
   password: <%= ENV['LFILE_DATABASE_PASSWORD'] %>
-
-cucumber:
-  <<: *test
