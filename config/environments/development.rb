@@ -10,9 +10,10 @@ Rails.application.configure do
   config.eager_load = false
 	
 	#downlaod files
-	config.serve_static_files = false
+	#config.serve_static_files = false
 	#config.serve_static_assets = true
-	config.serve_static_files	= true
+	#config.serve_static_files	= true
+	config.public_file_server.enabled = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

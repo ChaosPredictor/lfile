@@ -25,5 +25,8 @@ module Lfile
 		
 		# Include the authenticity token in remote forms.
 		config.action_view.embed_authenticity_token_in_remote_forms = true
+		
+		#update css and js w/o assets:precompile
+		config.assets.initialize_on_precompile = false
   end
 end
