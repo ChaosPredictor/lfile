@@ -13,8 +13,12 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
 
 # Ignore Spring files.
 /spring/*.pid
@@ -39,6 +43,12 @@
 Gemfile
 Gemfile.lock
 
-
 #file to save
 public/temp.txt
+
+#swap/swop/swn
+.*.*.*.swp
+.*.*.*.swn
+.*.*.*.swo
+.*.*.swp
+.*.swp
